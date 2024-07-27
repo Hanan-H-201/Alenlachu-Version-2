@@ -9,7 +9,7 @@ class ProfessionModel extends Equatable {
   final String nationality;
   final String address;
   final String profession;
-  final String exprience;
+  final int exprience;
   final String languageToProvideService;
   final double pricePerHour;
   String verificationStatus;
