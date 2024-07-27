@@ -15,7 +15,7 @@ const institutionSchema = new Schema({
     },
     phoneNumber : {
         type : String,
-        default : null,
+        required: true,
     },
 
     address : {
