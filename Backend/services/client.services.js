@@ -26,7 +26,8 @@ class ClientService{
     }
 
     static async loginClient(clinetUsername, clientPassword){
-        const client = await ClientModel.findOne({clinetUsername});
+        const client = await ClientModel.findOne({username: clinetUsername});
+        console.log(client);
         if (!client || !(await bcrypt.compare(clientPassword, client.password))) {
             return null;
         }
@@ -58,7 +59,7 @@ class ClientService{
         }
 
         const SECRET_KEY = process.env.SECRET_KEY || 'secret_key';
-        const token = Authentication.generateToken(tokenData,SECRET_KEY,{ expiresIn: '1h' });
+        const token = Authentication.generateToken(tokenData,SECRET_KEY,{expiresIn: '1h'});
         return token; 
     }
 
