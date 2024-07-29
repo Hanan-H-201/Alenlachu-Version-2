@@ -11,6 +11,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   Future<void> registerClient(
       {required String username,
       required String email,
+      required String password,
       required String emergencyContact,
       String? fullName,
       String? phoneNumber,
@@ -24,6 +25,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       ClientModel client = ClientModel(
         username: username,
         email: email,
+        password: password,
         emergencyContact: emergencyContact,
         fullName: fullName,
         phoneNumber: phoneNumber,

@@ -1,26 +1,16 @@
-const redis = require('redis');
-const client = redis.createClient();
-
-// client.connect().catch(console.error);
-
-// client.on('connect', () => {
-//     console.log('Connected to Redis');
-// });
-
-// client.on('error', (err) => {
-//     console.error('Redis error:', err);
-// });
-
+const jwt = require('jsonwebtoken');
+const BlacklistModel = require('../models/blackList.model');
 exports.logout = async (req, res) => {
     try {
-        const authHeader = req.header('Authorization');
-        if (!authHeader) {
-            return res.status(400).json({ error: 'Authorization header missing' });
-        }
-
-        const token = authHeader.replace('Bearer ', '');
-        await client.set(token, 'invalid', 'EX', 3600); // Token expires in 1 hour
-        res.status(200).json({ message: 'Logged out successfully' });
+        const token = req.headers['authorization'].split(' ')[1];
+        const decoded = jwt.decode(token);
+      
+        const expiresAt = new Date(decoded.exp * 1000);
+      
+        const blacklistedToken = new BlacklistModel({ token, expiresAt });
+        await blacklistedToken.save();
+      
+        res.send('Logged out successfully');
     } catch (err) {
         res.status(500).json({ error: `Failed to log out: ${err.message}` });
     }

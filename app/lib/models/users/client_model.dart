@@ -2,7 +2,9 @@ import 'package:equatable/equatable.dart';
 
 // ignore: must_be_immutable
 class ClientModel extends Equatable {
+  final String? id;
   final String username;
+  final String password;
   final String email;
   final String emergencyContact;
   final String? fullName;
@@ -13,7 +15,9 @@ class ClientModel extends Equatable {
   bool isAnonymous;
 
   ClientModel({
+    this.id,
     required this.username,
+    required this.password,
     required this.email,
     required this.emergencyContact,
     this.fullName,
@@ -27,6 +31,7 @@ class ClientModel extends Equatable {
   Map<String, dynamic> toJson() {
     return {
       'username': username,
+      'password': password,
       'email': email,
       'emergencyContact': emergencyContact,
       'fullName': fullName,
@@ -40,7 +45,9 @@ class ClientModel extends Equatable {
 
   factory ClientModel.fromJson(Map<String, dynamic> json) {
     return ClientModel(
+      id: json['_id'],
       username: json['username'],
+      password: json['password'],
       email: json['email'],
       emergencyContact: json['emergencyContact'],
       fullName: json['fullName'],
@@ -56,7 +63,9 @@ class ClientModel extends Equatable {
 
   @override
   List<Object?> get props => [
+        id,
         username,
+        password,
         email,
         emergencyContact,
         fullName,

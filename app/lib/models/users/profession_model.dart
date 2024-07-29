@@ -2,8 +2,10 @@ import 'package:equatable/equatable.dart';
 
 // ignore: must_be_immutable
 class ProfessionModel extends Equatable {
+  final String? id;
   final String name;
   final String email;
+  final String password;
   final String phoneNumber;
   final DateTime dateOfBirth;
   final String nationality;
@@ -15,8 +17,10 @@ class ProfessionModel extends Equatable {
   String verificationStatus;
 
   ProfessionModel(
-      {required this.name,
+      {this.id,
+      required this.name,
       required this.email,
+      required this.password,
       required this.phoneNumber,
       required this.dateOfBirth,
       required this.nationality,
@@ -32,6 +36,7 @@ class ProfessionModel extends Equatable {
       'name': name,
       'email': email,
       'phoneNumber': phoneNumber,
+      'password': password,
       'dateOfBirth': dateOfBirth.toIso8601String(),
       'nationality': nationality,
       'address': address,
@@ -45,8 +50,10 @@ class ProfessionModel extends Equatable {
 
   factory ProfessionModel.fromJson(Map<String, dynamic> json) {
     return ProfessionModel(
+      id: json['_id'],
       name: json['name'],
       email: json['email'],
+      password: json['password'],
       phoneNumber: json['phoneNumber'],
       dateOfBirth: DateTime.parse(json['dateOfBirth'] as String),
       nationality: json['nationality'],
@@ -60,6 +67,7 @@ class ProfessionModel extends Equatable {
   }
   @override
   List<Object?> get props => [
+        id,
         name,
         email,
         phoneNumber,

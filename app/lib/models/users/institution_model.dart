@@ -2,19 +2,21 @@ import 'package:equatable/equatable.dart';
 
 // ignore: must_be_immutable
 class InstitutionModel extends Equatable {
-  String? id;
+  final String? id;
   final String name;
   final String email;
+  final String password;
   final String phoneNumber;
   final String address;
   final DateTime establishmentDate;
   final String languageToProvideService;
   final double pricePerHour;
 
-  InstitutionModel(
+  const InstitutionModel(
       {this.id,
       required this.name,
       required this.email,
+      required this.password,
       required this.phoneNumber,
       required this.address,
       required this.establishmentDate,
@@ -23,9 +25,9 @@ class InstitutionModel extends Equatable {
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
       'name': name,
       'email': email,
+      'password': password,
       'phoneNumber': phoneNumber,
       'address': address,
       'establishmentDate': establishmentDate.toIso8601String(),
@@ -39,6 +41,7 @@ class InstitutionModel extends Equatable {
       id: json['_id'],
       name: json['name'],
       email: json['email'],
+      password: json['password'],
       phoneNumber: json['phoneNumber'],
       address: json['address'],
       establishmentDate: DateTime.parse(json['establishmentDate']),
@@ -52,6 +55,7 @@ class InstitutionModel extends Equatable {
         id,
         name,
         email,
+        password,
         phoneNumber,
         address,
         establishmentDate,

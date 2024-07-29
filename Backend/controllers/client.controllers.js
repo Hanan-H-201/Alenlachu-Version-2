@@ -3,33 +3,47 @@ const ClientService = require('../services/client.services');
 
 exports.registerClient = async (req, res) => {
     try {
-
-        const { username, email, emergencyContact, fullName, phoneNumber, dateOfBirth, nationality, residency, isAnonymous } = req.body;
-
+        const { username, email,password, emergencyContact, fullName, phoneNumber, dateOfBirth, nationality, residency, isAnonymous } = req.body;
         if (!username || username.trim() === '') {
             return res.status(400).json({ error: 'Username is required.' });
         }
-        
         if (!email || email.trim() === '') {
             return res.status(400).json({ error: 'Email is required.' });
-        }
-
-        if (!emergencyContact || emergencyContact.trim() === '') {
-            return res.status(400).json({ error: 'Emergency contact is required.' });
         }
 
         if (!/^\S+@\S+\.\S+$/.test(email)) {
             return res.status(400).json({ error: 'Invalid email format.' });
         }
-
         
-        
+        if (!emergencyContact || emergencyContact.trim() === '') {
+            return res.status(400).json({ error: 'Emergency contact is required.' });
+        }
 
-        
+        if (!password || password.trim() === '') {
+            return res.status(400).json({ error: 'Password is required.' });
+        }
 
+        if (password.length < 8) {
+            return res.status(400).json({ error: 'Password must be at least 8 characters long.' });
+            
+        }
+        if (!/[a-z]/.test(password)) {
+            return res.status(400).json({ error: 'Password must include at least one lowercase letter.' });
+        }
+        if (!/[A-Z]/.test(password)) {
+            return res.status(400).json({ error: 'Password must include at least one uppercase letter.' });
+        }
+        if (!/\d/.test(password)) {
+            return res.status(400).json({ error: 'Password must include at least one number.' });
+        }
+        if (!/[@$!%*?&]/.test(password)) {
+            return res.status(400).json({ error: 'Password must include at least one special character.' });
+        }
+        
         const result = await ClientService.registerClient(
             username.trim(),
             email.trim().toLowerCase(),
+            password.trim(),
             emergencyContact.trim(),
             fullName ? fullName.trim() : null,
             phoneNumber ? phoneNumber.trim() : null,
@@ -39,21 +53,6 @@ exports.registerClient = async (req, res) => {
             isAnonymous
         );
 
-        // let tokenData = {
-        //     _id: result._id,
-        //     username: result.username,
-        //     email: result.email,
-        //     emergencyContact: result.emergencyContact,
-        //     fullName: result.fullName,
-        //     phoneNumber: result.phoneNumber,
-        //     dateOfBirth: result.dateOfBirth,
-        //     nationality: result.nationality,
-        //     residency: result.residency,
-        //     isAnonymous: result.isAnonymous
-        // };
-
-        // const token = await ClientService.generateToken(tokenData, "secretKey", '1hr');
-
         res.status(201).json(result);
     } catch (err) {
         res.status(400).json({ error: err.message });
@@ -62,8 +61,8 @@ exports.registerClient = async (req, res) => {
 
 exports.loginClient = async (req,res) => {
     try {
-        const {username} = req.body;
-        const token = await ClientService.loginClient(username);
+        const {username, password} = req.body;
+        const token = await ClientService.loginClient(username, password);
 
         if(!token){
             return res.status(401).send('Invalid credential');
@@ -73,6 +72,5 @@ exports.loginClient = async (req,res) => {
     } catch (e) {
         res.status(500).send('Internal server error');
     }
-   
-    const client  = ClientModel
+ 
 }

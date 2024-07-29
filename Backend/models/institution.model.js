@@ -15,6 +15,11 @@ const institutionSchema = new Schema({
         unique: true,
         match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address.']
     },
+    password: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     phoneNumber: {
         type: String,
         required: true,
@@ -37,7 +42,17 @@ const institutionSchema = new Schema({
     }
 });
 
+institutionSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) return next();
 
+    try {
+        const salt = await bcrypt.genSalt(10);
+        this.password = await bcrypt.hash(this.password, salt);
+        next();
+    } catch (err) {
+        next(err);
+    }
+});
 
 const InstitutionModel = db.model('institution', institutionSchema);
 
