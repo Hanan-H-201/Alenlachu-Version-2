@@ -9,7 +9,7 @@ class ProfessionModel extends Equatable {
   final String nationality;
   final String address;
   final String profession;
-  final int exprience;
+  final int experience;
   final String languageToProvideService;
   final double pricePerHour;
   String verificationStatus;
@@ -22,7 +22,7 @@ class ProfessionModel extends Equatable {
       required this.nationality,
       required this.address,
       required this.profession,
-      required this.exprience,
+      required this.experience,
       required this.languageToProvideService,
       required this.pricePerHour,
       this.verificationStatus = 'pending'});
@@ -36,7 +36,7 @@ class ProfessionModel extends Equatable {
       'nationality': nationality,
       'address': address,
       'profession': profession,
-      'exprience': exprience,
+      'experience': experience,
       'languageToProvideService': languageToProvideService,
       'pricePerHour': pricePerHour,
       'verificationStatus': verificationStatus
@@ -52,7 +52,7 @@ class ProfessionModel extends Equatable {
       nationality: json['nationality'],
       address: json['address'],
       profession: json['profession'],
-      exprience: json['exprience'],
+      experience: json['experience'],
       languageToProvideService: json['languageToProvideService'],
       pricePerHour: json['pricePerHour'],
       verificationStatus: json['verificationStatus'],
@@ -67,7 +67,7 @@ class ProfessionModel extends Equatable {
         nationality,
         address,
         profession,
-        exprience,
+        experience,
         languageToProvideService,
         pricePerHour,
         verificationStatus
