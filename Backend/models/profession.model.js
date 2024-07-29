@@ -1,6 +1,6 @@
 const db = require('../config/db');
 
-const {Schema} = mongoose;
+const {Schema} = db;
 
 const professionalSchema = new Schema({
     name: {

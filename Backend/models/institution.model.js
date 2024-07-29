@@ -1,7 +1,7 @@
 
 const db = require('../config/db');
 
-const {Schema} = mongoose;
+const {Schema} = db;
 
 const institutionSchema = new Schema({
     name: {
