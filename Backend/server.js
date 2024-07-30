@@ -6,7 +6,7 @@ const adminRoutes = require("./routes/admin.routes");
 const clientRoutes = require("./routes/client.routes");
 const institutionRoutes = require("./routes/institution.routes");
 const professionRoutes = require("./routes/profession.routes");
-const logoutRoutes = require('./routes/logout.routes');
+const authRoutes = require('./routes/auth.routes');
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -17,7 +17,7 @@ app.use("/api/admins", adminRoutes);
 app.use("/api/clients", clientRoutes);
 app.use("/api/institutions", institutionRoutes);
 app.use("/api/professions", professionRoutes);
-app.use("/api", logoutRoutes);
+app.use("/api", authRoutes);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);

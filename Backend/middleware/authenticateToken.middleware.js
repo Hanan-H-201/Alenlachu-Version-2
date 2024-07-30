@@ -12,8 +12,14 @@ exports.authenticateToken = async (req, res, next) => {
     if (blacklisted) return res.status(403).send('Invalid token');
     const SECRET_KEY = process.env.SECRET_KEY;
   
-    jwt.verify(token, SECRET_KEY, (err, user) => {
-      if (err) return res.status(403).send('Invalid token');
+    jwt.verify(token, SECRET_KEY, async (err, user) => {
+      if (err){
+        const expiresAt = new Date(jwt.decode(token).exp * 1000);
+        const blacklistedToken = new BlacklistModel({ token, expiresAt });
+        await blacklistedToken.save();
+
+        return res.status(403).send('Sorry, Your Session is Expired!');
+      } 
       req.user = user;
       next();
     });

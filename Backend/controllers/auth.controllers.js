@@ -15,3 +15,7 @@ exports.logout = async (req, res) => {
         res.status(500).json({ error: `Failed to log out: ${err.message}` });
     }
 }
+
+exports.verifyToken = async (req, res) => {
+    res.status(200).send('Token is valid');
+}
