@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const InstitutionModel = require('../models/institution.model');
+const Authentication = require('./auth.services');
 
 
 
@@ -19,11 +20,13 @@ class InstitutionService {
     }
 
     static async loginInstitution(institutionEmail, institutionPassword){
-        const institution = await InstitutionModel.findOne({email: institutionEmail});
+        
+        const institution = await InstitutionModel.findOne({email : institutionEmail});
+        console.log(institution);
         if (!institution || !(await bcrypt.compare(institutionPassword, institution.password))){
+            console.log("----------------------------------");
             return null;
         }
-
         const {
             _id,
             name,

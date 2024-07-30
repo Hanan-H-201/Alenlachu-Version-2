@@ -1,11 +1,12 @@
 const bcrypt = require('bcrypt');
 const ProfessionalModel = require('../models/profession.model');
+const Authentication = require('./auth.services');
 
 
 class ProfessionService{
-    static async registerProfession(name,email,password, phoneNumber, dateOfBirth, nationality, address, profession, exprience,  languageToProvideService, pricePerHour, verificationStatus){
+    static async registerProfession(name,email,password, phoneNumber, dateOfBirth, nationality, address, profession, experience,  languageToProvideService, pricePerHour, verificationStatus){
         try{
-            const newProfessional = new ProfessionalModel({name,email,password, phoneNumber, dateOfBirth, nationality, address, profession, exprience,  languageToProvideService, pricePerHour, verificationStatus});
+            const newProfessional = new ProfessionalModel({name,email,password, phoneNumber, dateOfBirth, nationality, address, profession, experience,  languageToProvideService, pricePerHour, verificationStatus});
             return await newProfessional.save();
         }catch(e){
             throw new Error(`Failed to register Profession ${e}`);

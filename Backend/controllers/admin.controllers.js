@@ -1,23 +1,9 @@
-const ProfessionService = require('../services/profession.services');
+const AdminService = require('../services/admin.services');
 
-exports.registerProfession = async (req, res) => {
+exports.registerAdmin = async (req, res) => {
     try {
-       
-        const {
-            name,
-            email,
-            password,
-            phoneNumber,
-            dateOfBirth,
-            nationality,
-            address,
-            profession,
-            experience,
-            languageToProvideService,
-            pricePerHour,
-            verificationStatus
-        } = req.body;
-
+        const { email, password } = req.body;
+        
         if (!/^\S+@\S+\.\S+$/.test(email)) {
             return res.status(400).json({ error: 'Invalid email format.' });
         }
@@ -38,40 +24,25 @@ exports.registerProfession = async (req, res) => {
             return res.status(400).json({ error: 'Password must include at least one special character.' });
         }
 
-        const result = await ProfessionService.registerProfession(
-            name.trim(),
-            email.trim().toLowerCase(),
-            password.trim(),
-            phoneNumber.trim(),
-            new Date(dateOfBirth),
-            nationality.trim(),
-            address.trim(),
-            profession.trim(),
-            Number(experience),
-            languageToProvideService.trim(),
-            Number(pricePerHour),
-            verificationStatus.trim()
-        );
-
+        const result = await AdminService.registerAdmin(email, password);
         res.status(201).json(result);
+
+
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
 };
 
-
-exports.loginProfessional = async (req, res) => {
+exports.loginAdmin = async (req, res) => {
     try{
-        const{email, password} = req.body;
-        const token = await ProfessionService.loginProfessional(email, password);
-
+        const {username, password} = req.body;
+        const token = await AdminService.loginAdmin(username, password);
         if(!token){
             return res.status(401).send('Invalid credential');
         }
 
         res.status(200).json({status: true, token: token});
-
-    }catch(e){
+    }catch(err){
         res.status(500).send(`Internal server error ${err.message}`);
     }
-}
+};

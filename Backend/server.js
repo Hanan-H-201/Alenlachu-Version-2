@@ -2,6 +2,7 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const dotenv = require('dotenv').config();
 const db = require("./config/db");
+const adminRoutes = require("./routes/admin.routes");
 const clientRoutes = require("./routes/client.routes");
 const institutionRoutes = require("./routes/institution.routes");
 const professionRoutes = require("./routes/profession.routes");
@@ -12,6 +13,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
+app.use("/api/admins", adminRoutes);
 app.use("/api/clients", clientRoutes);
 app.use("/api/institutions", institutionRoutes);
 app.use("/api/professions", professionRoutes);

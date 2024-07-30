@@ -54,7 +54,7 @@ exports.registerInstitution = async (req, res) => {
 exports.loginInstitution = async (req, res) => {
     try{
         const {email, password} = req.body;
-        const token = InstitutionService.loginInstitution(email, password);
+        const token = await InstitutionService.loginInstitution(email, password);
 
         if(!token){
             return res.status(401).send('Invalid credential');
@@ -62,6 +62,6 @@ exports.loginInstitution = async (req, res) => {
 
         res.status(200).json({status: true, token: token});
     }catch(e){
-        res.status(500).send('Internal server error');
+        res.status(500).send(`Internal server error ${err.message}`);
     }
 }

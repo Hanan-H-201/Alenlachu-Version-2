@@ -27,7 +27,6 @@ class ClientService{
 
     static async loginClient(clinetUsername, clientPassword){
         const client = await ClientModel.findOne({username: clinetUsername});
-        console.log(client);
         if (!client || !(await bcrypt.compare(clientPassword, client.password))) {
             return null;
         }
