@@ -58,7 +58,7 @@ class ClientService{
         }
 
         const SECRET_KEY = process.env.SECRET_KEY || 'secret_key';
-        const token = Authentication.generateToken(tokenData,SECRET_KEY,{expiresIn: '1m'});
+        const token = Authentication.generateToken(tokenData,SECRET_KEY,{expiresIn: '2s'});
         return token; 
     }
 

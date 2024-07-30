@@ -24,6 +24,11 @@ class LoginManager {
     return prefs.getString(_token);
   }
 
+  static Future<void> removeToken() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_token);
+  }
+
   static Future<void> clearStorages() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.clear();

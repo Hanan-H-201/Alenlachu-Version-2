@@ -1,5 +1,6 @@
 
 const ClientService = require('../services/client.services');
+const jwt = require('jsonwebtoken');
 
 exports.registerClient = async (req, res) => {
     try {
@@ -68,7 +69,7 @@ exports.loginClient = async (req,res) => {
             return res.status(401).send('Invalid credential');
         }
 
-        res.status(200).json({status: true, token: token});
+        res.status(200).json({status: true, token:token, tokenData: jwt.decode(token)});
     } catch (e) {
         res.status(500).send(`Internal server error ${err.message}`);
     }
