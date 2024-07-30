@@ -3,7 +3,6 @@ import 'package:app/models/users/client_model.dart';
 import 'package:app/models/users/institution_model.dart';
 import 'package:app/models/users/profession_model.dart';
 import 'package:app/services/common/authentication_service.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
@@ -164,16 +163,20 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   Future<void> loginProfessional(
       {required String email, required String password}) async {
     emit(Authenticating());
-    try {} catch (e) {
+    try {
+      await authenticationService.loginProfessional(email, password);
+      Map<String, dynamic>? json = await authenticationService.getUser();
+      ProfessionModel professional = ProfessionModel.fromJson(json!);
+      emit(AuthenticatedAsProfessional(profession: professional));
+    } catch (e) {
       emit(AuthenticationFailed(errorMessage: e.toString()));
     }
   }
 
-  Future<void> logout(BuildContext context) async {
+  Future<void> logout() async {
     emit(Authenticating());
     try {
-      await authenticationService.logout(context);
-
+      await authenticationService.logout();
       emit(UnAuthenticated());
     } catch (e) {
       emit(AuthenticationFailed(errorMessage: e.toString()));

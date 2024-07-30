@@ -22,9 +22,9 @@ class AuthenticatedAsInstitution extends AuthenticationState {
   AuthenticatedAsInstitution({required this.institution});
 }
 
-class AuthenticatedAsProfession extends AuthenticationState {
+class AuthenticatedAsProfessional extends AuthenticationState {
   final ProfessionModel profession;
-  AuthenticatedAsProfession({required this.profession});
+  AuthenticatedAsProfessional({required this.profession});
 }
 
 class AuthenticationFailed extends AuthenticationState {
