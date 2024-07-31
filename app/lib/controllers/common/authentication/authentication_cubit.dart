@@ -7,8 +7,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   final AuthenticationService authenticationService;
-  AuthenticationCubit({required this.authenticationService})
-      : super(UnAuthenticated());
+
+  AuthenticationCubit({
+    required this.authenticationService,
+  }) : super(AppStarted());
 
   Future<void> registerClient(
       {required String username,
@@ -173,11 +175,23 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
+  void unAuthenticateClient(String message) {
+    emit(UnauthenticatedClient(message: message));
+  }
+
+  void unAuthenticateInstitution(String message) {
+    emit(UnauthenticatedInstitution(message: message));
+  }
+
+  void unAuthenticateProfessional(String message) {
+    emit(UnauthenticatedProfessional(message: message));
+  }
+
   Future<void> logout() async {
     emit(Authenticating());
     try {
       await authenticationService.logout();
-      emit(UnAuthenticated());
+      emit(AppStarted());
     } catch (e) {
       emit(AuthenticationFailed(errorMessage: e.toString()));
     }

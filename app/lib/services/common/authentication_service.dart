@@ -44,6 +44,7 @@ class AuthenticationService {
       if (response.statusCode == 200) {
         final jsonResponse = jsonDecode(response.body);
         await LoginManager.saveUserToken(jsonResponse["token"]);
+        await LoginManager.saveUserRole('client');
       } else {
         throw Exception(
             'Operation Faild: Server returned  ${jsonDecode(response.body)}');
@@ -86,6 +87,7 @@ class AuthenticationService {
       if (response.statusCode == 200) {
         final jsonResponse = jsonDecode(response.body);
         await LoginManager.saveUserToken(jsonResponse["token"]);
+        await LoginManager.saveUserRole('professional');
       } else {
         throw Exception(
             'Operation Faild: Server returned  ${jsonDecode(response.body)}');
@@ -129,6 +131,7 @@ class AuthenticationService {
       if (response.statusCode == 200) {
         final jsonResponse = jsonDecode(response.body);
         await LoginManager.saveUserToken(jsonResponse["token"]);
+        await LoginManager.saveUserRole('institution');
       } else {
         throw Exception(
             'Operation Faild: Server returned  ${jsonDecode(response.body)}');
@@ -146,6 +149,18 @@ class AuthenticationService {
     } catch (e) {
       throw Exception('Failed to get user: $e');
     }
+  }
+
+  Future<http.Response> verifyToken() async {
+    final token = await LoginManager.getUserToken();
+    final response = await http.post(
+      Uri.parse(ApiUrl.tokenVerificationUrl),
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      },
+    );
+    return response;
   }
 
   Future<void> logout() async {
