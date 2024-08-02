@@ -1,5 +1,4 @@
 import 'package:app/controllers/common/authentication/authentication_cubit.dart';
-import 'package:app/controllers/common/authentication/authentication_state.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'package:app/widgets/common/custome_form_components.dart';
 import 'package:app/widgets/common/main_button.dart';
@@ -67,10 +66,6 @@ class _InstitutionLoginFormState extends State<InstitutionLoginForm> {
                 context.read<AuthenticationCubit>().loginInstitution(
                     email: _emailController.text,
                     password: _passwordController.text);
-                // Form is valid, proceed with further processing
-                // ScaffoldMessenger.of(context).showSnackBar(
-                //   const SnackBar(content: Text('Processing Data')),
-                // );
               }
             },
             child: Text(
