@@ -1,33 +1,37 @@
+import 'package:app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class CustomFormComponents {
   static Widget buildSearchBar(
-      TextEditingController controller, String hintText) {
+      TextEditingController controller, String hintText,
+      {String? Function(String?)? validator}) {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
         prefixIcon: const Icon(Icons.search),
         filled: true,
-        fillColor: Colors.grey[200],
+        fillColor: Colors.blue.withOpacity(0.15),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: BorderSide.none,
         ),
       ),
+      validator: validator,
     );
   }
 
-  static Widget buildDatePickerField(BuildContext context,
-      TextEditingController controller, String labelText) {
+  static Widget buildDatePickerField(
+      BuildContext context, TextEditingController controller, Text labelText,
+      {String? Function(String?)? validator}) {
     return TextFormField(
       controller: controller,
       readOnly: true,
       decoration: InputDecoration(
-        labelText: labelText,
+        label: labelText,
         suffixIcon: const Icon(Icons.calendar_today),
         filled: true,
-        fillColor: Colors.grey[200],
+        fillColor: Colors.blue.withOpacity(0.15),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: BorderSide.none,
@@ -44,19 +48,21 @@ class CustomFormComponents {
           controller.text = "${pickedDate.toLocal()}".split(' ')[0];
         }
       },
+      validator: validator,
     );
   }
 
-  static Widget buildTimePickerField(BuildContext context,
-      TextEditingController controller, String labelText) {
+  static Widget buildTimePickerField(
+      BuildContext context, TextEditingController controller, Text labelText,
+      {String? Function(String?)? validator}) {
     return TextFormField(
       controller: controller,
       readOnly: true,
       decoration: InputDecoration(
-        labelText: labelText,
+        label: labelText,
         suffixIcon: const Icon(Icons.access_time),
         filled: true,
-        fillColor: Colors.grey[200],
+        fillColor: Colors.blue.withOpacity(0.15),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: BorderSide.none,
@@ -68,20 +74,23 @@ class CustomFormComponents {
           initialTime: TimeOfDay.now(),
         );
         if (pickedTime != null) {
+          // ignore: use_build_context_synchronously
           controller.text = pickedTime.format(context);
         }
       },
+      validator: validator,
     );
   }
 
-  static Widget buildDropdownInputField(String labelText, List<String> items,
-      String? selectedItem, void Function(String?) onChanged) {
+  static Widget buildDropdownInputField(Text labelText, List<String> items,
+      String? selectedItem, void Function(String?) onChanged,
+      {String? Function(String?)? validator}) {
     return DropdownButtonFormField<String>(
       value: selectedItem,
       decoration: InputDecoration(
-        labelText: labelText,
+        label: labelText,
         filled: true,
-        fillColor: Colors.grey[200],
+        fillColor: Colors.blue.withOpacity(0.15),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: BorderSide.none,
@@ -90,28 +99,123 @@ class CustomFormComponents {
       items: items.map((item) {
         return DropdownMenuItem<String>(
           value: item,
-          child: Text(item),
+          child: Text(
+            item,
+            style: appTheme.textTheme.bodySmall,
+          ),
         );
       }).toList(),
       onChanged: onChanged,
+      validator: validator,
     );
   }
 
   static Widget buildNormalTextField(
-      TextEditingController controller, String labelText,
-      {IconData? prefixIcon}) {
+      TextEditingController controller, Text labelText,
+      {IconData? prefixIcon, String? Function(String?)? validator}) {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
-        labelText: labelText,
+        label: labelText,
         prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
         filled: true,
-        fillColor: Colors.grey[200],
+        fillColor: Colors.blue.withOpacity(0.15),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: BorderSide.none,
         ),
       ),
+      validator: validator,
+    );
+  }
+
+  static Widget buildPhoneNumberField(
+      TextEditingController phoneController,
+      Text lable,
+      String selectedCountryCode,
+      List<String> countryCodes,
+      void Function(String?) onCountryCodeChanged,
+      {String? Function(String?)? validator}) {
+    return Row(
+      children: [
+        Expanded(
+          flex: 2,
+          child: DropdownButtonFormField<String>(
+            value: selectedCountryCode,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.blue.withOpacity(0.15),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12.0),
+                borderSide: BorderSide.none,
+              ),
+            ),
+            items: countryCodes.map((code) {
+              return DropdownMenuItem<String>(
+                value: code,
+                child: Text(
+                  code,
+                  style: appTheme.textTheme.bodySmall,
+                ),
+              );
+            }).toList(),
+            onChanged: onCountryCodeChanged,
+            validator: validator,
+          ),
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          flex: 5,
+          child: TextFormField(
+            controller: phoneController,
+            decoration: InputDecoration(
+              label: lable,
+              filled: true,
+              fillColor: Colors.blue.withOpacity(0.15),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12.0),
+                borderSide: BorderSide.none,
+              ),
+            ),
+            keyboardType: TextInputType.phone,
+            validator: validator,
+          ),
+        ),
+      ],
+    );
+  }
+
+  static Widget buildPasswordField(TextEditingController controller, Text label,
+      {String? Function(String?)? validator}) {
+    bool obscureText = true;
+
+    return StatefulBuilder(
+      builder: (BuildContext context, StateSetter setState) {
+        return TextFormField(
+          controller: controller,
+          obscureText: obscureText,
+          decoration: InputDecoration(
+            label: label,
+            suffixIcon: IconButton(
+              icon: Icon(
+                obscureText ? Icons.visibility : Icons.visibility_off,
+              ),
+              onPressed: () {
+                setState(() {
+                  obscureText = !obscureText;
+                });
+              },
+            ),
+            filled: true,
+            fillColor: Colors.blue.withOpacity(0.15),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12.0),
+              borderSide: BorderSide.none,
+            ),
+          ),
+          validator: validator,
+        );
+      },
     );
   }
 }

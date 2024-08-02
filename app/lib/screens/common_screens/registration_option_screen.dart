@@ -19,11 +19,9 @@ class _RegistrationOptionScreenState extends State<RegistrationOptionScreen> {
       child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          // mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'How would you like continue using the App?',
+              'How do you want to keep exploring the app?',
               style: appTheme.textTheme.displaySmall,
             ),
             const SizedBox(

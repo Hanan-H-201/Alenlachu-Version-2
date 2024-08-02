@@ -1,33 +1,23 @@
-import 'dart:convert';
-
 import 'package:app/controllers/common/authentication/authentication_cubit.dart';
-import 'package:app/controllers/common/authentication/authentication_state.dart';
+import 'package:app/core/app_navigator.dart';
+import 'package:app/core/login_manager.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'package:app/screens/admin_screens/auth/admin_login_screen.dart';
 import 'package:app/screens/admin_screens/auth/admin_signup_screen.dart';
+import 'package:app/screens/client_screens/auth/client_anonymous_registration.dart';
 import 'package:app/screens/client_screens/auth/client_login_screen.dart';
 import 'package:app/screens/client_screens/auth/client_signup_screen.dart';
-import 'package:app/screens/client_screens/main/client_home_screen.dart';
-import 'package:app/screens/common_screens/registration_option_screen.dart';
 import 'package:app/screens/institution_screens/auth/institution_login_screen.dart';
 import 'package:app/screens/institution_screens/auth/institution_signup_screen.dart';
-import 'package:app/screens/institution_screens/main/institution_home_screen.dart';
 import 'package:app/screens/professionals_screens/auth/professional_login_screen.dart';
 import 'package:app/screens/professionals_screens/auth/professional_signup_screen.dart';
-import 'package:app/screens/professionals_screens/main/professional_home_screen.dart';
 import 'package:app/services/common/authentication_service.dart';
-import 'package:app/widgets/common/processing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
 
 class MainApp extends StatefulWidget {
-  final String? role;
-  final String? token;
   const MainApp({
     super.key,
-    required this.role,
-    required this.token,
   });
 
   @override
@@ -42,60 +32,62 @@ class _MainAppState extends State<MainApp> {
   }
 
   Future<void> _initialize() async {
-    if (widget.role != null && widget.token != null) {
+    final String? token = await LoginManager.getUserToken();
+    final String? role = await LoginManager.getUserRole();
+
+    if (role != null && token != null) {
       final AuthenticationService auth = AuthenticationService();
       final response = await auth.verifyToken();
-      final tokenData = await auth.getUser();
-      if (tokenData != null) {
-        _validateCredential(response, tokenData);
+      if (response.statusCode == 200) {
+        final Map<String, dynamic>? tokenData = await auth.getUser();
+        _validateCredential(tokenData!, role);
+      } else {
+        await LoginManager.removeToken();
+        _emitError(response.body, role);
       }
-    } else if (widget.role != null && widget.token == null) {
-      _setupLogin();
+    } else if (role != null && token == null) {
+      _setupLogin(role);
+    } else {
+      _emitAppStarted();
     }
   }
 
-  void _validateCredential(Response response, Map<String, dynamic> data) {
-    if (widget.role == 'client') {
-      if (response.statusCode != 200) {
-        final String errorMessage = jsonDecode(response.body);
-        BlocProvider.of<AuthenticationCubit>(context)
-            .unAuthenticateClient(errorMessage);
-        return;
-      }
+  void _emitAppStarted() {
+    BlocProvider.of<AuthenticationCubit>(context).appStarted();
+  }
 
+  void _emitError(String error, String role) {
+    if (role == 'client') {
+      BlocProvider.of<AuthenticationCubit>(context).unAuthenticateClient(error);
+    } else if (role == 'professional') {
       BlocProvider.of<AuthenticationCubit>(context)
-          .loginClient(username: data["username"], password: data["password"]);
-    } else if (widget.role == 'professional') {
-      if (response.statusCode != 200) {
-        final String errorMessage = jsonDecode(response.body);
-        BlocProvider.of<AuthenticationCubit>(context)
-            .unAuthenticateProfessional(errorMessage);
-        return;
-      }
-
+          .unAuthenticateProfessional(error);
+    } else if (role == 'institution') {
       BlocProvider.of<AuthenticationCubit>(context)
-          .loginProfessional(email: data["email"], password: data["password"]);
-    } else if (widget.role == 'institution') {
-      if (response.statusCode != 200) {
-        final String errorMessage = jsonDecode(response.body);
-        BlocProvider.of<AuthenticationCubit>(context)
-            .unAuthenticateInstitution(errorMessage);
-        return;
-      }
-
-      BlocProvider.of<AuthenticationCubit>(context)
-          .loginInstitution(email: data["email"], password: data["password"]);
+          .unAuthenticateInstitution(error);
     }
   }
 
-  void _setupLogin() {
-    if (widget.role == 'client') {
+  void _validateCredential(Map<String, dynamic> data, String role) {
+    if (role == 'client') {
+      BlocProvider.of<AuthenticationCubit>(context).authenticateClient(data);
+    } else if (role == 'professional') {
+      BlocProvider.of<AuthenticationCubit>(context)
+          .authenticateProfessional(data);
+    } else if (role == 'institution') {
+      BlocProvider.of<AuthenticationCubit>(context)
+          .authenticateInstitution(data);
+    }
+  }
+
+  void _setupLogin(String role) {
+    if (role == 'client') {
       BlocProvider.of<AuthenticationCubit>(context)
           .unAuthenticateClient('You were logged out');
-    } else if (widget.role == 'professional') {
+    } else if (role == 'professional') {
       BlocProvider.of<AuthenticationCubit>(context)
           .unAuthenticateProfessional('You were logged out');
-    } else if (widget.role == 'institution') {
+    } else if (role == 'institution') {
       BlocProvider.of<AuthenticationCubit>(context)
           .unAuthenticateInstitution('You were logged out');
     }
@@ -108,6 +100,8 @@ class _MainAppState extends State<MainApp> {
       theme: appTheme,
       routes: {
         '/clientRegistration': (context) => const ClientSignupScreen(),
+        '/clientAnonymousRegistration': (context) =>
+            const ClientAnonymousRegistration(),
         '/clientLogin': (context) => const ClientLoginScreen(),
         '/adminRegistration': (context) => const AdminSignupScreen(),
         '/adminLogin': (context) => const AdminLoginScreen(),
@@ -116,35 +110,9 @@ class _MainAppState extends State<MainApp> {
         '/InstitutionLogin': (context) => const InstitutionLoginScreen(),
         '/professionalRegistration': (context) =>
             const ProfessionalSignupScreen(),
-        '/professionalLogin': (context) => const ProfessionalLoginScreen()
+        '/professionalLogin': (context) => const ProfessionalLoginScreen(),
       },
-      home: BlocBuilder<AuthenticationCubit, AuthenticationState>(
-        builder: (context, state) {
-          if (state is AppStarted) {
-            return const RegistrationOptionScreen();
-          } else if (state is UnauthenticatedClient) {
-            return const ClientLoginScreen();
-          } else if (state is UnauthenticatedInstitution) {
-            return const InstitutionLoginScreen();
-          } else if (state is UnauthenticatedProfessional) {
-            return const ProfessionalLoginScreen();
-          } else if (state is AuthenticatedAsClient) {
-            return ClientHomeScreen(
-              username: state.client.username,
-            );
-          } else if (state is AuthenticatedAsInstitution) {
-            return InstitutionHomeScreen(name: state.institution.name);
-          } else if (state is AuthenticatedAsProfessional) {
-            return ProfessionalHomeScreen(
-              name: state.profession.name,
-            );
-          } else if (state is Authenticating) {
-            return const Processing();
-          } else {
-            return const RegistrationOptionScreen();
-          }
-        },
-      ),
+      home: const AppNavigator(),
     );
   }
 }

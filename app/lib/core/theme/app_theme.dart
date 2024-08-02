@@ -6,6 +6,12 @@ final ThemeData appTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   fontFamily: 'Roboto',
   textTheme: const TextTheme(
+    titleLarge: TextStyle(
+        fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.blue),
+    titleMedium: TextStyle(
+        fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.blue),
+    titleSmall: TextStyle(
+        fontSize: 12.0, fontWeight: FontWeight.bold, color: Colors.blue),
     displayLarge: TextStyle(
         fontSize: 32.0, fontWeight: FontWeight.normal, color: Colors.black),
     displayMedium: TextStyle(
@@ -13,10 +19,11 @@ final ThemeData appTheme = ThemeData(
     displaySmall: TextStyle(
         fontSize: 20.0, fontWeight: FontWeight.normal, color: Colors.black),
     bodyLarge: TextStyle(
-      fontSize: 16.0,
+      fontSize: 18.0,
       color: Colors.black,
     ),
-    bodyMedium: TextStyle(fontSize: 14.0, color: Colors.black54),
+    bodyMedium: TextStyle(fontSize: 16.0, color: Colors.black),
+    bodySmall: TextStyle(fontSize: 14.0, color: Colors.black),
     labelLarge: TextStyle(
         fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
     labelMedium: TextStyle(

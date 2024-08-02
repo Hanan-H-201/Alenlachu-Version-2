@@ -29,6 +29,11 @@ class LoginManager {
     await prefs.remove(_token);
   }
 
+  static Future<void> removeRole() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_rolekey);
+  }
+
   static Future<void> clearStorages() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.clear();

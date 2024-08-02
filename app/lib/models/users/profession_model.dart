@@ -5,7 +5,7 @@ class ProfessionModel extends Equatable {
   final String? id;
   final String name;
   final String email;
-  final String password;
+  final String? password;
   final String phoneNumber;
   final DateTime dateOfBirth;
   final String nationality;
@@ -20,7 +20,7 @@ class ProfessionModel extends Equatable {
       {this.id,
       required this.name,
       required this.email,
-      required this.password,
+      this.password,
       required this.phoneNumber,
       required this.dateOfBirth,
       required this.nationality,
@@ -50,19 +50,23 @@ class ProfessionModel extends Equatable {
 
   factory ProfessionModel.fromJson(Map<String, dynamic> json) {
     return ProfessionModel(
-      id: json['_id'],
-      name: json['name'],
-      email: json['email'],
+      id: json['_id'] as String,
+      name: json['name'] as String,
+      email: json['email'] as String,
       password: json['password'],
-      phoneNumber: json['phoneNumber'],
+      phoneNumber: json['phoneNumber'] as String,
       dateOfBirth: DateTime.parse(json['dateOfBirth'] as String),
-      nationality: json['nationality'],
-      address: json['address'],
-      profession: json['profession'],
-      experience: json['experience'],
-      languageToProvideService: json['languageToProvideService'],
-      pricePerHour: json['pricePerHour'],
-      verificationStatus: json['verificationStatus'],
+      nationality: json['nationality'] as String,
+      address: json['address'] as String,
+      profession: json['profession'] as String,
+      experience: json['experience'] is int
+          ? json['experience'] as int
+          : int.parse(json['experience'].toString()),
+      languageToProvideService: json['languageToProvideService'] as String,
+      pricePerHour: json['pricePerHour'] is double
+          ? json['pricePerHour'] as double
+          : double.parse(json['pricePerHour'].toString()),
+      verificationStatus: json['verificationStatus'] as String,
     );
   }
   @override

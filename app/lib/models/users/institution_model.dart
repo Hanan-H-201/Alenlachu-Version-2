@@ -5,7 +5,7 @@ class InstitutionModel extends Equatable {
   final String? id;
   final String name;
   final String email;
-  final String password;
+  final String? password;
   final String phoneNumber;
   final String address;
   final DateTime establishmentDate;
@@ -16,7 +16,7 @@ class InstitutionModel extends Equatable {
       {this.id,
       required this.name,
       required this.email,
-      required this.password,
+      this.password,
       required this.phoneNumber,
       required this.address,
       required this.establishmentDate,
@@ -38,15 +38,17 @@ class InstitutionModel extends Equatable {
 
   factory InstitutionModel.fromJson(Map<String, dynamic> json) {
     return InstitutionModel(
-      id: json['_id'],
-      name: json['name'],
-      email: json['email'],
+      id: json['_id'] as String,
+      name: json['name'] as String,
+      email: json['email'] as String,
       password: json['password'],
-      phoneNumber: json['phoneNumber'],
-      address: json['address'],
-      establishmentDate: DateTime.parse(json['establishmentDate']),
-      languageToProvideService: json['languageToProvideService'],
-      pricePerHour: json['pricePerHour'],
+      phoneNumber: json['phoneNumber'] as String,
+      address: json['address'] as String,
+      establishmentDate: DateTime.parse(json['establishmentDate'].toString()),
+      languageToProvideService: json['languageToProvideService'] as String,
+      pricePerHour: json['pricePerHour'] is double
+          ? json['pricePerHour'] as double
+          : double.parse(json['pricePerHour'].toString()),
     );
   }
 

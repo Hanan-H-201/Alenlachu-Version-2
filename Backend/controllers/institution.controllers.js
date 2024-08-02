@@ -57,11 +57,11 @@ exports.loginInstitution = async (req, res) => {
         const token = await InstitutionService.loginInstitution(email, password);
 
         if(!token){
-            return res.status(401).send('Invalid credential');
+            return res.status(401).json({error: 'Invalid email or password'});
         }
 
         res.status(200).json({status: true, token: token});
     }catch(e){
-        res.status(500).send(`Internal server error ${err.message}`);
+        res.status(500).json({error: `Internal server error ${err.message}`});
     }
 }

@@ -43,6 +43,6 @@ exports.loginAdmin = async (req, res) => {
 
         res.status(200).json({status: true, token: token});
     }catch(err){
-        res.status(500).send(`Internal server error ${err.message}`);
+        res.status(500).json({error: `Internal server error ${err.message}`});
     }
 };

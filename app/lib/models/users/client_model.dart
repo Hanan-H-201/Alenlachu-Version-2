@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 class ClientModel extends Equatable {
   final String? id;
   final String username;
-  final String password;
+  final String? password;
   final String email;
   final String emergencyContact;
   final String? fullName;
@@ -17,7 +17,7 @@ class ClientModel extends Equatable {
   ClientModel({
     this.id,
     required this.username,
-    required this.password,
+    this.password,
     required this.email,
     required this.emergencyContact,
     this.fullName,

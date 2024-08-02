@@ -6,19 +6,14 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:app/core/app.dart';
-import 'package:app/core/login_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    final token = await LoginManager.getUserToken();
-    final String? role = await LoginManager.getUserRole();
-    await tester.pumpWidget(MainApp(
-      token: token,
-      role: role,
-    ));
+
+    await tester.pumpWidget(const MainApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

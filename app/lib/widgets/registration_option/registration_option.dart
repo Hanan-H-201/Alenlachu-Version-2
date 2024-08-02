@@ -1,4 +1,5 @@
 import 'package:app/core/theme/app_theme.dart';
+import 'package:app/widgets/common/anonymous_request.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationOptionCard extends StatelessWidget {
@@ -9,8 +10,18 @@ class RegistrationOptionCard extends StatelessWidget {
     return SizedBox(
       child: Column(
         children: [
-          buildOption(context, 'As a Client', () {
-            Navigator.pushNamed(context, '/clientRegistration');
+          buildOption(context, 'As a Client', () async {
+            final bool? result =
+                await AnonymousRequest.showAnonymousUsageDialog(context);
+            if (result == true) {
+              // ignore: use_build_context_synchronously
+              Navigator.pushNamed(context, '/clientAnonymousRegistration');
+            } else if (result == false) {
+              // ignore: use_build_context_synchronously
+              Navigator.pushNamed(context, '/clientRegistration');
+            } else {
+              return;
+            }
           }),
           const SizedBox(
             height: 10,

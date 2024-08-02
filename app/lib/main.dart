@@ -2,13 +2,11 @@ import 'dart:math';
 
 import 'package:app/controllers/common/authentication/authentication_cubit.dart';
 import 'package:app/core/app.dart';
-import 'package:app/core/login_manager.dart';
 import 'package:app/firebase_options.dart';
 import 'package:app/services/common/authentication_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
 
 void main() async {
   try {
@@ -16,16 +14,12 @@ void main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    final String? token = await LoginManager.getUserToken();
-    final String? role = await LoginManager.getUserRole();
+
     runApp(BlocProvider(
       create: (context) => AuthenticationCubit(
         authenticationService: AuthenticationService(),
       ),
-      child: MainApp(
-        token: token,
-        role: role,
-      ),
+      child: const MainApp(),
     ));
   } catch (e) {
     log(double.parse(e.toString()));
