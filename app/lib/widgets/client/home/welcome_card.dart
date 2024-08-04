@@ -17,7 +17,8 @@ class WelcomeCard extends StatelessWidget {
           padding:
               const EdgeInsets.only(left: 10, right: 10, top: 40, bottom: 10),
           decoration: BoxDecoration(
-              color: appTheme.scaffoldBackgroundColor,
+              // color: appTheme.primaryColor,
+              gradient: containerGradient,
               borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(10),
                   bottomRight: Radius.circular(10)),
@@ -38,17 +39,18 @@ class WelcomeCard extends StatelessWidget {
                       children: [
                         Text(
                           '${Utils.getGreeting()}!',
-                          style: appTheme.textTheme.headlineMedium,
+                          style: appTheme.textTheme.titleSmall,
                         ),
                         Text(
                           state.client.username,
-                          style: appTheme.textTheme.displaySmall,
+                          style: appTheme.textTheme.titleLarge,
                         ),
                       ],
                     )
                   : const SizedBox.shrink(),
               CircleAvatar(
-                backgroundColor: appTheme.primaryColor.withOpacity(0.2),
+                backgroundColor:
+                    appTheme.scaffoldBackgroundColor.withOpacity(1),
                 radius: 30,
                 child: Image.asset('assets/images/logo.png'),
               )
