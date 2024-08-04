@@ -252,7 +252,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
               ),
             ],
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 25),
           BlocBuilder<AuthenticationCubit, AuthenticationState>(
             builder: (context, state) {
               return MainButton(
@@ -280,7 +280,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
                       )
                     : Text(
                         'SignUp',
-                        style: appTheme.textTheme.labelLarge,
+                        style: appTheme.textTheme.titleMedium,
                       ),
               );
             },
@@ -302,7 +302,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
                 },
                 child: Text(
                   'Login',
-                  style: appTheme.textTheme.titleMedium,
+                  style: appTheme.textTheme.labelMedium,
                 ),
               )
             ],

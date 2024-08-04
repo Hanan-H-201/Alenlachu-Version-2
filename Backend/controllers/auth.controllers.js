@@ -10,12 +10,12 @@ exports.logout = async (req, res) => {
         const blacklistedToken = new BlacklistModel({ token, expiresAt });
         await blacklistedToken.save();
       
-        res.status(200).send('Logged out successfully');
+        res.status(200).json({success:'Logged out successfully'});
     } catch (err) {
         res.status(500).json({ error: `Failed to log out: ${err.message}` });
     }
 }
 
 exports.verifyToken = async (req, res) => {
-    res.status(200).send('Token is valid');
+    res.status(200).json({success:'Token is valid'});
 }

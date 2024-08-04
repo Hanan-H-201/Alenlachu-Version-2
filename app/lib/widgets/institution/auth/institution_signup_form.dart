@@ -235,10 +235,6 @@ class _InstitutionSignupFormState extends State<InstitutionSignupForm> {
                         languageToProvideService: _languageController.text,
                         pricePerHour:
                             double.parse(_pricePerHourController.text));
-                    // Form is valid, proceed with further processing
-                    // ScaffoldMessenger.of(context).showSnackBar(
-                    //   const SnackBar(content: Text('Processing Data')),
-                    // );
                   }
                 },
                 child: state is Authenticating
@@ -247,7 +243,7 @@ class _InstitutionSignupFormState extends State<InstitutionSignupForm> {
                       )
                     : Text(
                         'Sign Up',
-                        style: appTheme.textTheme.labelLarge,
+                        style: appTheme.textTheme.titleMedium,
                       ),
               );
             },
@@ -269,7 +265,7 @@ class _InstitutionSignupFormState extends State<InstitutionSignupForm> {
                 },
                 child: Text(
                   'Login',
-                  style: appTheme.textTheme.titleMedium,
+                  style: appTheme.textTheme.labelMedium,
                 ),
               )
             ],

@@ -35,10 +35,10 @@ exports.registerAdmin = async (req, res) => {
 
 exports.loginAdmin = async (req, res) => {
     try{
-        const {username, password} = req.body;
-        const token = await AdminService.loginAdmin(username, password);
+        const {email, password} = req.body;
+        const token = await AdminService.loginAdmin(email, password);
         if(!token){
-            return res.status(401).send('Invalid credential');
+            return res.status(401).json({error:'Invalid credential'});
         }
 
         res.status(200).json({status: true, token: token});

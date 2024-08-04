@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:app/controllers/common/authentication/authentication_state.dart';
 import 'package:app/core/login_manager.dart';
+import 'package:app/models/users/admin_model.dart';
 import 'package:app/models/users/client_model.dart';
 import 'package:app/models/users/institution_model.dart';
 import 'package:app/models/users/profession_model.dart';
@@ -108,6 +109,25 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       }
     } catch (e) {
       emit(UnauthenticatedClient(message: e.toString()));
+    }
+  }
+
+  Future<void> loginAdmin(String email, String password) async {
+    emit(Authenticating());
+    try {
+      http.Response response =
+          await authenticationService.loginAdmin(email, password);
+      final jsonResponse = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        await LoginManager.saveUserToken(jsonResponse["token"]);
+        await LoginManager.saveUserRole('admin');
+        Map<String, dynamic>? json = await authenticationService.getUser();
+        emit(AuthenticatedAsAdmin(admin: AdminModel.fromJson(json!)));
+      } else {
+        emit(UnauthenticatedAdmin(message: jsonResponse['error']));
+      }
+    } catch (e) {
+      emit(UnauthenticatedAdmin(message: e.toString()));
     }
   }
 
@@ -259,10 +279,22 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     emit(UnauthenticatedProfessional(message: message));
   }
 
+  void authenticationFaild(String error) {
+    emit(AuthenticationFailed(errorMessage: error));
+  }
+
   Future<void> logout() async {
     emit(Authenticating());
     try {
-      await authenticationService.logout();
+      final response = await authenticationService.logout();
+      if (response.statusCode == 200) {
+        await LoginManager.removeToken();
+        await LoginManager.removeRole();
+      } else {
+        await LoginManager.removeToken();
+        await LoginManager.removeRole();
+      }
+
       emit(AppStarted());
     } catch (e) {
       emit(AuthenticationFailed(errorMessage: e.toString()));

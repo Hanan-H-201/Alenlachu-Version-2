@@ -11,7 +11,7 @@ class CustomFormComponents {
         hintText: hintText,
         prefixIcon: const Icon(Icons.search),
         filled: true,
-        fillColor: Colors.blue.withOpacity(0.15),
+        fillColor: appTheme.primaryColor.withOpacity(0.1),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: BorderSide.none,
@@ -31,7 +31,7 @@ class CustomFormComponents {
         label: labelText,
         suffixIcon: const Icon(Icons.calendar_today),
         filled: true,
-        fillColor: Colors.blue.withOpacity(0.15),
+        fillColor: appTheme.primaryColor.withOpacity(0.1),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: BorderSide.none,
@@ -62,7 +62,7 @@ class CustomFormComponents {
         label: labelText,
         suffixIcon: const Icon(Icons.access_time),
         filled: true,
-        fillColor: Colors.blue.withOpacity(0.15),
+        fillColor: appTheme.primaryColor.withOpacity(0.1),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: BorderSide.none,
@@ -90,7 +90,7 @@ class CustomFormComponents {
       decoration: InputDecoration(
         label: labelText,
         filled: true,
-        fillColor: Colors.blue.withOpacity(0.15),
+        fillColor: appTheme.primaryColor.withOpacity(0.1),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: BorderSide.none,
@@ -119,7 +119,7 @@ class CustomFormComponents {
         label: labelText,
         prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
         filled: true,
-        fillColor: Colors.blue.withOpacity(0.15),
+        fillColor: appTheme.primaryColor.withOpacity(0.1),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: BorderSide.none,
@@ -144,7 +144,7 @@ class CustomFormComponents {
             value: selectedCountryCode,
             decoration: InputDecoration(
               filled: true,
-              fillColor: Colors.blue.withOpacity(0.15),
+              fillColor: appTheme.primaryColor.withOpacity(0.1),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.0),
                 borderSide: BorderSide.none,
@@ -171,7 +171,7 @@ class CustomFormComponents {
             decoration: InputDecoration(
               label: lable,
               filled: true,
-              fillColor: Colors.blue.withOpacity(0.15),
+              fillColor: appTheme.primaryColor.withOpacity(0.1),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.0),
                 borderSide: BorderSide.none,
@@ -207,7 +207,7 @@ class CustomFormComponents {
               },
             ),
             filled: true,
-            fillColor: Colors.blue.withOpacity(0.15),
+            fillColor: appTheme.primaryColor.withOpacity(0.1),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.0),
               borderSide: BorderSide.none,

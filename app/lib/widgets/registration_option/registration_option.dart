@@ -39,7 +39,7 @@ class RegistrationOptionCard extends StatelessWidget {
             height: 10,
           ),
           buildOption(context, 'As an Admin', () {
-            Navigator.pushNamed(context, '/adminRegistration');
+            Navigator.pushNamed(context, '/adminLogin');
           }),
           const SizedBox(
             height: 10,
@@ -57,19 +57,13 @@ class RegistrationOptionCard extends StatelessWidget {
         height: 60,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
-            gradient: containerGradient,
-            boxShadow: const [
-              BoxShadow(
-                  color: Color.fromARGB(255, 200, 200, 200),
-                  spreadRadius: 1,
-                  blurRadius: 2,
-                  offset: Offset(0, 4))
-            ]),
+          color: appTheme.primaryColor,
+          borderRadius: const BorderRadius.all(Radius.circular(15)),
+        ),
         child: Center(
           child: Text(
             lable,
-            style: appTheme.textTheme.labelMedium,
+            style: appTheme.textTheme.titleMedium,
           ),
         ),
       ),

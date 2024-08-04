@@ -41,7 +41,7 @@ class _ProfessionalSignupScreenState extends State<ProfessionalSignupScreen> {
               children: [
                 Text(
                   'Create new Professional acount',
-                  style: appTheme.textTheme.displaySmall,
+                  style: appTheme.textTheme.headlineMedium,
                 ),
                 const SizedBox(
                   height: 35,

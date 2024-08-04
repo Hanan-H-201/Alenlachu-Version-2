@@ -1,6 +1,7 @@
 import 'package:app/controllers/common/authentication/authentication_cubit.dart';
 import 'package:app/controllers/common/authentication/authentication_state.dart';
 import 'package:app/core/theme/app_theme.dart';
+import 'package:app/screens/client_screens/client_landing_page.dart';
 import 'package:app/screens/client_screens/main/client_home_screen.dart';
 import 'package:app/widgets/client/auth/client_signup_form.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +24,7 @@ class _ClientSignupScreenState extends State<ClientSignupScreen> {
             Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(
-                  builder: (context) =>
-                      ClientHomeScreen(username: state.client.username)),
+                  builder: (context) => const ClientLandingPage()),
               (Route<dynamic> route) => false,
             );
           } else if (state is UnauthenticatedClient) {
@@ -41,7 +41,7 @@ class _ClientSignupScreenState extends State<ClientSignupScreen> {
               children: [
                 Text(
                   "Let's Get Started!",
-                  style: appTheme.textTheme.displayMedium,
+                  style: appTheme.textTheme.headlineMedium,
                 ),
                 const SizedBox(
                   height: 35,

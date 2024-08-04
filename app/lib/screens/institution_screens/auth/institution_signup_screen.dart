@@ -47,7 +47,7 @@ class _InstitutionSignupScreenState extends State<InstitutionSignupScreen> {
               children: [
                 Text(
                   'Create new Institution acount',
-                  style: appTheme.textTheme.displaySmall,
+                  style: appTheme.textTheme.headlineMedium,
                 ),
                 const SizedBox(
                   height: 35,

@@ -67,15 +67,11 @@ class _ClientLoginFormState extends State<ClientLoginForm> {
                 context.read<AuthenticationCubit>().loginClient(
                     username: _usernameController.text,
                     password: _passwordController.text);
-                // Form is valid, proceed with further processing
-                // ScaffoldMessenger.of(context).showSnackBar(
-                //   const SnackBar(content: Text('Processing Data')),
-                // );
               }
             },
             child: Text(
               'Login',
-              style: appTheme.textTheme.labelLarge,
+              style: appTheme.textTheme.titleMedium,
             ),
           ),
           const SizedBox(height: 5),
@@ -109,7 +105,7 @@ class _ClientLoginFormState extends State<ClientLoginForm> {
                 },
                 child: Text(
                   'Sign Up',
-                  style: appTheme.textTheme.titleMedium,
+                  style: appTheme.textTheme.labelMedium,
                 ),
               )
             ],

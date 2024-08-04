@@ -1,3 +1,4 @@
+import 'package:app/models/users/admin_model.dart';
 import 'package:app/models/users/client_model.dart';
 import 'package:app/models/users/institution_model.dart';
 import 'package:app/models/users/profession_model.dart';
@@ -15,16 +16,33 @@ class AppStarted extends AuthenticationState {}
 class UnauthenticatedClient extends AuthenticationState {
   final String message;
   UnauthenticatedClient({required this.message});
+
+  @override
+  List<Object> get props => [message];
 }
 
 class UnauthenticatedInstitution extends AuthenticationState {
   final String message;
   UnauthenticatedInstitution({required this.message});
+
+  @override
+  List<Object> get props => [message];
 }
 
 class UnauthenticatedProfessional extends AuthenticationState {
   final String message;
   UnauthenticatedProfessional({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
+
+class UnauthenticatedAdmin extends AuthenticationState {
+  final String message;
+  UnauthenticatedAdmin({required this.message});
+
+  @override
+  List<Object> get props => [message];
 }
 
 class Authenticating extends AuthenticationState {}
@@ -51,6 +69,15 @@ class AuthenticatedAsProfessional extends AuthenticationState {
 
   @override
   List<Object> get props => [profession];
+}
+
+class AuthenticatedAsAdmin extends AuthenticationState {
+  final AdminModel admin;
+
+  AuthenticatedAsAdmin({required this.admin});
+
+  @override
+  List<Object> get props => [admin];
 }
 
 class AuthenticationFailed extends AuthenticationState {

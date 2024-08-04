@@ -24,7 +24,7 @@ class InstitutionService {
         const institution = await InstitutionModel.findOne({email : institutionEmail});
         console.log(institution);
         if (!institution || !(await bcrypt.compare(institutionPassword, institution.password))){
-            console.log("----------------------------------");
+            
             return null;
         }
         const {

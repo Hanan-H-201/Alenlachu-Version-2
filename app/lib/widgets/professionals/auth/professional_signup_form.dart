@@ -339,7 +339,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                       )
                     : Text(
                         'Sign Up',
-                        style: appTheme.textTheme.labelLarge,
+                        style: appTheme.textTheme.titleMedium,
                       ),
               );
             },
@@ -361,7 +361,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                 },
                 child: Text(
                   'Login',
-                  style: appTheme.textTheme.titleMedium,
+                  style: appTheme.textTheme.labelMedium,
                 ),
               )
             ],

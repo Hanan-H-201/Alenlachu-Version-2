@@ -99,6 +99,19 @@ class AuthenticationService {
     }
   }
 
+  Future<http.Response> loginAdmin(String email, String password) async {
+    try {
+      final response = await http.post(Uri.parse(ApiUrl.adminLoginUrl),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode({'email': email, 'password': password}));
+      return response;
+    } catch (e) {
+      throw Exception('Failed to login admin: $e');
+    }
+  }
+
   Future<Map<String, dynamic>?> getUser() async {
     try {
       final token = await LoginManager.getUserToken();
@@ -121,25 +134,16 @@ class AuthenticationService {
     return response;
   }
 
-  Future<void> logout() async {
-    try {
-      final token = await LoginManager.getUserToken();
-      final response = await http.post(
-        Uri.parse(ApiUrl.logoutUrl),
-        headers: {
-          'Authorization': 'Bearer $token',
-          'Content-Type': 'application/json',
-        },
-      );
-      if (response.statusCode == 200) {
-        await LoginManager.removeToken();
-        await LoginManager.removeRole();
-      } else {
-        throw Exception(
-            'Failed to logout: Server returned  ${jsonDecode(response.body)}');
-      }
-    } catch (e) {
-      throw Exception('Failed to logout: $e');
-    }
+  Future<http.Response> logout() async {
+    final token = await LoginManager.getUserToken();
+    final response = await http.post(
+      Uri.parse(ApiUrl.logoutUrl),
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      },
+    );
+
+    return response;
   }
 }

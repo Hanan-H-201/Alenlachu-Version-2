@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:app/controllers/client/bottom_nav/client_bottom_nav_cubit.dart';
 import 'package:app/controllers/common/authentication/authentication_cubit.dart';
 import 'package:app/core/app_navigator.dart';
 import 'package:app/core/login_manager.dart';
@@ -37,19 +40,28 @@ class _MainAppState extends State<MainApp> {
 
     if (role != null && token != null) {
       final AuthenticationService auth = AuthenticationService();
-      final response = await auth.verifyToken();
-      if (response.statusCode == 200) {
-        final Map<String, dynamic>? tokenData = await auth.getUser();
-        _validateCredential(tokenData!, role);
-      } else {
-        await LoginManager.removeToken();
-        _emitError(response.body, role);
+      try {
+        final response = await auth.verifyToken();
+        final jsonRespone = jsonDecode(response.body);
+        if (response.statusCode == 200) {
+          final Map<String, dynamic>? tokenData = await auth.getUser();
+          _validateCredential(tokenData!, role);
+        } else {
+          await LoginManager.removeToken();
+          _emitError(jsonRespone['error'], role);
+        }
+      } catch (e) {
+        _emitAuthError(e.toString());
       }
     } else if (role != null && token == null) {
       _setupLogin(role);
     } else {
       _emitAppStarted();
     }
+  }
+
+  void _emitAuthError(String error) {
+    BlocProvider.of<AuthenticationCubit>(context).authenticationFaild(error);
   }
 
   void _emitAppStarted() {
@@ -69,6 +81,7 @@ class _MainAppState extends State<MainApp> {
   }
 
   void _validateCredential(Map<String, dynamic> data, String role) {
+    print("------------------valiadting Credential----------------");
     if (role == 'client') {
       BlocProvider.of<AuthenticationCubit>(context).authenticateClient(data);
     } else if (role == 'professional') {
@@ -95,24 +108,29 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Alenlachu',
-      theme: appTheme,
-      routes: {
-        '/clientRegistration': (context) => const ClientSignupScreen(),
-        '/clientAnonymousRegistration': (context) =>
-            const ClientAnonymousRegistration(),
-        '/clientLogin': (context) => const ClientLoginScreen(),
-        '/adminRegistration': (context) => const AdminSignupScreen(),
-        '/adminLogin': (context) => const AdminLoginScreen(),
-        '/institutionRegistration': (context) =>
-            const InstitutionSignupScreen(),
-        '/InstitutionLogin': (context) => const InstitutionLoginScreen(),
-        '/professionalRegistration': (context) =>
-            const ProfessionalSignupScreen(),
-        '/professionalLogin': (context) => const ProfessionalLoginScreen(),
-      },
-      home: const AppNavigator(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => ClientBottomNavCubit()),
+      ],
+      child: MaterialApp(
+        title: 'Alenlachu',
+        theme: appTheme,
+        routes: {
+          '/clientRegistration': (context) => const ClientSignupScreen(),
+          '/clientAnonymousRegistration': (context) =>
+              const ClientAnonymousRegistration(),
+          '/clientLogin': (context) => const ClientLoginScreen(),
+          '/adminRegistration': (context) => const AdminSignupScreen(),
+          '/adminLogin': (context) => const AdminLoginScreen(),
+          '/institutionRegistration': (context) =>
+              const InstitutionSignupScreen(),
+          '/InstitutionLogin': (context) => const InstitutionLoginScreen(),
+          '/professionalRegistration': (context) =>
+              const ProfessionalSignupScreen(),
+          '/professionalLogin': (context) => const ProfessionalLoginScreen(),
+        },
+        home: const AppNavigator(),
+      ),
     );
   }
 }

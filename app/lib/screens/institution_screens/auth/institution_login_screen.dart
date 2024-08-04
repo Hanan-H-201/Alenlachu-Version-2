@@ -17,6 +17,7 @@ class InstitutionLoginScreen extends StatefulWidget {
 class _InstitutionLoginScreenState extends State<InstitutionLoginScreen> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: BlocConsumer<AuthenticationCubit, AuthenticationState>(
         listener: (context, state) {
@@ -37,22 +38,28 @@ class _InstitutionLoginScreenState extends State<InstitutionLoginScreen> {
           if (state is Authenticating) {
             return const Processing();
           }
-          return Padding(
-            padding: const EdgeInsets.only(
-                left: 20.0, right: 20, top: 50, bottom: 20),
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Welcome Back!',
-                    style: appTheme.textTheme.displayMedium,
-                  ),
-                  const SizedBox(
-                    height: 35,
-                  ),
-                  const InstitutionLoginForm(),
-                ],
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  left: 20.0, right: 20, top: 50, bottom: 20),
+              child: Center(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: size.height * 0.35,
+                      width: size.width,
+                      child: Image.asset('assets/images/welcome.png'),
+                    ),
+                    Text(
+                      'Welcome Back!',
+                      style: appTheme.textTheme.headlineMedium,
+                    ),
+                    const SizedBox(
+                      height: 35,
+                    ),
+                    const InstitutionLoginForm(),
+                  ],
+                ),
               ),
             ),
           );

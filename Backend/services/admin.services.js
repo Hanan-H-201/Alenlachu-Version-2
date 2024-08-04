@@ -17,13 +17,13 @@ class AdminService {
     }
 
     static async loginAdmin(adminEmail, adminPassword) {
-        const admin = await AdminModel.findOne({adminEmail});
+        const admin = await AdminModel.findOne({email : adminEmail});
 
         if(!admin || !(await bcrypt.compare(adminPassword, admin.password))){
             return null;
         }
 
-        const{_id, email, password} = admin;
+        const{_id, email} = admin;
 
         let tokenData = {
             _id : _id,
@@ -31,7 +31,7 @@ class AdminService {
         }
 
         const SECRET_KEY = process.env.SECRET_KEY || 'secret_key';
-        const token = Authentication.generateToken(tokenData,SECRET_KEY,{expiresIn: '1h'});
+        const token = Authentication.generateToken(tokenData,SECRET_KEY,{expiresIn: '20s'});
         return token;
     }
 }

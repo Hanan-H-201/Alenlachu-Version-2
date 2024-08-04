@@ -1,3 +1,4 @@
+import 'package:app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class AnonymousRequest {
@@ -14,13 +15,16 @@ class AnonymousRequest {
               onPressed: () {
                 Navigator.of(context).pop(false);
               },
-              child: const Text('No'),
+              child: Text('No', style: appTheme.textTheme.labelMedium),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(true);
               },
-              child: const Text('Yes'),
+              child: Text(
+                'Yes',
+                style: appTheme.textTheme.labelMedium,
+              ),
             ),
           ],
         );
@@ -41,7 +45,7 @@ class AnonymousRequest {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: const Text('OK'),
+                child: Text('OK', style: appTheme.textTheme.labelMedium),
               ),
             ],
           );
@@ -61,7 +65,7 @@ class AnonymousRequest {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: const Text('OK'),
+                child: Text('OK', style: appTheme.textTheme.labelMedium),
               ),
             ],
           );

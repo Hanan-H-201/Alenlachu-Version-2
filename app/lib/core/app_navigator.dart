@@ -1,6 +1,7 @@
 import 'package:app/controllers/common/authentication/authentication_cubit.dart';
 import 'package:app/controllers/common/authentication/authentication_state.dart';
 import 'package:app/screens/client_screens/auth/client_login_screen.dart';
+import 'package:app/screens/client_screens/client_landing_page.dart';
 import 'package:app/screens/client_screens/main/client_home_screen.dart';
 import 'package:app/screens/common_screens/authentication_faild.dart';
 import 'package:app/screens/common_screens/registration_option_screen.dart';
@@ -51,9 +52,7 @@ class AppNavigator extends StatelessWidget {
       } else if (state is UnauthenticatedProfessional) {
         return const ProfessionalLoginScreen();
       } else if (state is AuthenticatedAsClient) {
-        return ClientHomeScreen(
-          username: state.client.username,
-        );
+        return const ClientLandingPage();
       } else if (state is AuthenticatedAsInstitution) {
         return InstitutionHomeScreen(name: state.institution.name);
       } else if (state is AuthenticatedAsProfessional) {

@@ -5,14 +5,14 @@ import 'package:app/widgets/common/main_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class InstitutionLoginForm extends StatefulWidget {
-  const InstitutionLoginForm({super.key});
+class AdminLoginForm extends StatefulWidget {
+  const AdminLoginForm({super.key});
 
   @override
-  State<InstitutionLoginForm> createState() => _InstitutionLoginFormState();
+  State<AdminLoginForm> createState() => _AdminLoginFormState();
 }
 
-class _InstitutionLoginFormState extends State<InstitutionLoginForm> {
+class _AdminLoginFormState extends State<AdminLoginForm> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -39,7 +39,7 @@ class _InstitutionLoginFormState extends State<InstitutionLoginForm> {
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter your email address';
+                return 'email is required';
               }
               return null;
             },
@@ -53,19 +53,18 @@ class _InstitutionLoginFormState extends State<InstitutionLoginForm> {
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter your password';
+                return 'password is required';
               }
 
               return null;
             },
           ),
-          const SizedBox(height: 35),
+          const SizedBox(height: 15),
           MainButton(
             onPressed: () {
               if (_formKey.currentState?.validate() ?? false) {
-                context.read<AuthenticationCubit>().loginInstitution(
-                    email: _emailController.text,
-                    password: _passwordController.text);
+                context.read<AuthenticationCubit>().loginAdmin(
+                    _emailController.text, _passwordController.text);
               }
             },
             child: Text(
@@ -73,29 +72,6 @@ class _InstitutionLoginFormState extends State<InstitutionLoginForm> {
               style: appTheme.textTheme.titleMedium,
             ),
           ),
-          const SizedBox(height: 5),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Don\'t have an account?',
-                style: appTheme.textTheme.bodyMedium,
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacementNamed(
-                      context, '/institutionRegistration');
-                },
-                child: Text(
-                  'Sign Up',
-                  style: appTheme.textTheme.labelMedium,
-                ),
-              )
-            ],
-          )
         ],
       ),
     );

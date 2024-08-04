@@ -22,10 +22,10 @@ class _RegistrationOptionScreenState extends State<RegistrationOptionScreen> {
           children: [
             Text(
               'How do you want to keep exploring the app?',
-              style: appTheme.textTheme.displaySmall,
+              style: appTheme.textTheme.headlineLarge,
             ),
             const SizedBox(
-              height: 20,
+              height: 50,
             ),
             const RegistrationOptionCard(),
           ],

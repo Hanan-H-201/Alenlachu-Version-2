@@ -1,23 +1,38 @@
 import 'package:flutter/material.dart';
 
 final ThemeData appTheme = ThemeData(
-  primaryColor: Colors.blue,
+  primaryColor: const Color.fromARGB(255, 13, 55, 90),
   hintColor: Colors.amber,
   scaffoldBackgroundColor: Colors.white,
   fontFamily: 'Roboto',
   textTheme: const TextTheme(
+    headlineLarge: TextStyle(
+        fontSize: 32.0,
+        fontWeight: FontWeight.bold,
+        color: Color.fromARGB(255, 13, 55, 90)),
+    headlineMedium: TextStyle(
+        fontSize: 24.0,
+        fontWeight: FontWeight.bold,
+        color: Color.fromARGB(255, 13, 55, 90)),
+    headlineSmall: TextStyle(
+        fontSize: 16.0,
+        fontWeight: FontWeight.bold,
+        color: Color.fromARGB(255, 13, 55, 90)),
     titleLarge: TextStyle(
-        fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.blue),
+        fontSize: 32.0, fontWeight: FontWeight.bold, color: Colors.white),
     titleMedium: TextStyle(
-        fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.blue),
+        fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
     titleSmall: TextStyle(
-        fontSize: 12.0, fontWeight: FontWeight.bold, color: Colors.blue),
+        fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.white),
     displayLarge: TextStyle(
         fontSize: 32.0, fontWeight: FontWeight.normal, color: Colors.black),
     displayMedium: TextStyle(
         fontSize: 24.0, fontWeight: FontWeight.normal, color: Colors.black),
     displaySmall: TextStyle(
-        fontSize: 20.0, fontWeight: FontWeight.normal, color: Colors.black),
+      fontSize: 20.0,
+      fontWeight: FontWeight.normal,
+      color: Colors.black,
+    ),
     bodyLarge: TextStyle(
       fontSize: 18.0,
       color: Colors.black,
@@ -25,39 +40,49 @@ final ThemeData appTheme = ThemeData(
     bodyMedium: TextStyle(fontSize: 16.0, color: Colors.black),
     bodySmall: TextStyle(fontSize: 14.0, color: Colors.black),
     labelLarge: TextStyle(
-        fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
+        fontSize: 20.0,
+        fontWeight: FontWeight.bold,
+        color: Color.fromARGB(255, 13, 55, 90)),
     labelMedium: TextStyle(
-        fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.white),
+        fontSize: 16.0,
+        fontWeight: FontWeight.bold,
+        color: Color.fromARGB(255, 13, 55, 90)),
     labelSmall: TextStyle(
-        fontSize: 14.0, fontWeight: FontWeight.bold, color: Colors.white),
+        fontSize: 14.0,
+        fontWeight: FontWeight.bold,
+        color: Color.fromARGB(255, 13, 55, 90)),
   ),
   buttonTheme: ButtonThemeData(
-    buttonColor: Colors.blue,
+    buttonColor: const Color.fromARGB(255, 13, 55, 90),
     textTheme: ButtonTextTheme.primary,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8.0),
     ),
   ),
   appBarTheme: const AppBarTheme(
-    color: Colors.blue,
+    color: Color.fromARGB(255, 13, 55, 90),
     iconTheme: IconThemeData(color: Colors.white),
   ),
   inputDecorationTheme: InputDecorationTheme(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(color: Colors.blue),
+      borderSide: const BorderSide(color: Color.fromARGB(255, 13, 55, 90)),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(color: Colors.blue),
+      borderSide: const BorderSide(color: Color.fromARGB(255, 13, 55, 90)),
     ),
-    labelStyle: const TextStyle(color: Colors.blue),
-    hintStyle: const TextStyle(color: Colors.blueGrey),
+    labelStyle: const TextStyle(color: Color.fromARGB(255, 13, 55, 90)),
+    hintStyle: TextStyle(
+        color: const Color.fromARGB(255, 13, 55, 90).withOpacity(0.7)),
   ),
 );
 
 LinearGradient containerGradient = LinearGradient(
-  colors: [Colors.blue, Colors.blue.withOpacity(0.5)],
+  colors: [
+    const Color.fromARGB(255, 19, 82, 133),
+    const Color.fromARGB(255, 10, 114, 199).withOpacity(0.7),
+  ],
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
 );

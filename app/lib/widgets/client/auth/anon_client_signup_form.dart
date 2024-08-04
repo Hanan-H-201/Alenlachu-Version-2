@@ -135,7 +135,7 @@ class _AnonClientSignupFormState extends State<AnonClientSignupForm> {
               return null;
             },
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 25),
           BlocBuilder<AuthenticationCubit, AuthenticationState>(
             builder: (context, state) {
               return MainButton(
@@ -156,7 +156,7 @@ class _AnonClientSignupFormState extends State<AnonClientSignupForm> {
                       )
                     : Text(
                         'Sign Up',
-                        style: appTheme.textTheme.labelLarge,
+                        style: appTheme.textTheme.titleMedium,
                       ),
               );
             },
@@ -178,7 +178,7 @@ class _AnonClientSignupFormState extends State<AnonClientSignupForm> {
                 },
                 child: Text(
                   'Login',
-                  style: appTheme.textTheme.titleMedium,
+                  style: appTheme.textTheme.labelMedium,
                 ),
               )
             ],
