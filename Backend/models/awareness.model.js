@@ -15,7 +15,7 @@ const awarenessSchema = new Schema({
         type: String,
         default: null,
     },
-    date: {
+    createdDate: {
         type: Date,
         required: true,
     },

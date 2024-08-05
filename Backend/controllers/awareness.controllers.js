@@ -24,7 +24,7 @@ exports.getAwarenesses = async (req, res) => {
 
 exports.getAwarnessById = async (req, res) => {
     try{
-        const {id} = req.body;
+        const {id} = req.query;
         const result = await AwarenessService.getAwarenessById(id);
         if(!result){
             res.status(404).json({ error: 'Awareness not found' });
@@ -40,7 +40,8 @@ exports.getAwarnessById = async (req, res) => {
 
 exports.updateAwareness = async (req, res) => {
     try{
-        const {id, updatedFields} = req.body;
+        const {id} = req.query;
+        const {updatedFields} = req.body;
 
         const result = await AwarenessService.updateAwareness(id, updatedFields);
         if(!result){
@@ -56,7 +57,7 @@ exports.updateAwareness = async (req, res) => {
 
 exports.deleteAwareness = async (req, res) => {
     try{
-        const {id} = req.body;
+        const {id} = req.query;
         const result = await AwarenessService.deleteAwareness(id);
         if(!result){
             res.status(404).json({ error: 'Awareness not found' });

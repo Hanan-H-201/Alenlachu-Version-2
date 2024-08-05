@@ -24,7 +24,7 @@ exports.getEvents = async (req, res) => {
 // Get Event by ID
 exports.getEventById = async (req, res) => {
  try{
-    const {id}= req.body;
+  const { id } = req.query;
     const event = await EventService.getEventById(id);
     if(!event){
         res.status(404).json({ error: 'Event not found' });
@@ -43,7 +43,9 @@ exports.getEventById = async (req, res) => {
 // Update Event by ID
 exports.updateEvent = async (req, res) => {
     try{
-        const{id, updatedFields} = req.body;
+      const {id} = req.query;
+        const{updatedFields} = req.body;
+
         const result = await EventService.updateEvent(id, updatedFields);
         if(!result){
             res.status(404).json({ error: 'Event not found' });
@@ -58,7 +60,7 @@ exports.updateEvent = async (req, res) => {
 // Delete Event by ID
 exports.deleteEvent = async (req, res) => {
   try{
-    const {id} = req.body;
+    const {id} = req.query;
     const result = await EventService.deleteEvent(id);
     if(!result){
       res.status(404).json({ error: 'Event not found' });
@@ -73,7 +75,7 @@ exports.deleteEvent = async (req, res) => {
 
 exports.rsvpEvent = async (req, res) => {
   try {
-    const{eventId, userId} = req.body;
+    const{eventId, userId} = req.query;
 
     const result = await EventService.rsvpEvent(eventId, userId);
 
@@ -91,7 +93,7 @@ exports.rsvpEvent = async (req, res) => {
 
 exports.unRsvpEvent = async (req, res) => {
     try {
-        const{eventId, userId} = req.body;
+        const{eventId, userId} = req.query;
     
         const result = await EventService.unrsvpEvent(eventId, userId);
     

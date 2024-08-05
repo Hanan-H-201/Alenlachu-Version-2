@@ -17,4 +17,23 @@ class ApiUrl {
   static const String adminLoginUrl = "$baseUrl/api/admins/loginAdmin";
   static const String logoutUrl = "$baseUrl/api/logout";
   static const String tokenVerificationUrl = "$baseUrl/api/verify-token";
+
+  static const String createEventUrl = "$baseUrl/api/events/createEvent";
+  static const String getEventsUrl = "$baseUrl/api/events/getEvents";
+  static const String getEventByIdUrl = "$baseUrl/api/events/getEventById";
+  static const String updateEventUrl = "$baseUrl/api/events/updateEvent";
+  static const String deleteEventUrl = "$baseUrl/api/events/deleteEvent";
+  static const String rsvpEventUrl = "$baseUrl/api/events/rsvpEvent";
+  static const String unRsvpEventUrl = "$baseUrl/api/events/unRsvpEvent";
+
+  static const String createAwarenessUrl =
+      "$baseUrl/api/awarenesses/createAwareness";
+  static const String getAwarenessUrl =
+      "$baseUrl/api/awarenesses/getAwarenesses";
+  static const String getAwarenessByIdUrl =
+      "$baseUrl/api/awarenesses/getAwarnessById";
+  static const String updateAwarenessUrl =
+      "$baseUrl/api/awarenesses/updateAwareness";
+  static const String deleteAwarenessUrl =
+      "$baseUrl/api/awarenesses/deleteAwareness";
 }

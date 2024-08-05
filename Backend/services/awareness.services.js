@@ -1,13 +1,13 @@
 const AwarenessModel = require('../models/awareness.model');
 
 class AwarenessService {
-    static async createAwareness(title, content, image, date, source) {
+    static async createAwareness(title, content, image, createdDate, source) {
         try{
             const newAwareness = new AwarenessModel({
                 title,
                 content,
                 image,
-                date,
+                createdDate,
                 source
             });
 
