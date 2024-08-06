@@ -4,6 +4,7 @@ import 'package:app/core/theme/app_theme.dart';
 import 'package:app/services/common/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class WelcomeCard extends StatelessWidget {
   const WelcomeCard({super.key});
@@ -24,10 +25,10 @@ class WelcomeCard extends StatelessWidget {
                   bottomRight: Radius.circular(10)),
               boxShadow: const [
                 BoxShadow(
-                  color: Color.fromARGB(255, 193, 193, 193),
-                  spreadRadius: 2,
-                  blurRadius: 4,
-                  offset: Offset(0, 3),
+                  color: Color.fromARGB(255, 196, 196, 196),
+                  spreadRadius: 1,
+                  blurRadius: 2,
+                  offset: Offset(0, 1),
                 )
               ]),
           child: Row(
@@ -37,23 +38,25 @@ class WelcomeCard extends StatelessWidget {
                   ? Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+
+                        Text(
+                          'Hi ${state.client.username.capitalizeFirst}!',
+                          style: appTheme.textTheme.titleLarge,
+                        ),
                         Text(
                           '${Utils.getGreeting()}!',
                           style: appTheme.textTheme.titleSmall,
-                        ),
-                        Text(
-                          state.client.username,
-                          style: appTheme.textTheme.titleLarge,
                         ),
                       ],
                     )
                   : const SizedBox.shrink(),
               CircleAvatar(
+
                 backgroundColor:
                     appTheme.scaffoldBackgroundColor.withOpacity(1),
                 radius: 30,
                 child: Image.asset('assets/images/logo.png'),
-              )
+              ),
             ],
           ),
         );

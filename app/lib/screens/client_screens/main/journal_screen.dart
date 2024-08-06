@@ -5,10 +5,8 @@ class JournalScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Journal '),
-      ),
+    return const Center(
+      child: Text('Journal '),
     );
   }
 }

@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:app/controllers/client/bottom_nav/client_bottom_nav_cubit.dart';
 import 'package:app/controllers/common/authentication/authentication_cubit.dart';
+import 'package:app/controllers/common/awareness/awareness_cubit.dart';
+import 'package:app/controllers/common/event/event_cubit.dart';
 import 'package:app/core/app_navigator.dart';
 import 'package:app/core/login_manager.dart';
 import 'package:app/core/theme/app_theme.dart';
@@ -15,6 +17,8 @@ import 'package:app/screens/institution_screens/auth/institution_signup_screen.d
 import 'package:app/screens/professionals_screens/auth/professional_login_screen.dart';
 import 'package:app/screens/professionals_screens/auth/professional_signup_screen.dart';
 import 'package:app/services/common/authentication_service.dart';
+import 'package:app/services/common/awareness_service.dart';
+import 'package:app/services/common/event_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -81,7 +85,6 @@ class _MainAppState extends State<MainApp> {
   }
 
   void _validateCredential(Map<String, dynamic> data, String role) {
-    print("------------------valiadting Credential----------------");
     if (role == 'client') {
       BlocProvider.of<AuthenticationCubit>(context).authenticateClient(data);
     } else if (role == 'professional') {
@@ -111,6 +114,11 @@ class _MainAppState extends State<MainApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ClientBottomNavCubit()),
+        BlocProvider(
+            create: (context) =>
+                AwarenessCubit(awarenessService: AwarenessService())),
+        BlocProvider(
+            create: (context) => EventCubit(eventServices: EventServices()))
       ],
       child: MaterialApp(
         title: 'Alenlachu',

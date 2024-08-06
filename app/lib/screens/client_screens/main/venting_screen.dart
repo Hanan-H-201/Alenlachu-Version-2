@@ -5,8 +5,8 @@ class VentingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return const SizedBox(
+      child: Center(
         child: Text('Venting'),
       ),
     );

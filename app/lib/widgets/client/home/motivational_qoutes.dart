@@ -40,6 +40,7 @@ class MotivationalQuotesCarousel extends StatelessWidget {
             child: Center(
               child: Text(
                 quotes[index],
+                maxLines: 100,
                 style: const TextStyle(
                   fontSize: 18,
                   fontStyle: FontStyle.italic,

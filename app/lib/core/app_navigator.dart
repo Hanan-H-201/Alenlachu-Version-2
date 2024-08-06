@@ -65,6 +65,8 @@ class AppNavigator extends StatelessWidget {
         );
       } else if (state is Authenticating) {
         return const Processing();
+      } else if (state is AppInitial) {
+        return const Processing();
       } else {
         return const RegistrationOptionScreen();
       }

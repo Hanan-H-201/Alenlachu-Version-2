@@ -5,8 +5,8 @@ class SupportScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Container(
+      child: Center(
         child: Text('Support'),
       ),
     );

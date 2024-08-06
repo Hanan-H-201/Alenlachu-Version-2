@@ -1,4 +1,6 @@
 import 'package:app/controllers/client/bottom_nav/client_bottom_nav_cubit.dart';
+import 'package:app/controllers/common/awareness/awareness_cubit.dart';
+import 'package:app/controllers/common/event/event_cubit.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'package:app/screens/client_screens/main/client_home_screen.dart';
 import 'package:app/screens/client_screens/main/journal_screen.dart';
@@ -17,6 +19,13 @@ class ClientLandingPage extends StatefulWidget {
 }
 
 class _ClientLandingPageState extends State<ClientLandingPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<EventCubit>().getEvents();
+    context.read<AwarenessCubit>().getAllAwareness();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +46,13 @@ class _ClientLandingPageState extends State<ClientLandingPage> {
               return const ClientHomeScreen();
           }
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: appTheme.primaryColor,
+        elevation: 10,
+        shape: const CircleBorder(),
+        onPressed: null,
+        child: FaIcon(FontAwesomeIcons.robot, color: appTheme.scaffoldBackgroundColor,size: 20,),
       ),
       bottomNavigationBar:
           BlocBuilder<ClientBottomNavCubit, ClientBottomNavigationState>(

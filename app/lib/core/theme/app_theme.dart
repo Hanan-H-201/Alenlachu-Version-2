@@ -13,9 +13,11 @@ final ThemeData appTheme = ThemeData(
     headlineMedium: TextStyle(
         fontSize: 24.0,
         fontWeight: FontWeight.bold,
+        overflow: TextOverflow.ellipsis,
         color: Color.fromARGB(255, 13, 55, 90)),
     headlineSmall: TextStyle(
         fontSize: 16.0,
+        overflow: TextOverflow.ellipsis,
         fontWeight: FontWeight.bold,
         color: Color.fromARGB(255, 13, 55, 90)),
     titleLarge: TextStyle(
@@ -37,8 +39,8 @@ final ThemeData appTheme = ThemeData(
       fontSize: 18.0,
       color: Colors.black,
     ),
-    bodyMedium: TextStyle(fontSize: 16.0, color: Colors.black),
-    bodySmall: TextStyle(fontSize: 14.0, color: Colors.black),
+    bodyMedium: TextStyle(fontSize: 16.0, overflow: TextOverflow.ellipsis,color: Colors.black),
+    bodySmall: TextStyle(fontSize: 12.0, color: Colors.black),
     labelLarge: TextStyle(
         fontSize: 20.0,
         fontWeight: FontWeight.bold,
@@ -50,6 +52,7 @@ final ThemeData appTheme = ThemeData(
     labelSmall: TextStyle(
         fontSize: 14.0,
         fontWeight: FontWeight.bold,
+        overflow: TextOverflow.ellipsis,
         color: Color.fromARGB(255, 13, 55, 90)),
   ),
   buttonTheme: ButtonThemeData(
@@ -80,8 +83,8 @@ final ThemeData appTheme = ThemeData(
 
 LinearGradient containerGradient = LinearGradient(
   colors: [
-    const Color.fromARGB(255, 19, 82, 133),
-    const Color.fromARGB(255, 10, 114, 199).withOpacity(0.7),
+    const Color.fromARGB(255, 13, 55, 90),
+    const Color.fromARGB(255, 13, 55, 90).withOpacity(0.7),
   ],
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,

@@ -46,7 +46,7 @@ class _ClientEmotionalStateState extends State<ClientEmotionalState> {
                 height: 5,
               ),
               Text(
-                'Neutral',
+                'Normal',
                 style: appTheme.textTheme.bodySmall,
               )
             ],

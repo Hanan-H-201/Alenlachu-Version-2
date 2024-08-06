@@ -14,8 +14,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocConsumer<AuthenticationCubit, AuthenticationState>(
+    return SizedBox(
+      child: BlocConsumer<AuthenticationCubit, AuthenticationState>(
         listener: (context, state) {
           if (state is AppStarted) {
             Navigator.pushAndRemoveUntil(

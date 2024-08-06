@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Utils {
   static String getGreeting() {
     final now = DateTime.now();
@@ -10,5 +12,9 @@ class Utils {
     } else {
       return 'Good evening';
     }
+  }
+
+  static String formatDate(DateTime date) {
+    return DateFormat('MMMM d, yyyy').format(date);
   }
 }
