@@ -3,6 +3,27 @@ const db = require('../config/db');
 
 const {Schema} = db;
 
+
+const journalSchema = new Schema({
+    date: {
+      type: Date,
+      required: true,
+    },
+    content: {
+      type: String,
+      required: true,
+    },
+    isFavorite: {
+      type: Boolean,
+      default: false,
+    },
+    color: {
+        type: String,
+        required: true,
+        default: '#FFFFFF',
+      }
+  });
+
 const clientSchema = new Schema({
     username: {
         type: String,
@@ -48,6 +69,7 @@ const clientSchema = new Schema({
         type: Boolean,
         required: true,
     },
+    journals: [journalSchema]
 });
 
 

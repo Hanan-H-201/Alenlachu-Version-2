@@ -1,5 +1,5 @@
 import 'package:app/models/users/admin_model.dart';
-import 'package:app/models/users/client_model.dart';
+import 'package:app/models/users/client/client_model.dart';
 import 'package:app/models/users/institution_model.dart';
 import 'package:app/models/users/profession_model.dart';
 import 'package:equatable/equatable.dart';

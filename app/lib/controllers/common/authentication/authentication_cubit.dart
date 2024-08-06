@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:app/controllers/common/authentication/authentication_state.dart';
 import 'package:app/core/login_manager.dart';
 import 'package:app/models/users/admin_model.dart';
-import 'package:app/models/users/client_model.dart';
+import 'package:app/models/users/client/client_model.dart';
 import 'package:app/models/users/institution_model.dart';
 import 'package:app/models/users/profession_model.dart';
 import 'package:app/services/common/authentication_service.dart';

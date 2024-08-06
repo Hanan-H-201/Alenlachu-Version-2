@@ -18,13 +18,13 @@ class ClientHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<void> updateData()async {
+    Future<void> updateData() async {
       context.read<EventCubit>().getEvents();
       context.read<AwarenessCubit>().getAllAwareness();
     }
+
     return RefreshIndicator(
       onRefresh: () {
-
         return updateData();
       },
       child: Stack(
@@ -32,13 +32,17 @@ class ClientHomeScreen extends StatelessWidget {
           SingleChildScrollView(
             child: Column(
               children: [
-                const SizedBox(height: 110), // Adjust this height according to the height of WelcomeCard
+                const SizedBox(
+                    height:
+                        110), // Adjust this height according to the height of WelcomeCard
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('How are You Feeling Today?', style: appTheme.textTheme.labelLarge),
+                      Text('How are You Feeling Today?',
+                          style: appTheme.textTheme.labelLarge),
                       const SizedBox(height: 10),
                       const ClientEmotionalState(),
                       const SizedBox(height: 10),
@@ -46,12 +50,16 @@ class ClientHomeScreen extends StatelessWidget {
                       const SizedBox(height: 10),
                       Row(
                         children: [
-                          FaIcon(FontAwesomeIcons.compass, color: appTheme.primaryColor,size: 20,) ,
-                          const SizedBox(width:10),
-                          Text('Explore events', style: appTheme.textTheme.labelLarge),
+                          FaIcon(
+                            FontAwesomeIcons.compass,
+                            color: appTheme.primaryColor,
+                            size: 20,
+                          ),
+                          const SizedBox(width: 10),
+                          Text('Explore events',
+                              style: appTheme.textTheme.labelLarge),
                           const Spacer(),
                           Text('See All', style: appTheme.textTheme.labelSmall),
-
                         ],
                       ),
                       const SizedBox(height: 10),
@@ -59,14 +67,19 @@ class ClientHomeScreen extends StatelessWidget {
                       const SizedBox(height: 10),
                       Row(
                         children: [
-                          FaIcon(FontAwesomeIcons.lightbulb, color: appTheme.primaryColor,size: 20,) ,
-                          const SizedBox(width:10),
-                          Text('Articles', style: appTheme.textTheme.labelLarge),
+                          FaIcon(
+                            FontAwesomeIcons.lightbulb,
+                            color: appTheme.primaryColor,
+                            size: 20,
+                          ),
+                          const SizedBox(width: 10),
+                          Text('Articles',
+                              style: appTheme.textTheme.labelLarge),
                           const Spacer(),
                           Text('See All', style: appTheme.textTheme.labelSmall),
                         ],
                       ),
-                      // const SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       const AwarenessList(),
                     ],
                   ),

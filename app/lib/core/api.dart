@@ -37,4 +37,8 @@ class ApiUrl {
   static const String deleteAwarenessUrl =
       "$baseUrl/api/awarenesses/deleteAwareness";
 
+  static const String addJournalUrl = "$baseUrl/api/clients/addJournal";
+  static const String getJournalUrl = "$baseUrl/api/clients/getJournals";
+  static const String updateJournalUrl = "$baseUrl/api/clients/updateJournal";
+  static const String deleteJournalUrl = "$baseUrl/api/clients/deleteJournal";
 }

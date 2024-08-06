@@ -75,3 +75,47 @@ exports.loginClient = async (req,res) => {
     }
  
 }
+
+exports.addJournal = async (req, res) => {
+    try {
+        const { clientId } = req.query;
+        const journalData = req.body;
+        const result = await ClientService.addJournal(clientId, journalData);
+        res.status(201).json(result);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+};
+
+exports.getJournals = async (req, res) => {
+    try {
+        const { clientId } = req.params;
+        const journals = await ClientService.getJournals(clientId);
+        res.status(200).json(journals);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+};
+
+exports.updateJournal = async (req, res) => {
+    try {
+        const { clientId, journalId } = req.query;
+        const updatedData = req.body;
+        const updatedJournal = await ClientService.updateJournal(clientId, journalId, updatedData);
+        res.status(200).json(updatedJournal);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+};
+
+exports.deleteJournal = async (req, res) => {
+    try {
+        const { clientId, journalId } = req.params;
+        const result = await ClientService.deleteJournal(clientId, journalId);
+        res.status(200).json({ success: result });
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+};
+
+

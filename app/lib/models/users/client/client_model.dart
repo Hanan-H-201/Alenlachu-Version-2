@@ -1,3 +1,4 @@
+import 'package:app/models/users/client/journal_model.dart';
 import 'package:equatable/equatable.dart';
 
 // ignore: must_be_immutable
@@ -13,6 +14,7 @@ class ClientModel extends Equatable {
   final String? nationality;
   final String? residency;
   bool isAnonymous;
+  List<JournalModel> journals;
 
   ClientModel({
     this.id,
@@ -26,10 +28,12 @@ class ClientModel extends Equatable {
     this.nationality,
     this.residency,
     this.isAnonymous = true,
+    this.journals = const [],
   });
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'username': username,
       'password': password,
       'email': email,
@@ -39,7 +43,8 @@ class ClientModel extends Equatable {
       'dateOfBirth': dateOfBirth?.toIso8601String(),
       'nationality': nationality,
       'residency': residency,
-      'isAnonymous': isAnonymous
+      'isAnonymous': isAnonymous,
+      'journals': journals.map((journal) => journal.toJson()).toList(),
     };
   }
 
@@ -58,6 +63,9 @@ class ClientModel extends Equatable {
       nationality: json['nationality'],
       residency: json['residency'],
       isAnonymous: json['isAnonymous'],
+      journals: (json['journals'] as List<dynamic>)
+          .map((e) => JournalModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
   }
 
@@ -73,6 +81,7 @@ class ClientModel extends Equatable {
         dateOfBirth,
         nationality,
         residency,
-        isAnonymous
+        isAnonymous,
+        journals,
       ];
 }

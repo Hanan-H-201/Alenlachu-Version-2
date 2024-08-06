@@ -29,8 +29,7 @@ class EventCard extends StatelessWidget {
                 blurRadius: 3,
                 offset: Offset(0, 3),
               )
-            ]
-        ),
+            ]),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -38,11 +37,12 @@ class EventCard extends StatelessWidget {
               height: 130,
               width: MediaQuery.of(context).size.width * 0.7,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10)),
                   image: DecorationImage(
                       image: event.image == null
-                          ? const AssetImage(
-                              'assets/images/event_default.png')
+                          ? const AssetImage('assets/images/event_default.png')
                           : NetworkImage(event.image!),
                       fit: BoxFit.fill)),
             ),
@@ -52,21 +52,18 @@ class EventCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 10),
-                  Text(
-                    event.title,
-                    maxLines: 1,
-                    style: appTheme.textTheme.labelMedium
-                  ),
+                  Text(event.title,
+                      maxLines: 1, style: appTheme.textTheme.labelMedium),
                   const SizedBox(height: 5),
-                  Text(
-                      event.description,
-                      maxLines: 3,
-                      style: appTheme.textTheme.bodyMedium
-                  ),
+                  Text(event.description,
+                      maxLines: 3, style: appTheme.textTheme.bodyMedium),
                   const SizedBox(height: 5),
                   Row(
                     children: [
-                      const FaIcon(FontAwesomeIcons.clock, size: 12,),
+                      const FaIcon(
+                        FontAwesomeIcons.clock,
+                        size: 12,
+                      ),
                       const SizedBox(
                         width: 5,
                       ),
@@ -89,7 +86,11 @@ class EventCard extends StatelessWidget {
                       },
                       child: Row(
                         children: [
-                          FaIcon(FontAwesomeIcons.locationDot, size: 15,color: appTheme.primaryColor,),
+                          FaIcon(
+                            FontAwesomeIcons.locationDot,
+                            size: 15,
+                            color: appTheme.primaryColor,
+                          ),
                           const SizedBox(
                             width: 5,
                           ),
@@ -103,8 +104,11 @@ class EventCard extends StatelessWidget {
                         ],
                       )),
                   const SizedBox(height: 5),
-                  Center(child: Text('View Detail', style: appTheme.textTheme.labelSmall,))
-
+                  Center(
+                      child: Text(
+                    'View Detail',
+                    style: appTheme.textTheme.labelSmall,
+                  ))
                 ],
               ),
             )

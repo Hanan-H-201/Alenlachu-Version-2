@@ -62,6 +62,57 @@ class ClientService{
         return token; 
     }
 
+    static async addJournal(clientId, journalData) {
+        try {
+            const client = await ClientModel.findById(clientId);
+            if (!client) throw new Error('Client not found');
+            client.journals.push(journalData);
+            await client.save();
+            return client;
+        } catch (e) {
+            throw new Error(`Failed to add journal: ${e.message}`);
+        }
+    }
+
+    static async getJournals(clientId) {
+        try {
+            const client = await ClientModel.findById(clientId).populate('journals');
+            if (!client) throw new Error('Client not found');
+            return client.journals;
+        } catch (e) {
+            throw new Error(`Failed to get journals: ${e.message}`);
+        }
+    }
+
+    static async updateJournal(clientId, journalId, updatedData) {
+        try {
+            const client = await ClientModel.findById(clientId);
+            if (!client) throw new Error('Client not found');
+
+            const journal = client.journals.id(journalId);
+            if (!journal) throw new Error('Journal not found');
+
+            journal.set(updatedData);
+            await client.save();
+            return journal;
+        } catch (e) {
+            throw new Error(`Failed to update journal: ${e.message}`);
+        }
+    }
+
+    static async deleteJournal(clientId, journalId) {
+        try {
+            const client = await ClientModel.findById(clientId);
+            if (!client) throw new Error('Client not found');
+
+            client.journals.id(journalId).remove();
+            await client.save();
+            return true;
+        } catch (e) {
+            throw new Error(`Failed to delete journal: ${e.message}`);
+        }
+    }
+
     
 }
 
