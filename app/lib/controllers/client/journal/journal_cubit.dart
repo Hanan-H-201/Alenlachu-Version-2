@@ -95,6 +95,7 @@ class JournalCubit extends Cubit<JournalState> {
           await journalServices.deleteJournal(clientId!, journalId);
       if (response.statusCode == 200) {
         emit(JournalOperationSuccess(message: "Journal Deleted!"));
+        getJournals();
       } else {
         final jsonResponse = jsonDecode(response.body);
         emit(JournalOperationError(message: jsonResponse['error']));

@@ -119,7 +119,7 @@ class _JournalCardState extends State<JournalCard> {
           flex: 4,
           child: Container(
             height: 200,
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             decoration: BoxDecoration(
                 color: widget.journal.getColor().withOpacity(0.3),
                 borderRadius: const BorderRadius.only(
@@ -129,8 +129,28 @@ class _JournalCardState extends State<JournalCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(Utils.formatDate(widget.journal.date),
-                    style: appTheme.textTheme.labelMedium),
+                Row(
+                  children: [
+                    Text(Utils.formatDate(widget.journal.date),
+                        style: appTheme.textTheme.labelMedium),
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () {
+                        context
+                            .read<JournalCubit>()
+                            .deleteJournal(journalId: widget.journal.id!);
+                      },
+                      child: FaIcon(
+                        FontAwesomeIcons.trash,
+                        size: 20,
+                        color: Colors.red,
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
                 const Divider(
                   color: Colors.grey,
                   thickness: 3,
