@@ -48,11 +48,9 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       http.Response response =
           await authenticationService.registerClient(client);
       if (response.statusCode == 201) {
-        await authenticationService.loginClient(
-            client.username, client.password!);
-
-        Map<String, dynamic>? json = await authenticationService.getUser();
-        emit(AuthenticatedAsClient(client: ClientModel.fromJson(json!)));
+        print(
+            "#################### response ${jsonDecode(response.body)}################");
+        loginClient(username: client.username, password: client.password!);
       } else {
         final jsonRespones = jsonDecode(response.body);
         emit(UnauthenticatedClient(message: jsonRespones['error']));

@@ -5,8 +5,12 @@ const Authentication = require('./auth.services');
 
 
 class ClientService{
-    static async registerClient(username, email,password, emergencyContact, fullName,phoneNumber, dateOfBirth, nationality, residency, isAnonymous){
+    static async registerClient(username, email,password, emergencyContact, fullName,phoneNumber, dateOfBirth, nationality, residency, isAnonymous,journals){
         try{
+            const existingUser = await ClientModel.findOne({ $or: [{ username }, { email }] });
+            if (existingUser) {
+                throw new Error('Username or email already exists');
+            }
             const newClient = new ClientModel({
                 username,
                 email,
@@ -18,6 +22,7 @@ class ClientService{
                 nationality,
                 residency,
                 isAnonymous,
+                journals
             });
             return await newClient.save();
         }catch(e){

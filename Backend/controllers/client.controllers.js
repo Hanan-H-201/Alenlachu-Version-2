@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 exports.registerClient = async (req, res) => {
     try {
-        const { username, email,password, emergencyContact, fullName, phoneNumber, dateOfBirth, nationality, residency, isAnonymous } = req.body;
+        const { username, email,password, emergencyContact, fullName, phoneNumber, dateOfBirth, nationality, residency, isAnonymous, journals} = req.body;
         if (!username || username.trim() === '') {
             return res.status(400).json({ error: 'Username is required.' });
         }
@@ -51,7 +51,8 @@ exports.registerClient = async (req, res) => {
             dateOfBirth ? new Date(dateOfBirth) : null,
             nationality ? nationality.trim() : null,
             residency ? residency.trim() : null,
-            isAnonymous
+            isAnonymous,
+            journals
         );
 
         res.status(201).json(result);

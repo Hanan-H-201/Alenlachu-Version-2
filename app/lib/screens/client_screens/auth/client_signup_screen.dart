@@ -28,8 +28,17 @@ class _ClientSignupScreenState extends State<ClientSignupScreen> {
               (Route<dynamic> route) => false,
             );
           } else if (state is UnauthenticatedClient) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text(state.message)));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(
+              state.message,
+              maxLines: 10,
+            )));
+          } else if (state is AuthenticationFailed) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(
+              state.errorMessage,
+              maxLines: 10,
+            )));
           }
         },
         child: SingleChildScrollView(

@@ -30,8 +30,11 @@ class _ClientAnonymousRegistrationState
                 (Route<dynamic> route) => false,
               );
             } else if (state is UnauthenticatedClient) {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text(state.message)));
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(
+                state.message,
+                maxLines: 10,
+              )));
             }
           },
           child: SingleChildScrollView(
