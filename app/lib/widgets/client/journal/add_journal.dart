@@ -66,9 +66,6 @@ class _AddJournalModalState extends State<AddJournalModal> {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(state.message)));
           Navigator.pop(context);
-        } else {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text('Unknow state')));
         }
       },
       builder: (context, state) {

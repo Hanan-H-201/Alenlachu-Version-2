@@ -17,7 +17,7 @@ class Utils {
   }
 
   static String formatDate(DateTime date) {
-    return DateFormat('MMMM d, yyyy').format(date);
+    return DateFormat('MMMM d,yyyy').format(date);
   }
 
   static String getDay(DateTime date) {

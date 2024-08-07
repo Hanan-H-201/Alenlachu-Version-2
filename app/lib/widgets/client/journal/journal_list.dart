@@ -28,7 +28,7 @@ class _JournalListState extends State<JournalList> {
                     height: 200,
                   ),
                   Text(
-                    'No Articles',
+                    'Save your Days',
                     style: appTheme.textTheme.bodySmall,
                   )
                 ],
