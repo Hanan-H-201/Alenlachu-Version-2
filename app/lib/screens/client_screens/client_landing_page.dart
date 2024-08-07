@@ -3,6 +3,7 @@ import 'package:app/controllers/client/journal/journal_cubit.dart';
 import 'package:app/controllers/common/awareness/awareness_cubit.dart';
 import 'package:app/controllers/common/event/event_cubit.dart';
 import 'package:app/core/theme/app_theme.dart';
+import 'package:app/screens/client_screens/main/chatbot_page.dart';
 import 'package:app/screens/client_screens/main/client_home_screen.dart';
 import 'package:app/screens/client_screens/main/journal_screen.dart';
 import 'package:app/screens/client_screens/main/profile_screen.dart';
@@ -80,7 +81,12 @@ class _ClientLandingPageState extends State<ClientLandingPage> {
                 backgroundColor: appTheme.primaryColor,
                 elevation: 10,
                 shape: const CircleBorder(),
-                onPressed: null,
+                onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ChatPage()),
+                 );
+                },
                 child: FaIcon(
                   FontAwesomeIcons.robot,
                   color: appTheme.scaffoldBackgroundColor,
