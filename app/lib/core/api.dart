@@ -1,5 +1,5 @@
 class ApiUrl {
-  static const String baseUrl = "http://192.168.36.212:3000";
+  static const String baseUrl = "http://192.168.1.5:3000";
 
   static const String clientRegistrationUrl =
       "$baseUrl/api/clients/registerClient";
@@ -36,4 +36,13 @@ class ApiUrl {
       "$baseUrl/api/awarenesses/updateAwareness";
   static const String deleteAwarenessUrl =
       "$baseUrl/api/awarenesses/deleteAwareness";
+
+  static const String createPostUrl = "$baseUrl/api/posts/createPost";
+  static const String getPostsUrl = "$baseUrl/api/posts/getPosts";
+  static const String getPostByIdUrl = "$baseUrl/api/posts/getPostById";
+  static const String updatePostUrl = "$baseUrl/api/posts/updatePost";
+  static const String deletePostUrl = "$baseUrl/api/posts/deletePost";
+  static const String likePostUrl = "$baseUrl/api/posts/likePost";
+  static const String unlikePIostUrl = "$baseUrl/api/posts/unlikePost";
+  static const String getNumberLikesUrl = "$baseUrl/api/posts/getNumberLikes";
 }
