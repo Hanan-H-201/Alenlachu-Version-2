@@ -42,6 +42,8 @@ class ClientService{
             nationality,
             residency,
             isAnonymous,
+            journals
+
         } = client;
 
         let tokenData = {
@@ -54,7 +56,8 @@ class ClientService{
             dateOfBirth: dateOfBirth,
             nationality: nationality,
             residency: residency,
-            isAnonymous: isAnonymous
+            isAnonymous: isAnonymous,
+            journals: journals
         }
 
         const SECRET_KEY = process.env.SECRET_KEY || 'secret_key';
@@ -104,14 +107,20 @@ class ClientService{
         try {
             const client = await ClientModel.findById(clientId);
             if (!client) throw new Error('Client not found');
-
-            client.journals.id(journalId).remove();
+    
+           
+            const initialJournalCount = client.journals.length;
+            client.journals = client.journals.filter(journal => journal._id.toString() !== journalId);
+            
+            if (initialJournalCount === client.journals.length) throw new Error('Journal not found');
+            
             await client.save();
             return true;
         } catch (e) {
             throw new Error(`Failed to delete journal: ${e.message}`);
         }
     }
+    
 
     
 }

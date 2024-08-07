@@ -72,7 +72,7 @@ class _InstitutionSignupFormState extends State<InstitutionSignupForm> {
                   _emailController,
                   Text(
                     'Email',
-                    style: appTheme.textTheme.bodySmall,
+                    style: appTheme.textTheme.bodyMedium,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {

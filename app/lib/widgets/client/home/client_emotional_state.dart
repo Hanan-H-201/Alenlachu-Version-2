@@ -22,7 +22,9 @@ class _ClientEmotionalStateState extends State<ClientEmotionalState> {
                   () {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text(
-                        "I'm sorry to hear that you're feeling sad. Hope things get better soon.")));
+                  "I'm sorry to hear that you're feeling sad. Hope things get better soon.",
+                  maxLines: 10,
+                )));
               }),
               const SizedBox(
                 height: 5,
@@ -39,8 +41,8 @@ class _ClientEmotionalStateState extends State<ClientEmotionalState> {
                   'assets/images/confused.png', Colors.yellow.withOpacity(0.5),
                   () {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content:
-                        Text("It's okay to have a neutral day. Take care!")));
+                    content: Text("It's okay to have a neutral day. Take care!",
+                        maxLines: 10)));
               }),
               const SizedBox(
                 height: 5,
@@ -57,7 +59,8 @@ class _ClientEmotionalStateState extends State<ClientEmotionalState> {
                   'assets/images/gestures.png', Colors.grey.withOpacity(0.5),
                   () {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text("Glad to know you're feeling happy!")));
+                    content: Text("Glad to know you're feeling happy!",
+                        maxLines: 10)));
               }),
               const SizedBox(
                 height: 5,
@@ -74,7 +77,8 @@ class _ClientEmotionalStateState extends State<ClientEmotionalState> {
                   'assets/images/laughing.png', Colors.blue.withOpacity(0.5),
                   () {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text("It's great to see you so happy!")));
+                    content:
+                        Text("It's great to see you so happy!", maxLines: 10)));
               }),
               const SizedBox(
                 height: 5,

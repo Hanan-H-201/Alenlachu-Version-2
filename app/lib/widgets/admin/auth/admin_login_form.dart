@@ -35,7 +35,7 @@ class _AdminLoginFormState extends State<AdminLoginForm> {
             _emailController,
             Text(
               'Email',
-              style: appTheme.textTheme.bodySmall,
+              style: appTheme.textTheme.bodyMedium,
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {

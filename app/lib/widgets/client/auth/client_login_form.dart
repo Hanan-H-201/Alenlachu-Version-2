@@ -36,7 +36,7 @@ class _ClientLoginFormState extends State<ClientLoginForm> {
             _usernameController,
             Text(
               'Username',
-              style: appTheme.textTheme.bodySmall,
+              style: appTheme.textTheme.bodyMedium,
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {

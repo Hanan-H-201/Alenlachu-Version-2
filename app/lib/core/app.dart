@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:app/controllers/client/bottom_nav/client_bottom_nav_cubit.dart';
+import 'package:app/controllers/client/journal/journal_cubit.dart';
 import 'package:app/controllers/common/authentication/authentication_cubit.dart';
 import 'package:app/controllers/common/awareness/awareness_cubit.dart';
 import 'package:app/controllers/common/event/event_cubit.dart';
@@ -16,6 +17,7 @@ import 'package:app/screens/institution_screens/auth/institution_login_screen.da
 import 'package:app/screens/institution_screens/auth/institution_signup_screen.dart';
 import 'package:app/screens/professionals_screens/auth/professional_login_screen.dart';
 import 'package:app/screens/professionals_screens/auth/professional_signup_screen.dart';
+import 'package:app/services/client/journal_services.dart';
 import 'package:app/services/common/authentication_service.dart';
 import 'package:app/services/common/awareness_service.dart';
 import 'package:app/services/common/event_services.dart';
@@ -118,7 +120,12 @@ class _MainAppState extends State<MainApp> {
             create: (context) =>
                 AwarenessCubit(awarenessService: AwarenessService())),
         BlocProvider(
-            create: (context) => EventCubit(eventServices: EventServices()))
+            create: (context) => EventCubit(eventServices: EventServices())),
+        BlocProvider(
+            create: (context) => JournalCubit(
+                journalServices: JournalServices(),
+                authenticationCubit:
+                    BlocProvider.of<AuthenticationCubit>(context)))
       ],
       child: MaterialApp(
         title: 'Alenlachu',

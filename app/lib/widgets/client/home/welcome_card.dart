@@ -38,7 +38,6 @@ class WelcomeCard extends StatelessWidget {
                   ? Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         Text(
                           'Hi ${state.client.username.capitalizeFirst}!',
                           style: appTheme.textTheme.titleLarge,
@@ -51,9 +50,7 @@ class WelcomeCard extends StatelessWidget {
                     )
                   : const SizedBox.shrink(),
               CircleAvatar(
-
-                backgroundColor:
-                    appTheme.scaffoldBackgroundColor.withOpacity(1),
+                backgroundColor: appTheme.scaffoldBackgroundColor,
                 radius: 30,
                 child: Image.asset('assets/images/logo.png'),
               ),

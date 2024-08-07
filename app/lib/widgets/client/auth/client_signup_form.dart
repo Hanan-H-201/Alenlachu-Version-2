@@ -61,7 +61,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
                   _fullNameController,
                   Text(
                     'Full Name',
-                    style: appTheme.textTheme.bodySmall,
+                    style: appTheme.textTheme.bodyMedium,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -77,7 +77,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
                   _usernameController,
                   Text(
                     'Username',
-                    style: appTheme.textTheme.bodySmall,
+                    style: appTheme.textTheme.bodyMedium,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -130,7 +130,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
                   _emailController,
                   Text(
                     'Email',
-                    style: appTheme.textTheme.bodySmall,
+                    style: appTheme.textTheme.bodyMedium,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {

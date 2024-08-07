@@ -62,7 +62,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                   _nameController,
                   Text(
                     'Name',
-                    style: appTheme.textTheme.bodySmall,
+                    style: appTheme.textTheme.bodyMedium,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -78,7 +78,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                   _emailController,
                   Text(
                     'Email',
-                    style: appTheme.textTheme.bodySmall,
+                    style: appTheme.textTheme.bodyMedium,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -327,10 +327,6 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                         languageToProvideService: _languageController.text,
                         pricePerHour:
                             double.parse(_pricePerHourController.text));
-                    // Form is valid, proceed with further processing
-                    // ScaffoldMessenger.of(context).showSnackBar(
-                    //   const SnackBar(content: Text('Processing Data')),
-                    // );
                   }
                 },
                 child: state is Authenticating

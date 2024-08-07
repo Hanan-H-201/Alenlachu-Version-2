@@ -129,6 +129,26 @@ class CustomFormComponents {
     );
   }
 
+  static Widget buildWideTextField(
+      TextEditingController controller, Text labelText,
+      {String? Function(String?)? validator, int? minLines, int? maxLines}) {
+    return TextFormField(
+      controller: controller,
+      minLines: minLines ?? 5,
+      maxLines: maxLines ?? null,
+      decoration: InputDecoration(
+        label: labelText,
+        filled: true,
+        fillColor: appTheme.primaryColor.withOpacity(0.1),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          borderSide: BorderSide.none,
+        ),
+      ),
+      validator: validator,
+    );
+  }
+
   static Widget buildPhoneNumberField(
       TextEditingController phoneController,
       Text lable,

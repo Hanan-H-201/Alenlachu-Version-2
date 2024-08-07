@@ -89,7 +89,7 @@ exports.addJournal = async (req, res) => {
 
 exports.getJournals = async (req, res) => {
     try {
-        const { clientId } = req.params;
+        const { clientId } = req.query;
         const journals = await ClientService.getJournals(clientId);
         res.status(200).json(journals);
     } catch (err) {
@@ -110,7 +110,7 @@ exports.updateJournal = async (req, res) => {
 
 exports.deleteJournal = async (req, res) => {
     try {
-        const { clientId, journalId } = req.params;
+        const { clientId, journalId } = req.query;
         const result = await ClientService.deleteJournal(clientId, journalId);
         res.status(200).json({ success: result });
     } catch (err) {

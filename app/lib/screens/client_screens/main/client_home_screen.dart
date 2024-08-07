@@ -62,9 +62,9 @@ class ClientHomeScreen extends StatelessWidget {
                           Text('See All', style: appTheme.textTheme.labelSmall),
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 15),
                       const EventList(),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 15),
                       Row(
                         children: [
                           FaIcon(
@@ -79,7 +79,7 @@ class ClientHomeScreen extends StatelessWidget {
                           Text('See All', style: appTheme.textTheme.labelSmall),
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 15),
                       const AwarenessList(),
                     ],
                   ),
