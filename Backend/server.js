@@ -9,6 +9,8 @@ const professionRoutes = require("./routes/profession.routes");
 const authRoutes = require('./routes/auth.routes');
 const eventRoutes = require("./routes/event.routes");
 const awarenessRoutes = require('./routes/awareness.routes');
+const postRoutes = require('./routes/post.routes');
+const commentRoutes = require('./routes/comment.routes');
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -16,9 +18,11 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use("/api/admins", adminRoutes);
-app.use("/api/clients", clientRoutes);
 app.use("/api/institutions", institutionRoutes);
 app.use("/api/professions", professionRoutes);
+app.use("/api/clients", clientRoutes);
+app.use("/api/posts", postRoutes);
+app.use("/api/comments", commentRoutes);
 app.use("/api", authRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/awarenesses", awarenessRoutes);

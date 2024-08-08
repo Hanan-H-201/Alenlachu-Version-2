@@ -4,15 +4,41 @@ import 'package:app/core/api.dart' show ApiUrl;
 import 'package:app/models/common/post_model.dart';
 
 class PostService {
-  Future<http.Response> createPost(PostModel post) async {
-    final response = await http.post(
-      Uri.parse(ApiUrl.createPostUrl),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(post.toJson()),
-    );
-    return response;
+  Future<http.Response> createPost({
+    required String content,
+    required String tags,
+    required String privacy,
+    required String image,
+    required String userId,
+  }) async {
+    final url = Uri.parse(ApiUrl.createPostUrl);
+    final headers = <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+    final body = jsonEncode(<String, dynamic>{
+      'content': content,
+      'tags': tags.split(','), // Convert comma-separated string to list
+      'privacy': privacy,
+      'image': image,
+      'userId': userId,
+    });
+
+    try {
+      final response = await http.post(
+        url,
+        headers: headers,
+        body: body,
+      );
+
+      if (response.statusCode == 201) {
+        return response;
+      } else {
+        throw Exception(
+            'Failed to create post. Status code: ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('Error creating post: $e');
+    }
   }
 
   Future<http.Response> getAllPosts() async {
@@ -55,7 +81,7 @@ class PostService {
 
   Future<http.Response> unlikePost(String id, String userId) async {
     final response = await http.put(
-      Uri.parse('${ApiUrl.unlikePIostUrl}?id=$id&userId=$userId'),
+      Uri.parse('${ApiUrl.unlikePostUrl}?id=$id&userId=$userId'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

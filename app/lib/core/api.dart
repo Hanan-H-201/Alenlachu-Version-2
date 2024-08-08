@@ -43,6 +43,11 @@ class ApiUrl {
   static const String updatePostUrl = "$baseUrl/api/posts/updatePost";
   static const String deletePostUrl = "$baseUrl/api/posts/deletePost";
   static const String likePostUrl = "$baseUrl/api/posts/likePost";
-  static const String unlikePIostUrl = "$baseUrl/api/posts/unlikePost";
+  static const String unlikePostUrl = "$baseUrl/api/posts/unlikePost";
   static const String getNumberLikesUrl = "$baseUrl/api/posts/getNumberLikes";
+
+  static const String createCommentUrl = "$baseUrl/api/comments/createComment";
+  static const String getCommentsUrl = "$baseUrl/api/comments/getComments";
+  static const String updateCommentUrl = "$baseUrl/api/comments/updateComment";
+  static const String deleteCommentUrl = "$baseUrl/api/comments/deleteComment";
 }

@@ -1,4 +1,4 @@
-const Post = require('../models/Post');
+const Post = require('../models/post.model');
 const fs = require('fs');
 const path = require('path');
 

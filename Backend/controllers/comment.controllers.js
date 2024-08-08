@@ -1,9 +1,8 @@
 const commentService = require('../services/comment.services');
 
 exports.addComment = async (req, res) => {
-  const { postId } = req.params;
+  const { postId, userId } = req.query; // Fetch postId and userId from query parameters
   const { content } = req.body;
-  const userId = req.user.id;
 
   try {
     await commentService.addComment({ postId, content, userId });
@@ -14,7 +13,7 @@ exports.addComment = async (req, res) => {
 };
 
 exports.getComments = async (req, res) => {
-  const { postId } = req.params;
+  const { postId } = req.query; // Fetch postId from query parameters
 
   try {
     const comments = await commentService.getComments({ postId });
@@ -26,8 +25,7 @@ exports.getComments = async (req, res) => {
 
 exports.updateComment = async (req, res) => {
   const { commentId } = req.params;
-  const { content } = req.body;
-  const userId = req.user.id;
+  const { content, userId } = req.query; // Fetch userId from query parameters
 
   try {
     await commentService.updateComment({ commentId, content, userId });
@@ -39,7 +37,7 @@ exports.updateComment = async (req, res) => {
 
 exports.deleteComment = async (req, res) => {
   const { commentId } = req.params;
-  const userId = req.user.id;
+  const { userId } = req.query; // Fetch userId from query parameters
 
   try {
     await commentService.deleteComment({ commentId, userId });
