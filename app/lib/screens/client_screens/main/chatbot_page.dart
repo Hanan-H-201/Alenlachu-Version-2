@@ -126,6 +126,7 @@ class _ChatPageState extends State<ChatPage> {
                     ),
                     child: Text(
                       message.message,
+                      maxLines: 100,
                       style: TextStyle(color: textColor),
                     ),
                   ),
