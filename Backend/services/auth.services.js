@@ -1,8 +1,8 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 class Authentication {
     static generateToken(tokenData, secretKey, options){
         return jwt.sign(tokenData, secretKey, options);
     }
 }
 
-module.exports = Authentication;
+export default Authentication;

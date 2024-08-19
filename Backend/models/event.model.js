@@ -1,4 +1,4 @@
-const db = require('../config/db');
+import db from '../config/db.js';
 
 const {Schema} = db;
 const EventSchema = new Schema({
@@ -38,4 +38,4 @@ const EventSchema = new Schema({
 
 
 const EventModel = db.model('event', EventSchema);
-  module.exports = EventModel;
+  export default EventModel;

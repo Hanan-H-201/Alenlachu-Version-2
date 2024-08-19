@@ -1,8 +1,8 @@
 
-const ClientService = require('../services/client.services');
-const jwt = require('jsonwebtoken');
+import ClientService from '../services/client.services.js';
+import { decode } from 'jsonwebtoken';
 
-exports.registerClient = async (req, res) => {
+export async function registerClient(req, res) {
     try {
         const { username, email,password, emergencyContact, fullName, phoneNumber, dateOfBirth, nationality, residency, isAnonymous, journals} = req.body;
         if (!username || username.trim() === '') {
@@ -59,9 +59,9 @@ exports.registerClient = async (req, res) => {
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
-};
+}
 
-exports.loginClient = async (req,res) => {
+export async function loginClient(req,res) {
     try {
         const {username, password} = req.body;
         const token = await ClientService.loginClient(username, password);
@@ -70,14 +70,14 @@ exports.loginClient = async (req,res) => {
             return res.status(401).json({error: 'Invalid username or password'});
         }
 
-        res.status(200).json({status: true, token:token, tokenData: jwt.decode(token)});
+        res.status(200).json({status: true, token:token, tokenData: decode(token)});
     } catch (e) {
         res.status(500).json({error: `Internal server error ${err.message}`});
     }
  
 }
 
-exports.addJournal = async (req, res) => {
+export async function addJournal(req, res) {
     try {
         const { clientId } = req.query;
         const journalData = req.body;
@@ -86,9 +86,9 @@ exports.addJournal = async (req, res) => {
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
-};
+}
 
-exports.getJournals = async (req, res) => {
+export async function getJournals(req, res) {
     try {
         const { clientId } = req.query;
         const journals = await ClientService.getJournals(clientId);
@@ -96,9 +96,9 @@ exports.getJournals = async (req, res) => {
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
-};
+}
 
-exports.updateJournal = async (req, res) => {
+export async function updateJournal(req, res) {
     try {
         const { clientId, journalId } = req.query;
         const updatedData = req.body;
@@ -107,9 +107,9 @@ exports.updateJournal = async (req, res) => {
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
-};
+}
 
-exports.deleteJournal = async (req, res) => {
+export async function deleteJournal(req, res) {
     try {
         const { clientId, journalId } = req.query;
         const result = await ClientService.deleteJournal(clientId, journalId);
@@ -117,6 +117,6 @@ exports.deleteJournal = async (req, res) => {
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
-};
+}
 
 

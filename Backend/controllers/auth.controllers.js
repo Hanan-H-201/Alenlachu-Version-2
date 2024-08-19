@@ -1,9 +1,9 @@
-const jwt = require('jsonwebtoken');
-const BlacklistModel = require('../models/blackList.model');
-exports.logout = async (req, res) => {
+import { decode } from 'jsonwebtoken';
+import BlacklistModel from '../models/blackList.model.js';
+export async function logout(req, res) {
     try {
         const token = req.headers['authorization'].split(' ')[1];
-        const decoded = jwt.decode(token);
+        const decoded = decode(token);
       
         const expiresAt = new Date(decoded.exp * 1000);
       
@@ -16,6 +16,6 @@ exports.logout = async (req, res) => {
     }
 }
 
-exports.verifyToken = async (req, res) => {
+export async function verifyToken(req, res) {
     res.status(200).json({success:'Token is valid'});
 }

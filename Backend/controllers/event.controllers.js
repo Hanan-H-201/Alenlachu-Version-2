@@ -1,6 +1,6 @@
-const EventService = require('../services/event.services');
+import EventService from '../services/event.services.js';
 
-exports.createEvent = async (req, res) => {
+export async function createEvent(req, res) {
     try{
         const{title, description, date, time, image, organizer, location, rsvps} = req.body;
         const result = await EventService.createEvent(title, description, date, time, image, organizer, location, rsvps);
@@ -9,20 +9,20 @@ exports.createEvent = async (req, res) => {
     }catch(e){
         res.status(400).json({ error: e.message });
     }
-};
+}
 
 
-exports.getEvents = async (req, res) => {
+export async function getEvents(req, res) {
   try{
     const events = await EventService.getEvents();
     res.status(200).json(events);
   }catch(e){
     res.status(400).json({ error: e.message });
   }
-};
+}
 
 // Get Event by ID
-exports.getEventById = async (req, res) => {
+export async function getEventById(req, res) {
  try{
   const { id } = req.query;
     const event = await EventService.getEventById(id);
@@ -38,10 +38,10 @@ exports.getEventById = async (req, res) => {
     res.status(400).json({ error: e.message });
  
  }
-};
+}
 
 // Update Event by ID
-exports.updateEvent = async (req, res) => {
+export async function updateEvent(req, res) {
     try{
       const {id} = req.query;
         const{updatedFields} = req.body;
@@ -55,10 +55,10 @@ exports.updateEvent = async (req, res) => {
     }catch(e){
         res.status(400).json({ error: e.message });
     }
-};
+}
 
 // Delete Event by ID
-exports.deleteEvent = async (req, res) => {
+export async function deleteEvent(req, res) {
   try{
     const {id} = req.query;
     const result = await EventService.deleteEvent(id);
@@ -71,9 +71,9 @@ exports.deleteEvent = async (req, res) => {
   }catch(e){
     res.status(400).json({ error: e.message });
   }
-};
+}
 
-exports.rsvpEvent = async (req, res) => {
+export async function rsvpEvent(req, res) {
   try {
     const{eventId, userId} = req.query;
 
@@ -89,9 +89,9 @@ exports.rsvpEvent = async (req, res) => {
     console.error(err);
     res.status(400).json({ error: err.message });
   }
-};
+}
 
-exports.unRsvpEvent = async (req, res) => {
+export async function unRsvpEvent(req, res) {
     try {
         const{eventId, userId} = req.query;
     
@@ -107,4 +107,4 @@ exports.unRsvpEvent = async (req, res) => {
         console.error(err);
         res.status(400).json({ error: err.message });
       }
-};
+}

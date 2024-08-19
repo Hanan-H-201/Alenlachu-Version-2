@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt');
-const db = require('../config/db');
+import bcrypt from 'bcryptjs';
+import db from '../config/db.js';
 
 const {Schema} = db;
 
@@ -56,4 +56,4 @@ institutionSchema.pre('save', async function (next) {
 
 const InstitutionModel = db.model('institution', institutionSchema);
 
-module.exports = InstitutionModel;
+export default InstitutionModel;

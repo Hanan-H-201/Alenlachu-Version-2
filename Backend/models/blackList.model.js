@@ -1,4 +1,4 @@
-const db = require('../config/db');
+import db from '../config/db.js';
 
 const {Schema} = db;
 
@@ -14,5 +14,5 @@ const blacklistSchema = new Schema({
   
 const BlacklistModel = db.model('blacklist', blacklistSchema);
 
-module.exports = BlacklistModel;
+export default BlacklistModel;
   

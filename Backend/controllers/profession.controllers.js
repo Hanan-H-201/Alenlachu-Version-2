@@ -1,6 +1,6 @@
-const ProfessionService = require('../services/profession.services');
+import ProfessionService from '../services/profession.services.js';
 
-exports.registerProfession = async (req, res) => {
+export async function registerProfession(req, res) {
     try {
        
         const {
@@ -61,10 +61,10 @@ exports.registerProfession = async (req, res) => {
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
-};
+}
 
 
-exports.loginProfessional = async (req, res) => {
+export async function loginProfessional(req, res) {
     try{
         const{email, password} = req.body;
         const token = await ProfessionService.loginProfessional(email, password);

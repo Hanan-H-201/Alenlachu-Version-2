@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt');
-const db = require('../config/db');
+import bcrypt from 'bcryptjs';
+import db from '../config/db.js';
 
 const {Schema} = db;
 
@@ -79,4 +79,4 @@ professionalSchema.pre('save', async function (next) {
 
 const ProfessionalModel = db.model('professional', professionalSchema);
 
-module.exports = ProfessionalModel;
+export default ProfessionalModel;

@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+const router = Router();
 
-const{createAwareness, getAwarenesses, getAwarnessById, updateAwareness, deleteAwareness} = require('../controllers/awareness.controllers');
+import { createAwareness, getAwarenesses, getAwarnessById, updateAwareness, deleteAwareness } from '../controllers/awareness.controllers.js';
 
 router.post('/createAwareness', createAwareness);
 
@@ -13,4 +13,4 @@ router.put('/updateAwareness', updateAwareness);
 
 router.delete('/deleteAwareness', deleteAwareness);
 
-module.exports = router;
+export default router;

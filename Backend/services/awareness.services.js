@@ -1,4 +1,4 @@
-const AwarenessModel = require('../models/awareness.model');
+import AwarenessModel from '../models/awareness.model.js';
 
 class AwarenessService {
     static async createAwareness(title, content, image, createdDate, source) {
@@ -57,4 +57,4 @@ class AwarenessService {
 }
 
 
-module.exports = AwarenessService;
+export default AwarenessService;

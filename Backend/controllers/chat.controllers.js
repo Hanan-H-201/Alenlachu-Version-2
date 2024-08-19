@@ -1,7 +1,7 @@
-const ChatMessage = require('../models/chat.model');
-const ChatService = require('../services/chat.services');
+import ChatMessage from '../models/chat.model.js';
+import { getReply } from '../services/chat.services.js';
 
-exports.getChatHistory = async (req, res) => {
+export async function getChatHistory(req, res) {
   const {userId} = req.query;
   try {
     const chatHistory = await ChatMessage.find({userId}).sort({ time: 1 });
@@ -9,9 +9,9 @@ exports.getChatHistory = async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-};
+}
 
-exports.sendMessage = async (req, res) => {
+export async function sendMessage(req, res) {
   const {message, userId}  = req.body;
   const userMessage = new ChatMessage({
     userId,
@@ -22,7 +22,7 @@ exports.sendMessage = async (req, res) => {
 
   try {
     await userMessage.save();
-    const replyMessage = await ChatService.getReply(message);
+    const replyMessage = await getReply(message);
     const botMessage = new ChatMessage({
       userId,
       time: new Date(),
@@ -34,5 +34,5 @@ exports.sendMessage = async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-};
+}
 

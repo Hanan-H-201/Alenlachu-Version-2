@@ -1,4 +1,4 @@
-const db = require('../config/db');
+import db from '../config/db.js';
 
 const {Schema} = db;
 
@@ -27,4 +27,4 @@ const awarenessSchema = new Schema({
 
 const AwarenessModel = db.model('awareness', awarenessSchema);
 
-module.exports = AwarenessModel;
+export default AwarenessModel;

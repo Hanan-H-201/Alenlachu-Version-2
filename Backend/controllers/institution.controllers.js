@@ -1,6 +1,6 @@
-const InstitutionService = require('../services/institution.services');
+import InstitutionService from '../services/institution.services.js';
 
-exports.registerInstitution = async (req, res) => {
+export async function registerInstitution(req, res) {
     try {
         const { 
             name,
@@ -49,9 +49,9 @@ exports.registerInstitution = async (req, res) => {
     } catch (e) {
         res.status(400).json({ error: e.message });
     }
-};
+}
 
-exports.loginInstitution = async (req, res) => {
+export async function loginInstitution(req, res) {
     try{
         const {email, password} = req.body;
         const token = await InstitutionService.loginInstitution(email, password);

@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+const router = Router();
 
-const {createEvent, getEvents, getEventById,updateEvent, deleteEvent,rsvpEvent,unRsvpEvent} = require('../controllers/event.controllers');
+import { createEvent, getEvents, getEventById, updateEvent, deleteEvent, rsvpEvent, unRsvpEvent } from '../controllers/event.controllers.js';
 
 router.post('/createEvent', createEvent);
 
@@ -17,6 +17,6 @@ router.post('/rsvpEvent', rsvpEvent);
 
 router.post('/unRsvpEvent', unRsvpEvent);
 
-module.exports = router;
+export default router;
 
 

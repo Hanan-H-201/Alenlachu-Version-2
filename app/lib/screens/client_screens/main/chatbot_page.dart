@@ -128,6 +128,8 @@ class _ChatPageState extends State<ChatPage> {
                       message.message,
                       maxLines: 100,
                       style: TextStyle(color: textColor),
+                      textAlign: TextAlign.left,
+                      overflow: TextOverflow.visible,
                     ),
                   ),
                 );
