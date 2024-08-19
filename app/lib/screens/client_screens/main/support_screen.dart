@@ -1,3 +1,5 @@
+import 'package:app/screens/client_screens/main/professionalList_page.dart';
+import 'package:app/widgets/common/main_button.dart';
 import 'package:flutter/material.dart';
 
 class SupportScreen extends StatelessWidget {
@@ -5,10 +7,22 @@ class SupportScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('Support'),
-      ),
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [const Text('Support'),
+        MainButton(
+                  child: const Text("Professional List"), 
+                  onPressed: () {
+                   Navigator.push(
+                      context, MaterialPageRoute(
+                          builder: (context)=> ProfessionallistPage(),
+                          )
+                        );
+                       }
+                    ),
+      ]),
+      
     );
   }
 }

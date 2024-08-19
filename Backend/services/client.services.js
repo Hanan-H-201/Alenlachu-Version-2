@@ -1,6 +1,6 @@
-const bcrypt = require('bcrypt');
-const ClientModel = require('../models/client.model');
-const Authentication = require('./auth.services');
+import bcrypt from 'bcryptjs';
+import ClientModel from '../models/client.model.js';
+import Authentication from './auth.services.js';
 
 
 
@@ -130,4 +130,4 @@ class ClientService{
     
 }
 
-module.exports = ClientService;
+export default ClientService;

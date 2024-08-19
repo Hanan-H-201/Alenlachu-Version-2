@@ -1,6 +1,6 @@
-const AdminService = require('../services/admin.services');
+import AdminService from '../services/admin.services.js';
 
-exports.registerAdmin = async (req, res) => {
+export async function registerAdmin(req, res) {
     try {
         const { email, password } = req.body;
         
@@ -31,9 +31,9 @@ exports.registerAdmin = async (req, res) => {
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
-};
+}
 
-exports.loginAdmin = async (req, res) => {
+export async function loginAdmin(req, res) {
     try{
         const {email, password} = req.body;
         const token = await AdminService.loginAdmin(email, password);
@@ -45,4 +45,4 @@ exports.loginAdmin = async (req, res) => {
     }catch(err){
         res.status(500).json({error: `Internal server error ${err.message}`});
     }
-};
+}

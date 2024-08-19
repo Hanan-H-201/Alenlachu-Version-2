@@ -127,6 +127,8 @@ class _ChatPageState extends State<ChatPage> {
                     child: Text(
                       message.message,
                       style: TextStyle(color: textColor),
+                      textAlign: TextAlign.left,
+                      overflow: TextOverflow.visible,
                     ),
                   ),
                 );

@@ -1,6 +1,6 @@
-const bcrypt = require('bcrypt');
-const InstitutionModel = require('../models/institution.model');
-const Authentication = require('./auth.services');
+import bcrypt from 'bcryptjs';
+import InstitutionModel from '../models/institution.model.js';
+import Authentication from './auth.services.js';
 
 
 
@@ -57,4 +57,4 @@ class InstitutionService {
     
 }
 
-module.exports = InstitutionService;
+export default InstitutionService;

@@ -1,7 +1,7 @@
-const AwarenessService = require('../services/awareness.services');
+import AwarenessService from '../services/awareness.services.js';
 
 
-exports.createAwareness = async (req, res) => {
+export async function createAwareness(req, res) {
     try{
         const{title, content, image, date, source} = req.body;
         const result = await AwarenessService.createAwareness(title, content, image, date, source);
@@ -13,7 +13,7 @@ exports.createAwareness = async (req, res) => {
 }
 
 
-exports.getAwarenesses = async (req, res) => {
+export async function getAwarenesses(req, res) {
     try{
         const result = await AwarenessService.getAllAwarenesses();
         res.status(200).json(result);
@@ -22,7 +22,7 @@ exports.getAwarenesses = async (req, res) => {
     }
 }
 
-exports.getAwarnessById = async (req, res) => {
+export async function getAwarnessById(req, res) {
     try{
         const {id} = req.query;
         const result = await AwarenessService.getAwarenessById(id);
@@ -38,7 +38,7 @@ exports.getAwarnessById = async (req, res) => {
     }
 }
 
-exports.updateAwareness = async (req, res) => {
+export async function updateAwareness(req, res) {
     try{
         const {id} = req.query;
         const {updatedFields} = req.body;
@@ -55,7 +55,7 @@ exports.updateAwareness = async (req, res) => {
 }
 
 
-exports.deleteAwareness = async (req, res) => {
+export async function deleteAwareness(req, res) {
     try{
         const {id} = req.query;
         const result = await AwarenessService.deleteAwareness(id);

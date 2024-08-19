@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt');
-const db = require('../config/db');
+import bcrypt from 'bcryptjs';
+import db from '../config/db.js';
 
 const {Schema} = db;
 
@@ -31,4 +31,4 @@ adminSchema.pre('save', async function (next){
 
 const AdminModel = db.model('admin', adminSchema);
 
-module.exports = AdminModel;
+export default AdminModel;

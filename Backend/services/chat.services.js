@@ -1,5 +1,6 @@
-const dotenv = require('dotenv').config();
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+import dotenv from 'dotenv';
+dotenv.config()
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const apiKey = process.env.API_KEY
 const genAI = new GoogleGenerativeAI(apiKey);
@@ -24,7 +25,7 @@ const generationConfig = {
 
 let conversationHistory = [];
 
-exports.getReply = async (message) => {
+export async function getReply(message) {
   try {
     conversationHistory.push(`User: ${message}`);
     const prompt = conversationHistory.join('\n') + '\nAI:';
@@ -37,4 +38,4 @@ exports.getReply = async (message) => {
   } catch (err) {
     throw new Error('Error fetching reply from API');
   }
-};
+}

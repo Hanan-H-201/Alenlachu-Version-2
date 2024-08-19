@@ -2,6 +2,7 @@ import 'package:app/controllers/common/authentication/authentication_cubit.dart'
 import 'package:app/controllers/common/authentication/authentication_state.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'package:app/screens/common_screens/registration_option_screen.dart';
+import 'package:app/screens/professionals_screens/main/client_list_page.dart';
 import 'package:app/widgets/common/main_button.dart';
 import 'package:app/widgets/common/processing.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,17 @@ class ProfessionalHomeScreen extends StatelessWidget {
                     child: Text(
                       'Logout',
                       style: appTheme.textTheme.labelMedium,
-                    ))
+                    )),
+                MainButton(
+                  child: const Text("Professional List"), 
+                  onPressed: () {
+                   Navigator.push(
+                      context, MaterialPageRoute(
+                          builder: (context)=> ClientlistPage(),
+                          )
+                        );
+                       }
+                    ),
               ],
             ),
           );

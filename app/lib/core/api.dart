@@ -1,5 +1,5 @@
 class ApiUrl {
-  static const String baseUrl = "http://192.168.92.212:3000";
+  static const String baseUrl = "http://172.20.10.5:3001";
 
   static const String clientRegistrationUrl =
       "$baseUrl/api/clients/registerClient";
@@ -42,4 +42,8 @@ class ApiUrl {
   static const String updateJournalUrl = "$baseUrl/api/clients/updateJournal";
   static const String deleteJournalUrl = "$baseUrl/api/clients/deleteJournal";
   static const String sendAiMessageUrl = "$baseUrl/api/chat/send-message";
+  static const String professionalList = "$baseUrl/api/professions/professionalList";
+  static const String clientDetailsUrl = "$baseUrl/api/realtimechat/clients";
+  static const String sendRealtimeMessageUrl = "$baseUrl/api/realtimechat/sendMessage";
+  static const String getRealtimeMessageUrl = "$baseUrl/api/realtimechat/getMessages";
 }

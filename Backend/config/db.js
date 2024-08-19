@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const mongoUri = process.env.MONGO_URL;
 
@@ -7,4 +7,4 @@ mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
 .catch((err)=>console.log(err));
 
 
-module.exports = mongoose;
+export default mongoose;

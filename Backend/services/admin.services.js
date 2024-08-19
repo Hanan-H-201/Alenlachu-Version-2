@@ -1,6 +1,6 @@
-const bcrypt = require('bcrypt');
-const AdminModel = require('../models/admin.model');
-const Authentication = require('./auth.services');
+import bcrypt from 'bcryptjs';
+import AdminModel from '../models/admin.model.js';
+import Authentication from './auth.services.js';
 
 class AdminService {
     static async registerAdmin(email, password) {
@@ -36,4 +36,4 @@ class AdminService {
     }
 }
 
-module.exports = AdminService;
+export default AdminService;

@@ -1,6 +1,6 @@
-const bcrypt = require('bcrypt');
-const ProfessionalModel = require('../models/profession.model');
-const Authentication = require('./auth.services');
+import bcrypt from 'bcryptjs';
+import ProfessionalModel from '../models/profession.model.js';
+import Authentication from './auth.services.js';
 
 
 class ProfessionService{
@@ -56,4 +56,4 @@ class ProfessionService{
     
 }
 
-module.exports = ProfessionService;
+export default ProfessionService;

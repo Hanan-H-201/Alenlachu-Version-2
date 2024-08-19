@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+const router = Router();
 
-const{registerClient, loginClient, addJournal, getJournals,updateJournal, deleteJournal} = require('../controllers/client.controllers');
+import { registerClient, loginClient, addJournal, getJournals, updateJournal, deleteJournal } from '../controllers/client.controllers.js';
 
 router.post('/registerClient', registerClient);
 router.post('/loginClient', loginClient);
@@ -11,4 +11,4 @@ router.get('/getJournals', getJournals);
 router.put('/updateJournal', updateJournal);
 router.delete('/deleteJournal', deleteJournal);
 
-module.exports = router;
+export default router;

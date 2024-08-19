@@ -1,9 +1,18 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+const router = Router();
+import ProfessionalModel from "../models/profession.model.js";
 
-const {registerProfession, loginProfessional} = require('../controllers/profession.controllers');
+import { registerProfession, loginProfessional } from '../controllers/profession.controllers.js';
 
 router.post('/registerProfession', registerProfession);
 router.post('/loginProfessional', loginProfessional);
+router.get('/professionalList', async(req,res)=>{
+    try{
+        const professionals = await ProfessionalModel.find();
+        res.json(professionals)
+}catch(err){
+    res.status(500).json({message: err.message});
+}}
+);
 
-module.exports = router;
+export default router;
