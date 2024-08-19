@@ -8,6 +8,7 @@ import 'package:app/widgets/client/home/welcome_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 import '../../../widgets/client/home/awareness/awareness_list.dart';
 
@@ -32,17 +33,14 @@ class ClientHomeScreen extends StatelessWidget {
           SingleChildScrollView(
             child: Column(
               children: [
-                const SizedBox(
-                    height:
-                        110), // Adjust this height according to the height of WelcomeCard
+                const SizedBox(height: 110),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('How are You Feeling Today?',
-                          style: appTheme.textTheme.labelLarge),
+                      Text('feeling'.tr, style: appTheme.textTheme.labelLarge),
                       const SizedBox(height: 10),
                       const ClientEmotionalState(),
                       const SizedBox(height: 10),
@@ -56,10 +54,11 @@ class ClientHomeScreen extends StatelessWidget {
                             size: 20,
                           ),
                           const SizedBox(width: 10),
-                          Text('Explore events',
+                          Text('explore'.tr,
                               style: appTheme.textTheme.labelLarge),
                           const Spacer(),
-                          Text('See All', style: appTheme.textTheme.labelSmall),
+                          Text('see all'.tr,
+                              style: appTheme.textTheme.labelSmall),
                         ],
                       ),
                       const SizedBox(height: 15),
@@ -73,10 +72,11 @@ class ClientHomeScreen extends StatelessWidget {
                             size: 20,
                           ),
                           const SizedBox(width: 10),
-                          Text('Articles',
+                          Text('articles'.tr,
                               style: appTheme.textTheme.labelLarge),
                           const Spacer(),
-                          Text('See All', style: appTheme.textTheme.labelSmall),
+                          Text('see all'.tr,
+                              style: appTheme.textTheme.labelSmall),
                         ],
                       ),
                       const SizedBox(height: 15),

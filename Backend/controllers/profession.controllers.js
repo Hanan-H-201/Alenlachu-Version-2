@@ -15,7 +15,9 @@ exports.registerProfession = async (req, res) => {
             experience,
             languageToProvideService,
             pricePerHour,
-            verificationStatus
+            rating,
+            verificationStatus,
+            licenseUrl
         } = req.body;
 
         if (!/^\S+@\S+\.\S+$/.test(email)) {
@@ -50,7 +52,9 @@ exports.registerProfession = async (req, res) => {
             Number(experience),
             languageToProvideService.trim(),
             Number(pricePerHour),
-            verificationStatus.trim()
+            Number(rating),
+            verificationStatus.trim(),
+            licenseUrl
         );
 
         res.status(201).json(result);

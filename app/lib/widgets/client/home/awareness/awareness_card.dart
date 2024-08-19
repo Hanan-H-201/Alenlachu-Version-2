@@ -1,5 +1,6 @@
 import 'package:app/models/common/awareness_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../core/theme/app_theme.dart';
 
@@ -55,7 +56,7 @@ class AwarenessCard extends StatelessWidget {
                   const SizedBox(height: 5),
                   Center(
                       child: Text(
-                    'Read More',
+                    'read more'.tr,
                     style: appTheme.textTheme.labelSmall,
                   ))
                 ],

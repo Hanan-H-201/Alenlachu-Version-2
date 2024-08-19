@@ -4,6 +4,7 @@ import 'package:app/widgets/common/custome_form_components.dart';
 import 'package:app/widgets/common/main_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class AdminLoginForm extends StatefulWidget {
   const AdminLoginForm({super.key});
@@ -34,12 +35,12 @@ class _AdminLoginFormState extends State<AdminLoginForm> {
           CustomFormComponents.buildNormalTextField(
             _emailController,
             Text(
-              'Email',
+              'email'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'email is required';
+                return 'required'.tr;
               }
               return null;
             },
@@ -48,12 +49,12 @@ class _AdminLoginFormState extends State<AdminLoginForm> {
           CustomFormComponents.buildPasswordField(
             _passwordController,
             Text(
-              'Password',
+              'password'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'password is required';
+                return 'required'.tr;
               }
 
               return null;
@@ -68,7 +69,7 @@ class _AdminLoginFormState extends State<AdminLoginForm> {
               }
             },
             child: Text(
-              'Login',
+              'login'.tr,
               style: appTheme.textTheme.titleMedium,
             ),
           ),

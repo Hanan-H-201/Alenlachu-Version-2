@@ -1,7 +1,7 @@
-import 'package:app/core/api.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'package:app/widgets/registration_option/registration_option.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RegistrationOptionScreen extends StatefulWidget {
   const RegistrationOptionScreen({super.key});
@@ -22,8 +22,8 @@ class _RegistrationOptionScreenState extends State<RegistrationOptionScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'How do you want to keep exploring the app?',
-              maxLines: 2,
+              'user pref'.tr,
+              maxLines: 4,
               style: appTheme.textTheme.headlineLarge,
             ),
             const SizedBox(

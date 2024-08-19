@@ -5,6 +5,7 @@ import 'package:app/widgets/common/custome_form_components.dart';
 import 'package:app/widgets/common/main_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class ClientLoginForm extends StatefulWidget {
   const ClientLoginForm({super.key});
@@ -35,12 +36,12 @@ class _ClientLoginFormState extends State<ClientLoginForm> {
           CustomFormComponents.buildNormalTextField(
             _usernameController,
             Text(
-              'Username',
+              'username'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter your username';
+                return 'required'.tr;
               }
               return null;
             },
@@ -49,12 +50,12 @@ class _ClientLoginFormState extends State<ClientLoginForm> {
           CustomFormComponents.buildPasswordField(
             _passwordController,
             Text(
-              'Password',
+              'password'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter your password';
+                return 'required'.tr;
               }
 
               return null;
@@ -70,7 +71,7 @@ class _ClientLoginFormState extends State<ClientLoginForm> {
               }
             },
             child: Text(
-              'Login',
+              'login'.tr,
               style: appTheme.textTheme.titleMedium,
             ),
           ),
@@ -79,7 +80,7 @@ class _ClientLoginFormState extends State<ClientLoginForm> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Don\'t have an account?',
+                'haveNoAccount'.tr,
                 style: appTheme.textTheme.bodyMedium,
               ),
               const SizedBox(
@@ -104,7 +105,7 @@ class _ClientLoginFormState extends State<ClientLoginForm> {
                   }
                 },
                 child: Text(
-                  'Sign Up',
+                  'signup'.tr,
                   style: appTheme.textTheme.labelMedium,
                 ),
               )

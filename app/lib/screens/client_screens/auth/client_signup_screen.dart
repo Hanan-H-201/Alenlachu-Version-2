@@ -6,6 +6,7 @@ import 'package:app/screens/client_screens/main/client_home_screen.dart';
 import 'package:app/widgets/client/auth/client_signup_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class ClientSignupScreen extends StatefulWidget {
   const ClientSignupScreen({super.key});
@@ -49,7 +50,7 @@ class _ClientSignupScreenState extends State<ClientSignupScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "Let's Get Started!",
+                  'let start'.tr,
                   style: appTheme.textTheme.headlineMedium,
                 ),
                 const SizedBox(

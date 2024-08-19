@@ -6,14 +6,15 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:app/core/app.dart';
+import 'package:app/core/language/language_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-
-    await tester.pumpWidget(const MainApp());
+    final Locale? lang = await LanguageManager.getPreferredLanguage();
+    await tester.pumpWidget(MainApp(lang: lang));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

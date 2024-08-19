@@ -284,14 +284,10 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   Future<void> logout() async {
     emit(Authenticating());
     try {
-      final response = await authenticationService.logout();
-      if (response.statusCode == 200) {
-        await LoginManager.removeToken();
-        await LoginManager.removeRole();
-      } else {
-        await LoginManager.removeToken();
-        await LoginManager.removeRole();
-      }
+      await authenticationService.logout();
+
+      await LoginManager.removeToken();
+      await LoginManager.removeRole();
 
       emit(AppStarted());
     } catch (e) {

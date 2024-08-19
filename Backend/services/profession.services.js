@@ -4,9 +4,9 @@ const Authentication = require('./auth.services');
 
 
 class ProfessionService{
-    static async registerProfession(name,email,password, phoneNumber, dateOfBirth, nationality, address, profession, experience,  languageToProvideService, pricePerHour, verificationStatus){
+    static async registerProfession(name,email,password, phoneNumber, dateOfBirth, nationality, address, profession, experience,  languageToProvideService, pricePerHour,rating, verificationStatus, licenseUrl){
         try{
-            const newProfessional = new ProfessionalModel({name,email,password, phoneNumber, dateOfBirth, nationality, address, profession, experience,  languageToProvideService, pricePerHour, verificationStatus});
+            const newProfessional = new ProfessionalModel({name,email,password, phoneNumber, dateOfBirth, nationality, address, profession, experience,  languageToProvideService, pricePerHour, rating, verificationStatus, licenseUrl});
             return await newProfessional.save();
         }catch(e){
             throw new Error(`Failed to register Profession ${e}`);
@@ -31,7 +31,9 @@ class ProfessionService{
             experience,
             languageToProvideService,
             pricePerHour,
-            verificationStatus} = professional;
+            rating,
+            verificationStatus,
+            licenseUrl} = professional;
 
         let tokenData = {
             _id : _id,
@@ -45,8 +47,12 @@ class ProfessionService{
             experience : experience,
             languageToProvideService : languageToProvideService,
             pricePerHour : pricePerHour,
-            verificationStatus : verificationStatus
+            rating : rating,
+            verificationStatus : verificationStatus,
+            licenseUrl : licenseUrl
         };
+
+        console.log(tokenData);
 
         const SECRET_KEY = process.env.SECRET_KEY || 'secret_key';
         const token = Authentication.generateToken(tokenData,SECRET_KEY,{ expiresIn: '1h' });

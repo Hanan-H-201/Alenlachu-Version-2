@@ -6,6 +6,7 @@ import 'package:app/widgets/client/auth/client_login_form.dart';
 import 'package:app/widgets/common/processing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class ClientLoginScreen extends StatefulWidget {
   const ClientLoginScreen({super.key});
@@ -49,7 +50,7 @@ class _ClientLoginScreenState extends State<ClientLoginScreen> {
                     child: Image.asset('assets/images/welcome.png'),
                   ),
                   Text(
-                    'Welcome Back!',
+                    'welcome'.tr,
                     style: appTheme.textTheme.headlineMedium,
                   ),
                   const SizedBox(

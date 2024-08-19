@@ -1,5 +1,6 @@
 import 'package:app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AnonymousRequest {
   static Future<bool?> showAnonymousUsageDialog(BuildContext context) async {
@@ -7,9 +8,9 @@ class AnonymousRequest {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Continue Anonymously?'),
-          content: const Text(
-            'Would you like to continue using the app anonymously?',
+          title: Text('anon'.tr),
+          content: Text(
+            'anon request'.tr,
             maxLines: 10,
           ),
           actions: <Widget>[
@@ -17,14 +18,14 @@ class AnonymousRequest {
               onPressed: () {
                 Navigator.of(context).pop(false);
               },
-              child: Text('No', style: appTheme.textTheme.labelMedium),
+              child: Text('no'.tr, style: appTheme.textTheme.labelMedium),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(true);
               },
               child: Text(
-                'Yes',
+                'yes'.tr,
                 style: appTheme.textTheme.labelMedium,
               ),
             ),
@@ -39,16 +40,14 @@ class AnonymousRequest {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text('Thank You'),
-            content: const Text(
-                'You have chosen to continue anonymously. Rest assured, your sensitive information will not be disclosed.',
-                maxLines: 10),
+            title: Text('thank'.tr),
+            content: Text('anon true'.tr, maxLines: 10),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('OK', style: appTheme.textTheme.labelMedium),
+                child: Text('ok'.tr, style: appTheme.textTheme.labelMedium),
               ),
             ],
           );
@@ -60,16 +59,14 @@ class AnonymousRequest {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text('Thank you'),
-            content: const Text(
-                'You can still choose to remain anonymous for using other sensitive features of the app',
-                maxLines: 10),
+            title: Text('thank'.tr),
+            content: Text('anon false'.tr, maxLines: 10),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('OK', style: appTheme.textTheme.labelMedium),
+                child: Text('ok'.tr, style: appTheme.textTheme.labelMedium),
               ),
             ],
           );

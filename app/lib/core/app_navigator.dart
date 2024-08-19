@@ -2,13 +2,14 @@ import 'package:app/controllers/common/authentication/authentication_cubit.dart'
 import 'package:app/controllers/common/authentication/authentication_state.dart';
 import 'package:app/screens/client_screens/auth/client_login_screen.dart';
 import 'package:app/screens/client_screens/client_landing_page.dart';
-import 'package:app/screens/client_screens/main/client_home_screen.dart';
 import 'package:app/screens/common_screens/authentication_faild.dart';
+import 'package:app/screens/common_screens/language_preferenec.dart';
 import 'package:app/screens/common_screens/registration_option_screen.dart';
 import 'package:app/screens/institution_screens/auth/institution_login_screen.dart';
 import 'package:app/screens/institution_screens/main/institution_home_screen.dart';
 import 'package:app/screens/professionals_screens/auth/professional_login_screen.dart';
 import 'package:app/screens/professionals_screens/main/professional_home_screen.dart';
+import 'package:app/screens/professionals_screens/professionl_landing_page.dart';
 import 'package:app/widgets/common/processing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +45,8 @@ class AppNavigator extends StatelessWidget {
       }
     }, builder: (context, state) {
       if (state is AppStarted) {
-        return const RegistrationOptionScreen();
+        return const LanguagePreference();
+        // return const RegistrationOptionScreen();
       } else if (state is UnauthenticatedClient) {
         return const ClientLoginScreen();
       } else if (state is UnauthenticatedInstitution) {
@@ -56,9 +58,7 @@ class AppNavigator extends StatelessWidget {
       } else if (state is AuthenticatedAsInstitution) {
         return InstitutionHomeScreen(name: state.institution.name);
       } else if (state is AuthenticatedAsProfessional) {
-        return ProfessionalHomeScreen(
-          name: state.profession.name,
-        );
+        return const ProfessionlLandingPage();
       } else if (state is AuthenticationFailed) {
         return AuthenticationFaildScreen(
           error: state.errorMessage,

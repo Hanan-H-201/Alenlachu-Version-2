@@ -5,6 +5,7 @@ import 'package:app/widgets/common/custome_form_components.dart';
 import 'package:app/widgets/common/main_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class ProfessionalSignupForm extends StatefulWidget {
   const ProfessionalSignupForm({super.key});
@@ -61,12 +62,12 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                 child: CustomFormComponents.buildNormalTextField(
                   _nameController,
                   Text(
-                    'Name',
+                    'fullname'.tr,
                     style: appTheme.textTheme.bodyMedium,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Your name is required';
+                      return 'required'.tr;
                     }
                     return null;
                   },
@@ -77,12 +78,12 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                 child: CustomFormComponents.buildNormalTextField(
                   _emailController,
                   Text(
-                    'Email',
+                    'email'.tr,
                     style: appTheme.textTheme.bodyMedium,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
+                      return 'required'.tr;
                     }
 
                     return null;
@@ -95,12 +96,12 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
           CustomFormComponents.buildPasswordField(
             _passwordController,
             Text(
-              'Password',
+              'password'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter your password';
+                return 'required'.tr;
               }
 
               return null;
@@ -110,16 +111,16 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
           CustomFormComponents.buildPasswordField(
             _confirmPasswordController,
             Text(
-              'Confirm Password',
+              'confirm'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please confirm your password';
+                return 'required'.tr;
               }
 
               if (value != _passwordController.text.trim()) {
-                return 'Passwords do not match';
+                return 'confirmError'.tr;
               }
 
               return null;
@@ -129,7 +130,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
           CustomFormComponents.buildPhoneNumberField(
             _phoneNumberController,
             Text(
-              'Phone',
+              'phone'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             selectedCountryCode,
@@ -141,7 +142,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
             },
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter your emergency contact number';
+                return 'required'.tr;
               }
 
               return null;
@@ -152,11 +153,11 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
               context,
               _dateOfBirthController,
               Text(
-                'Birth Date',
+                'birthDate'.tr,
                 style: appTheme.textTheme.bodyMedium,
               ), validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please select your Birth date';
+              return 'required'.tr;
             }
 
             return null;
@@ -167,7 +168,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
               Expanded(
                 child: CustomFormComponents.buildDropdownInputField(
                   Text(
-                    'Address',
+                    'address'.tr,
                     style: appTheme.textTheme.bodyMedium,
                   ),
                   ['Addis Ababa', 'Adama', 'Bahrdar', 'Dire Dawa'],
@@ -179,7 +180,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                   },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please select your address';
+                      return 'required'.tr;
                     }
 
                     return null;
@@ -192,7 +193,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
               Expanded(
                 child: CustomFormComponents.buildDropdownInputField(
                   Text(
-                    'Nationality',
+                    'nationality'.tr,
                     style: appTheme.textTheme.bodyMedium,
                   ),
                   ['Ethiopia', 'USA', 'Kenya', 'Sudan', 'Germany'],
@@ -204,7 +205,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                   },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please select your residency';
+                      return 'required'.tr;
                     }
                     return null;
                   },
@@ -215,7 +216,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
           const SizedBox(height: 15),
           CustomFormComponents.buildDropdownInputField(
             Text(
-              'Profession',
+              'profession'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             [
@@ -240,7 +241,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
             },
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please select your Profession';
+                return 'required'.tr;
               }
               return null;
             },
@@ -248,7 +249,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
           const SizedBox(height: 15),
           CustomFormComponents.buildDropdownInputField(
             Text(
-              'Years of exprience',
+              'experience'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
@@ -260,7 +261,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
             },
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please select your Expreience';
+                return 'required'.tr;
               }
               return null;
             },
@@ -271,7 +272,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
               Expanded(
                 child: CustomFormComponents.buildDropdownInputField(
                     Text(
-                      'Language',
+                      'language'.tr,
                       style: appTheme.textTheme.bodyMedium,
                     ),
                     ['English', 'Amharic'],
@@ -281,7 +282,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                   });
                 }, validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please select Language';
+                    return 'required'.tr;
                   }
 
                   return null;
@@ -294,11 +295,11 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                 child: CustomFormComponents.buildNormalTextField(
                     _pricePerHourController,
                     Text(
-                      'Price',
+                      'price'.tr,
                       style: appTheme.textTheme.bodyMedium,
                     ), validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter price';
+                    return 'required'.tr;
                   }
 
                   return null;
@@ -334,7 +335,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                         color: Colors.white,
                       )
                     : Text(
-                        'Sign Up',
+                        'signup'.tr,
                         style: appTheme.textTheme.titleMedium,
                       ),
               );
@@ -345,7 +346,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Already have an account?',
+                'haveAccount'.tr,
                 style: appTheme.textTheme.bodyMedium,
               ),
               const SizedBox(
@@ -356,7 +357,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                   Navigator.pushReplacementNamed(context, '/professionalLogin');
                 },
                 child: Text(
-                  'Login',
+                  'login'.tr,
                   style: appTheme.textTheme.labelMedium,
                 ),
               )

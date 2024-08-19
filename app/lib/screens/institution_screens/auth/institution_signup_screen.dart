@@ -5,6 +5,7 @@ import 'package:app/screens/institution_screens/main/institution_home_screen.dar
 import 'package:app/widgets/institution/auth/institution_signup_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class InstitutionSignupScreen extends StatefulWidget {
   const InstitutionSignupScreen({super.key});
@@ -46,7 +47,7 @@ class _InstitutionSignupScreenState extends State<InstitutionSignupScreen> {
             child: Column(
               children: [
                 Text(
-                  'Create new Institution acount',
+                  'let start'.tr,
                   style: appTheme.textTheme.headlineMedium,
                 ),
                 const SizedBox(

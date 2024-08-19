@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:app/controllers/common/authentication/authentication_cubit.dart';
 import 'package:app/core/app.dart';
+import 'package:app/core/language/language_manager.dart';
 import 'package:app/firebase_options.dart';
 import 'package:app/services/common/authentication_service.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,12 +15,14 @@ void main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-
+    final Locale? lang = await LanguageManager.getPreferredLanguage();
     runApp(BlocProvider(
       create: (context) => AuthenticationCubit(
         authenticationService: AuthenticationService(),
       ),
-      child: const MainApp(),
+      child: MainApp(
+        lang: lang,
+      ),
     ));
   } catch (e) {
     log(double.parse(e.toString()));

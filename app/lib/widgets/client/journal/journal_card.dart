@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 class JournalCard extends StatefulWidget {
   final JournalModel journal;
@@ -20,7 +21,7 @@ class _JournalCardState extends State<JournalCard> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Pick a color'),
+        title: Text('pickColor'.tr),
         content: SingleChildScrollView(
           child: ColorPicker(
             pickerColor: widget.journal.getColor(),
@@ -37,7 +38,7 @@ class _JournalCardState extends State<JournalCard> {
                   .updateJournal(updatedJournal: widget.journal);
               Navigator.of(context).pop();
             },
-            child: const Text('Select'),
+            child: Text('select'.tr),
           ),
         ],
       ),
@@ -140,7 +141,7 @@ class _JournalCardState extends State<JournalCard> {
                             .read<JournalCubit>()
                             .deleteJournal(journalId: widget.journal.id!);
                       },
-                      child: FaIcon(
+                      child: const FaIcon(
                         FontAwesomeIcons.trash,
                         size: 20,
                         color: Colors.red,

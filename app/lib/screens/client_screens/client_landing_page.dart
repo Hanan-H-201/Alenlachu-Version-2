@@ -6,13 +6,14 @@ import 'package:app/core/theme/app_theme.dart';
 import 'package:app/screens/client_screens/main/chatbot_page.dart';
 import 'package:app/screens/client_screens/main/client_home_screen.dart';
 import 'package:app/screens/client_screens/main/journal_screen.dart';
-import 'package:app/screens/client_screens/main/profile_screen.dart';
+import 'package:app/screens/client_screens/main/setting_screen.dart';
 import 'package:app/screens/client_screens/main/support_screen.dart';
 import 'package:app/screens/client_screens/main/venting_screen.dart';
 import 'package:app/widgets/client/journal/add_journal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 class ClientLandingPage extends StatefulWidget {
   const ClientLandingPage({super.key});
@@ -44,8 +45,8 @@ class _ClientLandingPageState extends State<ClientLandingPage> {
               return const VentingScreen();
             case ClientBottomNavigationState.support:
               return const SupportScreen();
-            case ClientBottomNavigationState.profile:
-              return const ProfileScreen();
+            case ClientBottomNavigationState.setting:
+              return const SettingScreen();
             default:
               return const ClientHomeScreen();
           }
@@ -76,16 +77,18 @@ class _ClientLandingPageState extends State<ClientLandingPage> {
                   size: 20,
                 ),
               );
+            case ClientBottomNavigationState.setting:
+              return const SizedBox.shrink();
             default:
               return FloatingActionButton(
                 backgroundColor: appTheme.primaryColor,
                 elevation: 10,
                 shape: const CircleBorder(),
                 onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ChatPage()),
-                 );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ChatPage()),
+                  );
                 },
                 child: FaIcon(
                   FontAwesomeIcons.robot,
@@ -104,29 +107,29 @@ class _ClientLandingPageState extends State<ClientLandingPage> {
             type: BottomNavigationBarType.fixed,
             selectedItemColor: appTheme.primaryColor,
             unselectedItemColor: Colors.grey,
-            items: const <BottomNavigationBarItem>[
+            items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: FaIcon(
+                icon: const FaIcon(
                   FontAwesomeIcons.house,
                   size: 20,
                 ),
-                label: 'Home',
+                label: 'home'.tr,
               ),
               BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.penToSquare, size: 20),
-                label: 'Journal',
+                icon: const FaIcon(FontAwesomeIcons.penToSquare, size: 20),
+                label: 'journal'.tr,
               ),
               BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.handHoldingHand, size: 20),
-                label: 'Venting',
+                icon: const FaIcon(FontAwesomeIcons.handHoldingHand, size: 20),
+                label: 'venting'.tr,
               ),
               BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.users, size: 20),
-                label: 'Support',
+                icon: const FaIcon(FontAwesomeIcons.users, size: 20),
+                label: 'support'.tr,
               ),
               BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.user, size: 20),
-                label: 'Profile',
+                icon: const FaIcon(FontAwesomeIcons.gear, size: 20),
+                label: 'setting'.tr,
               ),
             ],
             onTap: (index) {

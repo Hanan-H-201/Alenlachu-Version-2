@@ -3,6 +3,7 @@ import 'package:app/models/common/event_model.dart';
 import 'package:app/services/common/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 class EventCard extends StatelessWidget {
   final EventModel event;
@@ -106,7 +107,7 @@ class EventCard extends StatelessWidget {
                   const SizedBox(height: 5),
                   Center(
                       child: Text(
-                    'View Detail',
+                    'view more'.tr,
                     style: appTheme.textTheme.labelSmall,
                   ))
                 ],

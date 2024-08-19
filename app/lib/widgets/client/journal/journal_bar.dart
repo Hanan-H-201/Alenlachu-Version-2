@@ -1,5 +1,6 @@
 import 'package:app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class JournalBar extends StatelessWidget {
   const JournalBar({super.key});
@@ -31,7 +32,7 @@ class JournalBar extends StatelessWidget {
             child: Image.asset('assets/images/logo.png'),
           ),
           Text(
-            'My Diary',
+            'journal'.tr,
             style: appTheme.textTheme.labelMedium,
           ),
           IconButton(

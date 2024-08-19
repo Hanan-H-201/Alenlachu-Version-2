@@ -6,6 +6,7 @@ import 'package:app/widgets/common/processing.dart';
 import 'package:app/widgets/professionals/auth/professional_login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class ProfessionalLoginScreen extends StatefulWidget {
   const ProfessionalLoginScreen({super.key});
@@ -31,8 +32,11 @@ class _ProfessionalLoginScreenState extends State<ProfessionalLoginScreen> {
               (Route<dynamic> route) => false,
             );
           } else if (state is UnauthenticatedProfessional) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text(state.message)));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(
+              state.message,
+              maxLines: 10,
+            )));
           }
         },
         builder: (context, state) {
@@ -52,7 +56,7 @@ class _ProfessionalLoginScreenState extends State<ProfessionalLoginScreen> {
                       child: Image.asset('assets/images/welcome.png'),
                     ),
                     Text(
-                      'Welcome Back!',
+                      'welcome'.tr,
                       style: appTheme.textTheme.headlineMedium,
                     ),
                     const SizedBox(

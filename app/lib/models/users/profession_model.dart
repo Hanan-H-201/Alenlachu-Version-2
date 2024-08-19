@@ -14,7 +14,9 @@ class ProfessionModel extends Equatable {
   final int experience;
   final String languageToProvideService;
   final double pricePerHour;
+  final int rating;
   String verificationStatus;
+  String? licenseUrl;
 
   ProfessionModel(
       {this.id,
@@ -29,7 +31,9 @@ class ProfessionModel extends Equatable {
       required this.experience,
       required this.languageToProvideService,
       required this.pricePerHour,
-      this.verificationStatus = 'pending'});
+      this.rating = 0,
+      this.verificationStatus = 'waiting',
+      this.licenseUrl});
 
   Map<String, dynamic> toJson() {
     return {
@@ -44,7 +48,9 @@ class ProfessionModel extends Equatable {
       'experience': experience,
       'languageToProvideService': languageToProvideService,
       'pricePerHour': pricePerHour,
-      'verificationStatus': verificationStatus
+      'rating': rating,
+      'verificationStatus': verificationStatus,
+      'licenseUrl': licenseUrl,
     };
   }
 
@@ -66,7 +72,9 @@ class ProfessionModel extends Equatable {
       pricePerHour: json['pricePerHour'] is double
           ? json['pricePerHour'] as double
           : double.parse(json['pricePerHour'].toString()),
+      rating: json['rating'] as int,
       verificationStatus: json['verificationStatus'] as String,
+      licenseUrl: json['licenseUrl'],
     );
   }
   @override

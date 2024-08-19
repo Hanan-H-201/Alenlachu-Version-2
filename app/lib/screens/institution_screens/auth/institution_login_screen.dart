@@ -6,6 +6,7 @@ import 'package:app/widgets/common/processing.dart';
 import 'package:app/widgets/institution/auth/institution_login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class InstitutionLoginScreen extends StatefulWidget {
   const InstitutionLoginScreen({super.key});
@@ -51,7 +52,7 @@ class _InstitutionLoginScreenState extends State<InstitutionLoginScreen> {
                       child: Image.asset('assets/images/welcome.png'),
                     ),
                     Text(
-                      'Welcome Back!',
+                      'welcome'.tr,
                       style: appTheme.textTheme.headlineMedium,
                     ),
                     const SizedBox(

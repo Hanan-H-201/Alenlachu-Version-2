@@ -1,6 +1,7 @@
 import 'package:app/core/theme/app_theme.dart';
 import 'package:app/widgets/common/anonymous_request.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RegistrationOptionCard extends StatelessWidget {
   const RegistrationOptionCard({super.key});
@@ -10,7 +11,7 @@ class RegistrationOptionCard extends StatelessWidget {
     return SizedBox(
       child: Column(
         children: [
-          buildOption(context, 'As a Client', () async {
+          buildOption(context, 'client'.tr, () async {
             final bool? result =
                 await AnonymousRequest.showAnonymousUsageDialog(context);
             if (result == true) {
@@ -26,19 +27,19 @@ class RegistrationOptionCard extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          buildOption(context, 'As a Professional', () {
+          buildOption(context, 'professional'.tr, () {
             Navigator.pushNamed(context, '/professionalRegistration');
           }),
           const SizedBox(
             height: 10,
           ),
-          buildOption(context, 'As an Institution', () {
+          buildOption(context, 'institution'.tr, () {
             Navigator.pushNamed(context, '/institutionRegistration');
           }),
           const SizedBox(
             height: 10,
           ),
-          buildOption(context, 'As an Admin', () {
+          buildOption(context, 'admin'.tr, () {
             Navigator.pushNamed(context, '/adminLogin');
           }),
           const SizedBox(

@@ -5,6 +5,7 @@ import 'package:app/widgets/common/custome_form_components.dart';
 import 'package:app/widgets/common/main_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class AnonClientSignupForm extends StatefulWidget {
   const AnonClientSignupForm({super.key});
@@ -49,12 +50,12 @@ class _AnonClientSignupFormState extends State<AnonClientSignupForm> {
                 child: CustomFormComponents.buildNormalTextField(
                   _usernameController,
                   Text(
-                    'Username',
+                    'username'.tr,
                     style: appTheme.textTheme.bodyMedium,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your username';
+                      return 'required'.tr;
                     }
                     return null;
                   },
@@ -65,12 +66,12 @@ class _AnonClientSignupFormState extends State<AnonClientSignupForm> {
                 child: CustomFormComponents.buildNormalTextField(
                   _emailController,
                   Text(
-                    'Email',
+                    'email'.tr,
                     style: appTheme.textTheme.bodyMedium,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
+                      return 'required'.tr;
                     }
 
                     return null;
@@ -83,12 +84,12 @@ class _AnonClientSignupFormState extends State<AnonClientSignupForm> {
           CustomFormComponents.buildPasswordField(
             _passwordController,
             Text(
-              'Password',
+              'password'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter your password';
+                return 'required'.tr;
               }
 
               return null;
@@ -98,16 +99,16 @@ class _AnonClientSignupFormState extends State<AnonClientSignupForm> {
           CustomFormComponents.buildPasswordField(
             _confirmPasswordController,
             Text(
-              'Confirm Password',
+              'confirm'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please confirm your password';
+                return 'required'.tr;
               }
 
               if (value != _passwordController.text.trim()) {
-                return 'Passwords do not match';
+                return 'confirmError'.tr;
               }
 
               return null;
@@ -117,7 +118,7 @@ class _AnonClientSignupFormState extends State<AnonClientSignupForm> {
           CustomFormComponents.buildPhoneNumberField(
             _emergencyContactController,
             Text(
-              'Emergency Contact',
+              'emergency'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             selectedCountryCode,
@@ -129,7 +130,7 @@ class _AnonClientSignupFormState extends State<AnonClientSignupForm> {
             },
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter your emergency contact number';
+                return 'required'.tr;
               }
 
               return null;
@@ -155,7 +156,7 @@ class _AnonClientSignupFormState extends State<AnonClientSignupForm> {
                         color: Colors.white,
                       )
                     : Text(
-                        'Sign Up',
+                        'signup'.tr,
                         style: appTheme.textTheme.titleMedium,
                       ),
               );
@@ -166,7 +167,7 @@ class _AnonClientSignupFormState extends State<AnonClientSignupForm> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Already have an account?',
+                'haveAccount'.tr,
                 style: appTheme.textTheme.bodyMedium,
               ),
               const SizedBox(
@@ -177,7 +178,7 @@ class _AnonClientSignupFormState extends State<AnonClientSignupForm> {
                   Navigator.pushReplacementNamed(context, '/clientLogin');
                 },
                 child: Text(
-                  'Login',
+                  'login'.tr,
                   style: appTheme.textTheme.labelMedium,
                 ),
               )

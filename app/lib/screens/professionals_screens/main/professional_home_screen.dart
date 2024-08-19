@@ -43,7 +43,7 @@ class ProfessionalHomeScreen extends StatelessWidget {
                     },
                     child: Text(
                       'Logout',
-                      style: appTheme.textTheme.labelMedium,
+                      style: appTheme.textTheme.titleMedium,
                     ))
               ],
             ),

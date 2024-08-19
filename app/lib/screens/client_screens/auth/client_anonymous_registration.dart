@@ -2,10 +2,11 @@ import 'package:app/controllers/common/authentication/authentication_cubit.dart'
 import 'package:app/controllers/common/authentication/authentication_state.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'package:app/screens/client_screens/client_landing_page.dart';
-import 'package:app/screens/client_screens/main/client_home_screen.dart';
+
 import 'package:app/widgets/client/auth/anon_client_signup_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class ClientAnonymousRegistration extends StatefulWidget {
   const ClientAnonymousRegistration({super.key});
@@ -45,7 +46,7 @@ class _ClientAnonymousRegistrationState
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    "Let's Get Started!",
+                    'let start'.tr,
                     style: appTheme.textTheme.headlineMedium,
                   ),
                   const SizedBox(

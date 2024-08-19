@@ -6,6 +6,7 @@ import 'package:app/controllers/common/authentication/authentication_cubit.dart'
 import 'package:app/controllers/common/awareness/awareness_cubit.dart';
 import 'package:app/controllers/common/event/event_cubit.dart';
 import 'package:app/core/app_navigator.dart';
+import 'package:app/core/language/local_strings.dart';
 import 'package:app/core/login_manager.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'package:app/screens/admin_screens/auth/admin_login_screen.dart';
@@ -23,11 +24,11 @@ import 'package:app/services/common/awareness_service.dart';
 import 'package:app/services/common/event_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class MainApp extends StatefulWidget {
-  const MainApp({
-    super.key,
-  });
+  final Locale? lang;
+  const MainApp({super.key, required this.lang});
 
   @override
   State<MainApp> createState() => _MainAppState();
@@ -127,9 +128,11 @@ class _MainAppState extends State<MainApp> {
                 authenticationCubit:
                     BlocProvider.of<AuthenticationCubit>(context)))
       ],
-      child: MaterialApp(
+      child: GetMaterialApp(
         title: 'Alenlachu',
         theme: appTheme,
+        translations: LocalString(),
+        locale: widget.lang ?? const Locale('am'),
         routes: {
           '/clientRegistration': (context) => const ClientSignupScreen(),
           '/clientAnonymousRegistration': (context) =>

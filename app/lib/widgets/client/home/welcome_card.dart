@@ -39,7 +39,7 @@ class WelcomeCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Hi ${state.client.username.capitalizeFirst}!',
+                          '${'hi'.tr} ${state.client.username.capitalizeFirst}',
                           style: appTheme.textTheme.titleLarge,
                         ),
                         Text(

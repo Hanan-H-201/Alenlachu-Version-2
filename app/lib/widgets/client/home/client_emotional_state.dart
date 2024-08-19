@@ -1,5 +1,6 @@
 import 'package:app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ClientEmotionalState extends StatefulWidget {
   const ClientEmotionalState({super.key});
@@ -30,7 +31,7 @@ class _ClientEmotionalStateState extends State<ClientEmotionalState> {
                 height: 5,
               ),
               Text(
-                'Sad',
+                'sad'.tr,
                 style: appTheme.textTheme.bodySmall,
               )
             ],
@@ -48,7 +49,7 @@ class _ClientEmotionalStateState extends State<ClientEmotionalState> {
                 height: 5,
               ),
               Text(
-                'Normal',
+                'normal'.tr,
                 style: appTheme.textTheme.bodySmall,
               )
             ],
@@ -66,7 +67,7 @@ class _ClientEmotionalStateState extends State<ClientEmotionalState> {
                 height: 5,
               ),
               Text(
-                'Happy',
+                'happy'.tr,
                 style: appTheme.textTheme.bodySmall,
               )
             ],
@@ -84,7 +85,7 @@ class _ClientEmotionalStateState extends State<ClientEmotionalState> {
                 height: 5,
               ),
               Text(
-                'Excited',
+                'excited'.tr,
                 style: appTheme.textTheme.bodySmall,
               )
             ],

@@ -6,6 +6,7 @@ import 'package:app/widgets/admin/auth/admin_login_form.dart';
 import 'package:app/widgets/common/processing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class AdminLoginScreen extends StatefulWidget {
   const AdminLoginScreen({super.key});
@@ -52,7 +53,7 @@ class _AdminLoginScreenState extends State<AdminLoginScreen> {
                       child: Image.asset('assets/images/welcome.png'),
                     ),
                     Text(
-                      'Welcome Back!',
+                      'welcome'.tr,
                       style: appTheme.textTheme.headlineMedium,
                     ),
                     const SizedBox(

@@ -5,7 +5,7 @@ import 'package:app/models/common/event_model.dart';
 import 'package:app/widgets/client/home/event/event_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
+import 'package:get/get.dart';
 
 class EventList extends StatefulWidget {
   const EventList({super.key});
@@ -27,8 +27,14 @@ class _EventListState extends State<EventList> {
               return Center(
                 child: Column(
                   children: [
-                    Image.asset('assets/images/empty.png',height: 200,),
-                    Text('No Events', style: appTheme.textTheme.bodySmall,)
+                    Image.asset(
+                      'assets/images/empty.png',
+                      height: 200,
+                    ),
+                    Text(
+                      'noevent'.tr,
+                      style: appTheme.textTheme.bodySmall,
+                    )
                   ],
                 ),
               );

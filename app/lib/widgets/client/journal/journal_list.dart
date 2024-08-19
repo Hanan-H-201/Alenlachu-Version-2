@@ -5,6 +5,7 @@ import 'package:app/models/users/client/journal_model.dart';
 import 'package:app/widgets/client/journal/journal_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class JournalList extends StatefulWidget {
   const JournalList({super.key});
@@ -28,7 +29,7 @@ class _JournalListState extends State<JournalList> {
                     height: 200,
                   ),
                   Text(
-                    'Save your Days',
+                    'nojournal'.tr,
                     style: appTheme.textTheme.bodySmall,
                   )
                 ],

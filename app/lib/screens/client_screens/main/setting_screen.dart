@@ -2,13 +2,16 @@ import 'package:app/controllers/common/authentication/authentication_cubit.dart'
 import 'package:app/controllers/common/authentication/authentication_state.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'package:app/screens/common_screens/registration_option_screen.dart';
+import 'package:app/widgets/client/setting/logo_card.dart';
+import 'package:app/widgets/client/setting/setting_card.dart';
 import 'package:app/widgets/common/main_button.dart';
 import 'package:app/widgets/common/processing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({
+class SettingScreen extends StatelessWidget {
+  const SettingScreen({
     super.key,
   });
 
@@ -30,15 +33,31 @@ class ProfileScreen extends StatelessWidget {
           if (state is Authenticating) {
             return const Processing();
           }
-          return Center(
-            child: MainButton(
-                onPressed: () {
-                  context.read<AuthenticationCubit>().logout();
-                },
-                child: Text(
-                  'Logout',
-                  style: appTheme.textTheme.titleMedium,
-                )),
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                const LogoCard(),
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Column(
+                    children: [
+                      const SettingCard(),
+                      MainButton(
+                          onPressed: () {
+                            context.read<AuthenticationCubit>().logout();
+                          },
+                          child: Text(
+                            'logout'.tr,
+                            style: appTheme.textTheme.titleMedium,
+                          )),
+                    ],
+                  ),
+                )
+              ],
+            ),
           );
         },
       ),

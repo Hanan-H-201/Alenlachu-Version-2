@@ -6,6 +6,7 @@ import 'package:app/widgets/common/main_button.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class ClientSignupForm extends StatefulWidget {
   const ClientSignupForm({super.key});
@@ -60,12 +61,12 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
                 child: CustomFormComponents.buildNormalTextField(
                   _fullNameController,
                   Text(
-                    'Full Name',
+                    'fullname'.tr,
                     style: appTheme.textTheme.bodyMedium,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your full name';
+                      return 'required'.tr;
                     }
                     return null;
                   },
@@ -76,12 +77,12 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
                 child: CustomFormComponents.buildNormalTextField(
                   _usernameController,
                   Text(
-                    'Username',
+                    'username'.tr,
                     style: appTheme.textTheme.bodyMedium,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your username';
+                      return 'required'.tr;
                     }
                     return null;
                   },
@@ -93,12 +94,12 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
           CustomFormComponents.buildPasswordField(
             _passwordController,
             Text(
-              'Password',
+              'password'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter your password';
+                return 'required'.tr;
               }
 
               return null;
@@ -108,15 +109,15 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
           CustomFormComponents.buildPasswordField(
             _confirmPasswordController,
             Text(
-              'Confirm Password',
+              'confirm'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please confirm your password';
+                return 'required'.tr;
               }
               if (value != _passwordController.text.trim()) {
-                return 'Passwords do not match';
+                return 'confirmError'.tr;
               }
 
               return null;
@@ -129,12 +130,12 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
                 child: CustomFormComponents.buildNormalTextField(
                   _emailController,
                   Text(
-                    'Email',
+                    'email'.tr,
                     style: appTheme.textTheme.bodyMedium,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
+                      return 'required'.tr;
                     }
 
                     return null;
@@ -147,12 +148,12 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
                   context,
                   _dateOfBirthController,
                   Text(
-                    'Date Of Birth',
+                    'birthDate'.tr,
                     style: appTheme.textTheme.bodyMedium,
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please select your date of birth';
+                      return 'required'.tr;
                     }
                     return null;
                   },
@@ -164,7 +165,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
           CustomFormComponents.buildPhoneNumberField(
             _phoneNumberController,
             Text(
-              'Phone Number',
+              'phone'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             selectedCountryCode,
@@ -176,7 +177,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
             },
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter your phone number';
+                return 'required'.tr;
               }
 
               return null;
@@ -186,7 +187,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
           CustomFormComponents.buildPhoneNumberField(
             _emergencyContactController,
             Text(
-              'Emergency Contact',
+              'emergency'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             selectedCountryCode,
@@ -198,7 +199,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
             },
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter your emergency contact number';
+                return 'required'.tr;
               }
 
               return null;
@@ -210,7 +211,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
               Expanded(
                 child: CustomFormComponents.buildDropdownInputField(
                   Text(
-                    'Residency',
+                    'residency'.tr,
                     style: appTheme.textTheme.bodyMedium,
                   ),
                   ['Ethiopia', 'USA', 'Kenya', 'Sudan', 'Germany'],
@@ -222,7 +223,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
                   },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please select your residency';
+                      return 'required'.tr;
                     }
                     return null;
                   },
@@ -232,7 +233,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
               Expanded(
                 child: CustomFormComponents.buildDropdownInputField(
                   Text(
-                    'Nationality',
+                    'nationality'.tr,
                     style: appTheme.textTheme.bodyMedium,
                   ),
                   ['Ethiopia', 'USA', 'Kenya', 'Sudan', 'Germany'],
@@ -244,7 +245,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
                   },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please select your nationality';
+                      return 'required'.tr;
                     }
                     return null;
                   },
@@ -279,7 +280,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
                         color: Colors.white,
                       )
                     : Text(
-                        'SignUp',
+                        'signup'.tr,
                         style: appTheme.textTheme.titleMedium,
                       ),
               );
@@ -290,7 +291,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Already have an account?',
+                'haveAccount'.tr,
                 style: appTheme.textTheme.bodyMedium,
               ),
               const SizedBox(
@@ -301,7 +302,7 @@ class _ClientSignupFormState extends State<ClientSignupForm> {
                   Navigator.pushReplacementNamed(context, '/clientLogin');
                 },
                 child: Text(
-                  'Login',
+                  'login'.tr,
                   style: appTheme.textTheme.labelMedium,
                 ),
               )

@@ -5,6 +5,7 @@ import 'package:app/screens/professionals_screens/main/professional_home_screen.
 import 'package:app/widgets/professionals/auth/professional_signup_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class ProfessionalSignupScreen extends StatefulWidget {
   const ProfessionalSignupScreen({super.key});
@@ -29,8 +30,11 @@ class _ProfessionalSignupScreenState extends State<ProfessionalSignupScreen> {
               (Route<dynamic> route) => false,
             );
           } else if (state is UnauthenticatedProfessional) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text(state.message)));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(
+              state.message,
+              maxLines: 10,
+            )));
           }
         },
         child: SingleChildScrollView(
@@ -40,7 +44,7 @@ class _ProfessionalSignupScreenState extends State<ProfessionalSignupScreen> {
             child: Column(
               children: [
                 Text(
-                  'Create new Professional acount',
+                  'let start'.tr,
                   style: appTheme.textTheme.headlineMedium,
                 ),
                 const SizedBox(
