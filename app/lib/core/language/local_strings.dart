@@ -23,7 +23,7 @@ class LocalString extends Translations {
           'ok': 'Ok',
           'hi': 'Hi',
           'fullname': 'Full name',
-          'username': 'Username',
+          'username': 'Nick name',
           'password': 'Password',
           'confirm': 'Confirm Password',
           'confirmError': 'Passwords do not match',
@@ -75,7 +75,8 @@ class LocalString extends Translations {
           'haveNoAccount': 'Don\'t have an account?',
           'nojournal': 'Save your Days!',
           'pickColor': 'Pick a color',
-          'select': 'Select'
+          'select': 'Select',
+          'prof_l_upload': 'Upload Licenses'
         },
         'am': {
           'alenilachu': 'ወደ አለንላችሁ እንኳን ደህና መጡ',
@@ -148,7 +149,8 @@ class LocalString extends Translations {
           'haveNoAccount': 'መለያ አልነበረዎትም?',
           'nojournal': 'ሀሳብህን አስቀምጥ!',
           'pickColor': 'ቀለም ይምረጡ',
-          'select': 'ምረጥ'
+          'select': 'ምረጥ',
+          'prof_l_upload': 'ሊሰንስ አስገባ'
         },
       };
 }

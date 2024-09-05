@@ -22,14 +22,14 @@ class AuthenticationService {
     return response;
   }
 
-  Future<http.Response> loginClient(String username, String password) async {
+  Future<http.Response> loginClient(String phone, String password) async {
     try {
       final response = await http.post(
         Uri.parse(ApiUrl.clientLoginUrl),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
-        body: jsonEncode({'username': username, 'password': password}),
+        body: jsonEncode({'phone': phone, 'password': password}),
       );
 
       return response;

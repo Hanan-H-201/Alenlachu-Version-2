@@ -1,7 +1,7 @@
 import 'package:app/controllers/common/authentication/authentication_cubit.dart';
 import 'package:app/controllers/common/authentication/authentication_state.dart';
 import 'package:app/core/theme/app_theme.dart';
-import 'package:app/screens/professionals_screens/main/professional_home_screen.dart';
+import 'package:app/screens/professionals_screens/professionl_landing_page.dart';
 import 'package:app/widgets/common/processing.dart';
 import 'package:app/widgets/professionals/auth/professional_login_form.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +27,7 @@ class _ProfessionalLoginScreenState extends State<ProfessionalLoginScreen> {
             Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(
-                  builder: (context) =>
-                      ProfessionalHomeScreen(name: state.profession.name)),
+                  builder: (context) => const ProfessionlLandingPage()),
               (Route<dynamic> route) => false,
             );
           } else if (state is UnauthenticatedProfessional) {

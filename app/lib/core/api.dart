@@ -1,5 +1,5 @@
 class ApiUrl {
-  static const String baseUrl = "http://192.168.243.212:3000";
+  static const String baseUrl = "http://192.168.100.212:3000";
 
   static const String clientRegistrationUrl =
       "$baseUrl/api/clients/registerClient";
@@ -14,6 +14,8 @@ class ApiUrl {
       "$baseUrl/api/institutions/loginInstitution";
   static const String professionalLoginUrl =
       "$baseUrl/api/professions/loginProfessional";
+  static const String updateProfessionalUrl =
+      "$baseUrl/api/professions/updateProfessional";
   static const String adminLoginUrl = "$baseUrl/api/admins/loginAdmin";
   static const String logoutUrl = "$baseUrl/api/logout";
   static const String tokenVerificationUrl = "$baseUrl/api/verify-token";

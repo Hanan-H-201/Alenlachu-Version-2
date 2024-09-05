@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'dart:developer';
 
 import 'package:app/controllers/common/authentication/authentication_cubit.dart';
 import 'package:app/core/app.dart';
@@ -25,6 +25,6 @@ void main() async {
       ),
     ));
   } catch (e) {
-    log(double.parse(e.toString()));
+    log(e.toString());
   }
 }

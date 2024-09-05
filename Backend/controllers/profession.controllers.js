@@ -79,3 +79,22 @@ export async function loginProfessional(req, res) {
         res.status(500).json({error : `Internal server error ${err.message}`});
     }
 }
+
+export async function updateProfessional(req, res) {
+    try {
+        const {id} = req.query;
+        const updateData = req.body;
+
+       
+
+        const updatedProfessional = await ProfessionService.updateProfessional(id, updateData);
+
+        if (!updatedProfessional) {
+            return res.status(404).json({ error: 'Professional not found' });
+        }
+
+        res.status(200).json(updatedProfessional);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+}

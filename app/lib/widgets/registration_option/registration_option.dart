@@ -33,18 +33,18 @@ class RegistrationOptionCard extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          buildOption(context, 'institution'.tr, () {
-            Navigator.pushNamed(context, '/institutionRegistration');
-          }),
-          const SizedBox(
-            height: 10,
-          ),
-          buildOption(context, 'admin'.tr, () {
-            Navigator.pushNamed(context, '/adminLogin');
-          }),
-          const SizedBox(
-            height: 10,
-          ),
+          // buildOption(context, 'institution'.tr, () {
+          //   Navigator.pushNamed(context, '/institutionRegistration');
+          // }),
+          // const SizedBox(
+          //   height: 10,
+          // ),
+          // buildOption(context, 'admin'.tr, () {
+          //   Navigator.pushNamed(context, '/adminLogin');
+          // }),
+          // const SizedBox(
+          //   height: 10,
+          // ),
         ],
       ),
     );

@@ -52,11 +52,27 @@ class ProfessionService{
             licenseUrl : licenseUrl
         };
 
-        console.log(tokenData);
+        // console.log(tokenData);
 
         const SECRET_KEY = process.env.SECRET_KEY || 'secret_key';
         const token = Authentication.generateToken(tokenData,SECRET_KEY,{ expiresIn: '1h' });
         return token;
+    }
+
+    static async updateProfessional(professionalId, updateData) {
+        try {
+            // If updating the password, hash the new password
+            if (updateData.password) {
+                const salt = await bcrypt.genSalt(10);
+                updateData.password = await bcrypt.hash(updateData.password, salt);
+            }
+
+            const updatedProfessional = await ProfessionalModel.findByIdAndUpdate(professionalId, updateData, { new: true });
+
+            return updatedProfessional;
+        } catch (e) {
+            throw new Error(`Failed to update Professional ${e}`);
+        }
     }
 
     
