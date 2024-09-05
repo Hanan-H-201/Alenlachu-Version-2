@@ -7,7 +7,10 @@ class VentingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SizedBox(
       child: Center(
-        child: Text('Venting'),
+        child: Text(
+          'You will be able to access the venting feature after 15 days.',
+          maxLines: 10,
+        ),
       ),
     );
   }
