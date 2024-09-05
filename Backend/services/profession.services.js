@@ -6,6 +6,10 @@ import Authentication from './auth.services.js';
 class ProfessionService{
     static async registerProfession(name,email,password, phoneNumber, dateOfBirth, nationality, address, profession, experience,  languageToProvideService, pricePerHour,rating, verificationStatus, licenseUrl){
         try{
+            const existingUser = await ProfessionalModel.findOne({ $or: [{ phoneNumber }, { email }] });
+            if (existingUser) {
+                throw new Error('Phone number or email already exists');
+            }
             const newProfessional = new ProfessionalModel({name,email,password, phoneNumber, dateOfBirth, nationality, address, profession, experience,  languageToProvideService, pricePerHour, rating, verificationStatus, licenseUrl});
             return await newProfessional.save();
         }catch(e){
@@ -13,8 +17,8 @@ class ProfessionService{
         }
     }
 
-    static async loginProfessional(professionalsEmail, professionalsPassword){
-        const professional = await ProfessionalModel.findOne({email: professionalsEmail});
+    static async loginProfessional(professionalsPhone, professionalsPassword){
+        const professional = await ProfessionalModel.findOne({phoneNumber: professionalsPhone});
         if(!professional || !(await bcrypt.compare(professionalsPassword, professional.password))){
             return null;
         }

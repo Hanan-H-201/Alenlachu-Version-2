@@ -4,6 +4,7 @@ import 'package:app/controllers/professionals/professionals/professionals_cubit.
 import 'package:app/controllers/professionals/professionals/professionals_state.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'package:app/models/users/profession_model.dart';
+import 'package:app/screens/common_screens/language_preferenec.dart';
 import 'package:app/widgets/common/main_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -68,10 +69,33 @@ class ProfessionlLandingPage extends StatelessWidget {
                         ],
                       );
                     } else if (state is ProcessingData) {
-                      return const Center(
-                        child: Text(
-                          'Data saved successfully! we will verify the Data and send you the response soon. Stay Safe!',
-                          maxLines: 10,
+                      return Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              'Data saved successfully! we will verify the Data and send you the response soon. Stay Safe!',
+                              maxLines: 10,
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            MainButton(
+                                onPressed: () {
+                                  context.read<AuthenticationCubit>().logout();
+                                  Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const LanguagePreference()),
+                                    (Route<dynamic> route) => false,
+                                  );
+                                },
+                                child: Text(
+                                  'logout'.tr,
+                                  style: appTheme.textTheme.titleMedium,
+                                )),
+                          ],
                         ),
                       );
                     } else if (state is LicenseUploadFailed) {
@@ -90,8 +114,30 @@ class ProfessionlLandingPage extends StatelessWidget {
                 ),
               );
             } else if (professional.verificationStatus == 'pending') {
-              return const Center(
-                child: Text('Verification pending'),
+              return Center(
+                child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text('We are verifying your data. stay tuned!'),
+                    const SizedBox(height: 20),
+                    MainButton(
+                        onPressed: () {
+                          context.read<AuthenticationCubit>().logout();
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const LanguagePreference()),
+                            (Route<dynamic> route) => false,
+                          );
+                        },
+                        child: Text(
+                          'logout'.tr,
+                          style: appTheme.textTheme.titleMedium,
+                        )),
+                  ],
+                ),
               );
             } else if (professional.verificationStatus == 'verified') {
               return Center(

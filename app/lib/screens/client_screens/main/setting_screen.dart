@@ -1,6 +1,7 @@
 import 'package:app/controllers/common/authentication/authentication_cubit.dart';
 import 'package:app/controllers/common/authentication/authentication_state.dart';
 import 'package:app/core/theme/app_theme.dart';
+import 'package:app/screens/common_screens/language_preferenec.dart';
 import 'package:app/screens/common_screens/registration_option_screen.dart';
 import 'package:app/widgets/client/setting/logo_card.dart';
 import 'package:app/widgets/client/setting/setting_card.dart';
@@ -48,6 +49,13 @@ class SettingScreen extends StatelessWidget {
                       MainButton(
                           onPressed: () {
                             context.read<AuthenticationCubit>().logout();
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const LanguagePreference()),
+                              (Route<dynamic> route) => false,
+                            );
                           },
                           child: Text(
                             'logout'.tr,

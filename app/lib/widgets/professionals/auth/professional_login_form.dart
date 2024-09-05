@@ -4,6 +4,7 @@ import 'package:app/widgets/common/custome_form_components.dart';
 import 'package:app/widgets/common/main_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 class ProfessionalLoginForm extends StatefulWidget {
   const ProfessionalLoginForm({super.key});
@@ -14,13 +15,13 @@ class ProfessionalLoginForm extends StatefulWidget {
 
 class _ProfessionalLoginFormState extends State<ProfessionalLoginForm> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
   void dispose() {
     super.dispose();
-    _emailController.dispose();
+    _phoneController.dispose();
     _passwordController.dispose();
   }
 
@@ -32,14 +33,14 @@ class _ProfessionalLoginFormState extends State<ProfessionalLoginForm> {
         mainAxisSize: MainAxisSize.min,
         children: [
           CustomFormComponents.buildNormalTextField(
-            _emailController,
+            _phoneController,
             Text(
-              'Email',
-              style: appTheme.textTheme.bodyMedium,
+              '+251900000000',
+              style: appTheme.textTheme.bodySmall,
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter your email';
+                return 'Please enter your phone';
               }
               return null;
             },
@@ -48,7 +49,7 @@ class _ProfessionalLoginFormState extends State<ProfessionalLoginForm> {
           CustomFormComponents.buildPasswordField(
             _passwordController,
             Text(
-              'Password',
+              'password'.tr,
               style: appTheme.textTheme.bodyMedium,
             ),
             validator: (value) {
@@ -64,12 +65,12 @@ class _ProfessionalLoginFormState extends State<ProfessionalLoginForm> {
             onPressed: () {
               if (_formKey.currentState?.validate() ?? false) {
                 context.read<AuthenticationCubit>().loginProfessional(
-                    email: _emailController.text,
+                    phone: _phoneController.text,
                     password: _passwordController.text);
               }
             },
             child: Text(
-              'Login',
+              'login'.tr,
               style: appTheme.textTheme.titleMedium,
             ),
           ),
@@ -78,7 +79,7 @@ class _ProfessionalLoginFormState extends State<ProfessionalLoginForm> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Don\'t have an account?',
+                'haveNoAccount'.tr,
                 style: appTheme.textTheme.bodyMedium,
               ),
               const SizedBox(
@@ -90,7 +91,7 @@ class _ProfessionalLoginFormState extends State<ProfessionalLoginForm> {
                       context, '/professionalRegistration');
                 },
                 child: Text(
-                  'Sign Up',
+                  'signup'.tr,
                   style: appTheme.textTheme.labelMedium,
                 ),
               )

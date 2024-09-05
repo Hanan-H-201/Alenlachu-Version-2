@@ -22,14 +22,14 @@ class AuthenticationService {
     return response;
   }
 
-  Future<http.Response> loginClient(String phone, String password) async {
+  Future<http.Response> loginClient(String username, String password) async {
     try {
       final response = await http.post(
         Uri.parse(ApiUrl.clientLoginUrl),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
-        body: jsonEncode({'phone': phone, 'password': password}),
+        body: jsonEncode({'username': username, 'password': password}),
       );
 
       return response;
@@ -54,13 +54,13 @@ class AuthenticationService {
     }
   }
 
-  Future<http.Response> loginProfessional(String email, String password) async {
+  Future<http.Response> loginProfessional(String phone, String password) async {
     try {
       final response = await http.post(Uri.parse(ApiUrl.professionalLoginUrl),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },
-          body: jsonEncode({'email': email, 'password': password}));
+          body: jsonEncode({'phoneNumber': phone, 'password': password}));
 
       return response;
     } catch (e) {

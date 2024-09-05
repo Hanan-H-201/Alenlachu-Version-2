@@ -216,7 +216,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
           await authenticationService.registerProfessional(professionModel);
       if (respone.statusCode == 201) {
         loginProfessional(
-            email: professionModel.email, password: professionModel.password!);
+            phone: professionModel.phoneNumber,
+            password: professionModel.password!);
       } else {
         final jsonRespone = jsonDecode(respone.body);
         emit(UnauthenticatedProfessional(message: jsonRespone['error']));
@@ -227,11 +228,11 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   }
 
   Future<void> loginProfessional(
-      {required String email, required String password}) async {
+      {required String phone, required String password}) async {
     emit(Authenticating());
     try {
       http.Response response =
-          await authenticationService.loginProfessional(email, password);
+          await authenticationService.loginProfessional(phone, password);
       final jsonResponse = jsonDecode(response.body);
       if (response.statusCode == 200) {
         await LoginManager.saveUserToken(jsonResponse["token"]);

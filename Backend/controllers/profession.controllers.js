@@ -66,11 +66,11 @@ export async function registerProfession(req, res) {
 
 export async function loginProfessional(req, res) {
     try{
-        const{email, password} = req.body;
-        const token = await ProfessionService.loginProfessional(email, password);
+        const{phoneNumber, password} = req.body;
+        const token = await ProfessionService.loginProfessional(phoneNumber, password);
 
         if(!token){
-            return res.status(401).json({error: 'Invalid email or password'});
+            return res.status(401).json({error: 'Invalid phoneNumber or password'});
         }
 
         res.status(200).json({status: true, token: token});

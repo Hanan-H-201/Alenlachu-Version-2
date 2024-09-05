@@ -23,11 +23,16 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
       TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _dateOfBirthController = TextEditingController();
-  final TextEditingController _nationalityController = TextEditingController();
-  final TextEditingController _addressController = TextEditingController();
-  final TextEditingController _professionController = TextEditingController();
-  final TextEditingController _experienceController = TextEditingController();
-  final TextEditingController _languageController = TextEditingController();
+  final TextEditingController _nationalityController =
+      TextEditingController(text: 'Ethiopia');
+  final TextEditingController _addressController =
+      TextEditingController(text: 'Addis Ababa');
+  final TextEditingController _professionController =
+      TextEditingController(text: 'Psychiatrists');
+  final TextEditingController _experienceController =
+      TextEditingController(text: '0');
+  final TextEditingController _languageController =
+      TextEditingController(text: 'English');
   final TextEditingController _pricePerHourController = TextEditingController();
 
   String selectedCountryCode = '+251';
@@ -172,7 +177,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                     style: appTheme.textTheme.bodyMedium,
                   ),
                   ['Addis Ababa', 'Adama', 'Bahrdar', 'Dire Dawa'],
-                  'Addis Ababa',
+                  _addressController.text,
                   (String? newValue) {
                     setState(() {
                       _addressController.text = newValue ?? 'Addis Ababa';
@@ -197,7 +202,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                     style: appTheme.textTheme.bodyMedium,
                   ),
                   ['Ethiopia', 'USA', 'Kenya', 'Sudan', 'Germany'],
-                  "Ethiopia",
+                  _nationalityController.text,
                   (String? newValue) {
                     setState(() {
                       _nationalityController.text = newValue ?? "";
@@ -233,7 +238,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
               "Art Therapists,Occupational Therapists (OTs)",
               "other"
             ],
-            "Psychiatrists",
+            _professionController.text,
             (String? newValue) {
               setState(() {
                 _professionController.text = newValue ?? "";
@@ -253,7 +258,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
               style: appTheme.textTheme.bodyMedium,
             ),
             ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-            "0",
+            _experienceController.text,
             (String? newValue) {
               setState(() {
                 _experienceController.text = newValue ?? "";
@@ -276,7 +281,7 @@ class _ProfessionalSignupFormState extends State<ProfessionalSignupForm> {
                       style: appTheme.textTheme.bodyMedium,
                     ),
                     ['English', 'Amharic'],
-                    'English', (String? newValue) {
+                    _languageController.text, (String? newValue) {
                   setState(() {
                     _languageController.text = newValue ?? 'English';
                   });

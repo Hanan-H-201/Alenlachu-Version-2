@@ -68,7 +68,7 @@ class AppNavigator extends StatelessWidget {
       } else if (state is AppInitial) {
         return const Processing();
       } else {
-        return const RegistrationOptionScreen();
+        return const LanguagePreference();
       }
     });
   }
