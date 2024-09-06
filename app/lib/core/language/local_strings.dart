@@ -76,7 +76,8 @@ class LocalString extends Translations {
           'nojournal': 'Save your Days!',
           'pickColor': 'Pick a color',
           'select': 'Select',
-          'prof_l_upload': 'Upload Licenses'
+          'prof_l_upload': 'Upload Licenses',
+          'verify': 'Verify'
         },
         'am': {
           'alenilachu': 'ወደ አለንላችሁ እንኳን ደህና መጡ',
@@ -150,7 +151,8 @@ class LocalString extends Translations {
           'nojournal': 'ሀሳብህን አስቀምጥ!',
           'pickColor': 'ቀለም ይምረጡ',
           'select': 'ምረጥ',
-          'prof_l_upload': 'ሊሰንስ አስገባ'
+          'prof_l_upload': 'ሊሰንስ አስገባ',
+          'verify': 'አረጋግጥ'
         },
       };
 }
