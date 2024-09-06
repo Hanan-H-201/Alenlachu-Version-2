@@ -125,7 +125,7 @@ class _MainAppState extends State<MainApp> {
         BlocProvider(
             create: (context) => EventCubit(eventServices: EventServices())),
         BlocProvider(create: (context) => ProfessionalsCubit()),
-        BlocProvider(create: (context) => PhoneAuthCubit()),
+        // BlocProvider(create: (context) => PhoneAuthCubit()),
         BlocProvider(
             create: (context) => JournalCubit(
                 journalServices: JournalServices(),
