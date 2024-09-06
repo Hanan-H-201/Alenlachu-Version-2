@@ -1,7 +1,7 @@
 import 'package:app/controllers/common/authentication/authentication_cubit.dart';
 import 'package:app/controllers/common/authentication/authentication_state.dart';
 import 'package:app/core/theme/app_theme.dart';
-import 'package:app/screens/professionals_screens/auth/verify_otp.dart';
+
 import 'package:app/screens/professionals_screens/professionl_landing_page.dart';
 import 'package:app/widgets/common/processing.dart';
 import 'package:app/widgets/professionals/auth/professional_login_form.dart';

@@ -5,7 +5,6 @@ import 'package:app/controllers/client/journal/journal_cubit.dart';
 import 'package:app/controllers/common/authentication/authentication_cubit.dart';
 import 'package:app/controllers/common/awareness/awareness_cubit.dart';
 import 'package:app/controllers/common/event/event_cubit.dart';
-import 'package:app/controllers/common/phone_auth/phone_auth_cubit.dart';
 import 'package:app/controllers/professionals/professionals/professionals_cubit.dart';
 import 'package:app/core/app_navigator.dart';
 import 'package:app/core/language/local_strings.dart';

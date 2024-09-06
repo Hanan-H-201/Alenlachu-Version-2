@@ -1,5 +1,4 @@
 import 'package:app/controllers/common/authentication/authentication_cubit.dart';
-import 'package:app/controllers/common/phone_auth/phone_auth_cubit.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'package:app/widgets/common/custome_form_components.dart';
 import 'package:app/widgets/common/main_button.dart';
