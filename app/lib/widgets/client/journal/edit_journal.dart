@@ -2,7 +2,6 @@ import 'package:app/controllers/client/journal/journal_cubit.dart';
 import 'package:app/controllers/client/journal/journal_state.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'package:app/models/users/client/journal_model.dart';
-import 'package:app/services/common/utils.dart';
 import 'package:app/widgets/common/custome_form_components.dart';
 import 'package:app/widgets/common/main_button.dart';
 import 'package:flutter/material.dart';

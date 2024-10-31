@@ -1,9 +1,5 @@
-import 'package:app/controllers/common/authentication/authentication_cubit.dart';
-import 'package:app/controllers/common/authentication/authentication_state.dart';
 import 'package:app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LogoCard extends StatelessWidget {
   const LogoCard({super.key});
