@@ -1,7 +1,6 @@
 import 'package:app/controllers/common/awareness/awareness_cubit.dart';
 import 'package:app/controllers/common/event/event_cubit.dart';
 import 'package:app/core/theme/app_theme.dart';
-import 'package:app/widgets/client/home/client_emotional_state.dart';
 import 'package:app/widgets/client/home/event/event_list.dart';
 import 'package:app/widgets/client/home/motivational_qoutes.dart';
 import 'package:app/widgets/client/home/welcome_card.dart';
@@ -40,11 +39,11 @@ class ClientHomeScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('feeling'.tr, style: appTheme.textTheme.labelLarge),
+                      // Text('feeling'.tr, style: appTheme.textTheme.labelLarge),
+                      // const SizedBox(height: 10),
+                      // const ClientEmotionalState(),
                       const SizedBox(height: 10),
-                      const ClientEmotionalState(),
-                      const SizedBox(height: 10),
-                      // MotivationalQuotesCarousel(),
+                      MotivationalQuotesCarousel(),
                       const SizedBox(height: 10),
                       Row(
                         children: [
