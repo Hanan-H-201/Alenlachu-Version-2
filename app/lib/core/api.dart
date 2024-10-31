@@ -1,5 +1,5 @@
 class ApiUrl {
-  static const String baseUrl = "http://192.168.210.212:3000";
+  static const String baseUrl = "https://alenlachuv2server.onrender.com";
 
   static const String clientRegistrationUrl =
       "$baseUrl/api/clients/registerClient";

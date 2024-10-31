@@ -44,7 +44,7 @@ class ClientHomeScreen extends StatelessWidget {
                       const SizedBox(height: 10),
                       const ClientEmotionalState(),
                       const SizedBox(height: 10),
-                      MotivationalQuotesCarousel(),
+                      // MotivationalQuotesCarousel(),
                       const SizedBox(height: 10),
                       Row(
                         children: [
