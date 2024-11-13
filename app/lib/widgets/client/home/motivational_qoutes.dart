@@ -1,6 +1,8 @@
 import 'package:app/core/theme/app_theme.dart';
 import 'package:carousel_slider/carousel_slider.dart' as cs;
 import 'package:flutter/material.dart';
+import 'package:app/core/theme/app_theme.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MotivationalQuotesCarousel extends StatelessWidget {
   final List<String> quotes = [
@@ -41,10 +43,10 @@ class MotivationalQuotesCarousel extends StatelessWidget {
               child: Text(
                 quotes[index],
                 maxLines: 100,
-                style: const TextStyle(
+                style: GoogleFonts.dmSans(
                   fontSize: 18,
                   fontStyle: FontStyle.italic,
-                  color: Colors.white,
+                  color: Color(0xFF2C2C2C)
                 ),
                 textAlign: TextAlign.center,
               ),

@@ -5,6 +5,7 @@ import 'package:app/services/common/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class WelcomeCard extends StatelessWidget {
   const WelcomeCard({super.key});
@@ -16,21 +17,21 @@ class WelcomeCard extends StatelessWidget {
         return Container(
           width: MediaQuery.of(context).size.width,
           padding:
-              const EdgeInsets.only(left: 10, right: 10, top: 40, bottom: 10),
+              const EdgeInsets.only(left: 20, right: 20, top: 70, bottom: 15),
           decoration: BoxDecoration(
               color: appTheme.scaffoldBackgroundColor,
               // gradient: containerGradient,
               borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(10),
                   bottomRight: Radius.circular(10)),
-              boxShadow: const [
-                BoxShadow(
-                  color: Color.fromARGB(255, 196, 196, 196),
-                  spreadRadius: 1,
-                  blurRadius: 2,
-                  offset: Offset(0, 1),
-                )
-              ]),
+              // boxShadow: const [
+              //   BoxShadow(
+              //     color: Color.fromARGB(255, 196, 196, 196),
+              //     spreadRadius: 1,
+              //     blurRadius: 2,
+              //     offset: Offset(0, 1),
+              //   )]
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -40,11 +41,15 @@ class WelcomeCard extends StatelessWidget {
                       children: [
                         Text(
                           '${'hi'.tr} ${state.client.username.capitalizeFirst}',
-                          style: appTheme.textTheme.headlineLarge,
+                          style: GoogleFonts.dmSans(
+                            textStyle: appTheme.textTheme.headlineLarge,
+                          ),
                         ),
                         Text(
                           '${Utils.getGreeting()}!',
-                          style: appTheme.textTheme.headlineSmall,
+                          style: GoogleFonts.dmSans(
+                            textStyle: appTheme.textTheme.headlineSmall,
+                          ),
                         ),
                       ],
                     )

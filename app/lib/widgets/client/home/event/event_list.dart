@@ -19,7 +19,7 @@ class _EventListState extends State<EventList> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * 0.45,
+      height: MediaQuery.of(context).size.height * 0.35,
       child: BlocBuilder<EventCubit, EventState>(
         builder: (context, state) {
           if (state is EventLoaded) {
@@ -29,7 +29,7 @@ class _EventListState extends State<EventList> {
                   children: [
                     Image.asset(
                       'assets/images/empty.png',
-                      height: 200,
+                      height: 100,
                     ),
                     Text(
                       'noevent'.tr,
