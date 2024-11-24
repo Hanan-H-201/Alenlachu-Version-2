@@ -1,6 +1,7 @@
 import 'package:app/models/common/awareness_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../core/theme/app_theme.dart';
 
@@ -11,57 +12,71 @@ class AwarenessCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () {
+        // Navigate to the detail view of the awareness article
+      },
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.7,
-        height: MediaQuery.of(context).size.height * 0.4,
-        decoration: BoxDecoration(
-            color: appTheme.scaffoldBackgroundColor,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: const [
-              BoxShadow(
-                color: Color.fromARGB(255, 234, 234, 234),
-                spreadRadius: 1,
-                blurRadius: 3,
-                offset: Offset(0, 3),
-              )
-            ]),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        margin: const EdgeInsets.symmetric(vertical: 10),
+        child: Row(
           children: [
+            // Left Image
             Container(
-              height: 130,
-              width: MediaQuery.of(context).size.width * 0.7,
+              width: 100,
+              height: 100,
               decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10)),
-                  image: DecorationImage(
-                      image: awareness.image == null
-                          ? const AssetImage(
-                              'assets/images/awarness_default.png')
-                          : NetworkImage(awareness.image!),
-                      fit: BoxFit.fill)),
+                borderRadius: BorderRadius.circular(8),
+                image: DecorationImage(
+                  image: awareness.image == null
+                      ? const AssetImage('assets/images/awarness_default.png')
+                      : NetworkImage(awareness.image!) as ImageProvider,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            const SizedBox(width: 10),
+            // Right Text Content
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 10),
-                  Text(awareness.title,
-                      maxLines: 1, style: appTheme.textTheme.labelMedium),
-                  const SizedBox(height: 10),
-                  Text(awareness.content,
-                      maxLines: 3, style: appTheme.textTheme.bodyMedium),
+                  // Title
+                  Text(
+                    awareness.title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.dmSans(
+                      textStyle: appTheme.textTheme.labelMedium,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   const SizedBox(height: 5),
-                  Center(
-                      child: Text(
-                    'read more'.tr,
-                    style: appTheme.textTheme.labelSmall,
-                  ))
+                  // Content (Description)
+                  Text(
+                    awareness.content,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.dmSans(
+                      textStyle: appTheme.textTheme.bodyMedium,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  // Read More Link
+                  GestureDetector(
+                    onTap: () {
+                      // Navigate to full article details
+                    },
+                    child: Text(
+                      'read more'.tr,
+                      style: GoogleFonts.dmSans(
+                        textStyle: appTheme.textTheme.labelSmall,
+                        color: appTheme.primaryColor,
+                      ),
+                    ),
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

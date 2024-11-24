@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../widgets/client/home/awareness/awareness_list.dart';
 
@@ -32,7 +33,7 @@ class ClientHomeScreen extends StatelessWidget {
           SingleChildScrollView(
             child: Column(
               children: [
-                const SizedBox(height: 110),
+                const SizedBox(height: 140),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
@@ -44,7 +45,7 @@ class ClientHomeScreen extends StatelessWidget {
                       // const ClientEmotionalState(),
                       const SizedBox(height: 10),
                       MotivationalQuotesCarousel(),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 50),
                       Row(
                         children: [
                           FaIcon(
@@ -54,15 +55,18 @@ class ClientHomeScreen extends StatelessWidget {
                           ),
                           const SizedBox(width: 10),
                           Text('explore'.tr,
-                              style: appTheme.textTheme.labelLarge),
+                              style: GoogleFonts.dmSans(
+                                  textStyle: appTheme.textTheme.labelLarge),
+                          ),
                           const Spacer(),
                           Text('see all'.tr,
-                              style: appTheme.textTheme.labelSmall),
+                            style: GoogleFonts.dmSans(
+                              textStyle: appTheme.textTheme.labelSmall)),
                         ],
                       ),
-                      const SizedBox(height: 15),
+                      // const SizedBox(height: 15),
                       const EventList(),
-                      const SizedBox(height: 15),
+                      const SizedBox(height: 20),
                       Row(
                         children: [
                           FaIcon(
@@ -72,10 +76,14 @@ class ClientHomeScreen extends StatelessWidget {
                           ),
                           const SizedBox(width: 10),
                           Text('articles'.tr,
-                              style: appTheme.textTheme.labelLarge),
+                              style: GoogleFonts.dmSans(
+                                textStyle:  appTheme.textTheme.labelLarge
+                              )
+                             ),
                           const Spacer(),
                           Text('see all'.tr,
-                              style: appTheme.textTheme.labelSmall),
+                            style: GoogleFonts.dmSans(
+                              textStyle: appTheme.textTheme.labelSmall)),
                         ],
                       ),
                       const SizedBox(height: 15),
