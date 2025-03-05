@@ -42,7 +42,7 @@ class _ClientLandingPageState extends State<ClientLandingPage> {
             case ClientBottomNavigationState.journal:
               return const JournalScreen();
             case ClientBottomNavigationState.venting:
-              return const VentingScreen();
+              return  VentingScreen();
             case ClientBottomNavigationState.support:
               return const SupportScreen();
             case ClientBottomNavigationState.setting:
@@ -58,6 +58,7 @@ class _ClientLandingPageState extends State<ClientLandingPage> {
           switch (state) {
             case ClientBottomNavigationState.journal:
               return FloatingActionButton(
+
                 backgroundColor: appTheme.primaryColor,
                 elevation: 10,
                 shape: const CircleBorder(),
@@ -77,6 +78,8 @@ class _ClientLandingPageState extends State<ClientLandingPage> {
                   size: 20,
                 ),
               );
+            case ClientBottomNavigationState.venting:
+              return const SizedBox.shrink();
             case ClientBottomNavigationState.setting:
               return const SizedBox.shrink();
             default:
