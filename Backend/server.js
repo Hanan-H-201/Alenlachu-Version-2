@@ -12,16 +12,18 @@ import awarenessRoutes from './routes/awareness.routes.js';
 import chatbotRoutes from './routes/chat.routes.js';
 import realtimechatRoutes from './routes/realtimechat.routes.js';
 import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
 import socketHandler from './socketHandler.js';
+import { CreateDB } from './config/db.js';
+import moodRoutes from './routes/mood.routes.js';
 
-
-const mongoUri = process.env.MONGO_URL;
+// const mongoUri = process.env.MONGO_URL;
 const port = process.env.port || 3001;
+CreateDB;
 
 const app = express();
 app.use(cors());
 
+app.use(express.json());
 const server = http.createServer(app);
 
 const io = new Server(server,{
@@ -31,9 +33,9 @@ const io = new Server(server,{
         
     },
 });
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
-.then(()=>console.log("MongoDB Connected"))
-.catch((err)=>console.log(err));
+// mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+// .then(()=>console.log("MongoDB Connected"))
+// .catch((err)=>console.log(err));
 
 app.use(bodyParser.json());
 app.use("/api/admins", adminRoutes);
@@ -45,6 +47,7 @@ app.use("/api/events", eventRoutes);
 app.use("/api/awarenesses", awarenessRoutes);
 app.use("/api/chat",chatbotRoutes);
 app.use("/api/realtimechat",realtimechatRoutes);
+app.use('/api/mood', moodRoutes);
 
 // var clients = {};
 // io.on("connection", (socket)=>{
