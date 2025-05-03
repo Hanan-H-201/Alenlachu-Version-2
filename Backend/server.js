@@ -2,6 +2,7 @@ import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
 import cors from 'cors';
+import './config/db.js';
 import adminRoutes from "./routes/admin.routes.js";
 import clientRoutes from "./routes/client.routes.js";
 import institutionRoutes from "./routes/institution.routes.js";
@@ -11,31 +12,25 @@ import eventRoutes from "./routes/event.routes.js";
 import awarenessRoutes from './routes/awareness.routes.js';
 import chatbotRoutes from './routes/chat.routes.js';
 import realtimechatRoutes from './routes/realtimechat.routes.js';
+import challengeRoutes from './routes/challenge.routes.js'; 
 import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
 import socketHandler from './socketHandler.js';
 
-
-const mongoUri = process.env.MONGO_URL;
-const port = process.env.port || 3001;
+const port = process.env.PORT || 3001;
 
 const app = express();
 app.use(cors());
+app.use(bodyParser.json());
 
 const server = http.createServer(app);
-
-const io = new Server(server,{
-    cors:{
+const io = new Server(server, {
+    cors: {
         origin: "*",
         methods: ["GET", "POST"]
-        
     },
 });
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
-.then(()=>console.log("MongoDB Connected"))
-.catch((err)=>console.log(err));
 
-app.use(bodyParser.json());
+// Routes
 app.use("/api/admins", adminRoutes);
 app.use("/api/institutions", institutionRoutes);
 app.use("/api/professions", professionRoutes);
@@ -43,35 +38,13 @@ app.use("/api/clients", clientRoutes);
 app.use("/api", authRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/awarenesses", awarenessRoutes);
-app.use("/api/chat",chatbotRoutes);
-app.use("/api/realtimechat",realtimechatRoutes);
+app.use("/api/chat", chatbotRoutes);
+app.use("/api/realtimechat", realtimechatRoutes);
+app.use("/api/mood/challenge", challengeRoutes); // ✅ New endpoint
 
-// var clients = {};
-// io.on("connection", (socket)=>{
-//     console.log(`User Connected: ${socket.id}`);
-
-
-//     socket.on("join_room", (data)=>{
-//         socket.join(data);
-//         console.log(`User with ID: ${socket.id} joined room: ${data}`)
-//     })
-//     socket.on("send_message", (data) => {
-//         socket.to(data.room).emit("receive_message", data);
-//       });    
-//     socket.on("disconnect", ()=>{
-//         console.log("user disconnected",socket.id);
-//     })
-//     socket.on("test",(id)=>{
-//         console.log(id);
-//         clients[id]=socket;
-//         console.log(clients);
-//     })
-//     socket.on("sendMessage",(msg)=>{
-//         console.log(msg);
-//     })
-// });
+// Socket
 socketHandler(io);
 
-server.listen(port, ()=>{
+server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
