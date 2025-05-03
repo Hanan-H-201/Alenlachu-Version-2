@@ -1,4 +1,10 @@
 export const fakeUser = (req, res, next) => {
-    req.user = { id: '6813a1c255775f49fb880787', name: 'Test User' }; // Example fake user
+    const userId = req.headers['x-user-id'] || req.query.userId || 'user_id';
+    
+    req.user = {
+        id: userId,
+        name: 'Test User'
+    };
+    
     next();
-};  
+};

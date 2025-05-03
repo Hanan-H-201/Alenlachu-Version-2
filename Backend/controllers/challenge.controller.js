@@ -1,4 +1,3 @@
-// controllers/challenge.controller.js
 import Mood from '../models/mood.model.js';
 
 const dailyChallenges = {
@@ -13,8 +12,7 @@ const dailyChallenges = {
   neutral: ['Reflect on your feelings in a journal.']
 };
 
-const challengeCache = {}; // Stores daily challenges per user in-memory
-
+const challengeCache = {}; 
 export const getDailyChallenge = async (req, res) => {
   try {
     const userId = req.user?.id || req.body.userId;

@@ -40,7 +40,7 @@ app.use("/api/events", eventRoutes);
 app.use("/api/awarenesses", awarenessRoutes);
 app.use("/api/chat", chatbotRoutes);
 app.use("/api/realtimechat", realtimechatRoutes);
-app.use("/api/mood/challenge", challengeRoutes); // ✅ New endpoint
+app.use("/api/mood/challenge", challengeRoutes); 
 
 // Socket
 socketHandler(io);
