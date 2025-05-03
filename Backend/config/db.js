@@ -3,9 +3,9 @@ dotenv.config();
 
 import mongoose from 'mongoose';
 
-const mongoUri = process.env.MONGO_URL;
+const mongoUrl = process.env.MONGO_URL;
 
-mongoose.connect(mongoUri)
+mongoose.connect(mongoUrl)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
