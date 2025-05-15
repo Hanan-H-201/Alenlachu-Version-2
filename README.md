@@ -13,27 +13,28 @@ Backend: Node.js, Express.js, MongoDB, Mongoose
 Frontend: Flutter, Dart
 
 
+```
 📁 Folder Structure (Backend)
 
-
 ├── controllers/
-│   ├── mood.controllers.js
-│   ├── challenge.controller.js
-│   └── ...
+│ ├── mood.controllers.js
+│ ├── challenge.controller.js
+│ └── ...
 ├── middleware/
-│   └── fakeUser.js        # Temporary development middleware
+│ └── fakeUser.js # Temporary development middleware
 ├── models/
-│   ├── mood.model.js
-│   ├── blackList.model.js
-│   └── ...
+│ ├── mood.model.js
+│ ├── blackList.model.js
+│ └── ...
 ├── routes/
-│   ├── mood.routes.js
-│   ├── challenge.routes.js
-│   └── ...
+│ ├── mood.routes.js
+│ ├── challenge.routes.js
+│ └── ...
 ├── config/
-│   └── db.js              # MongoDB connection
-├── socketHandler.js       # Socket.io logic
-└── server.js              # App entry point
+│ └── db.js # MongoDB connection
+├── socketHandler.js # Socket.io logic
+└── server.js # App entry point
+```
 
 🧪 Development Mode Notes
 fakeUser middleware is used for testing and development to simulate a logged-in user.
