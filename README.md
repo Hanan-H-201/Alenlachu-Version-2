@@ -36,10 +36,11 @@ Frontend: Flutter, Dart
 └── server.js # App entry point
 ```
 
-🧪 Development Mode Notes
-fakeUser middleware is used for testing and development to simulate a logged-in user.
 
-Real authentication using OTP will be integrated later — remove fakeUser before production.
+🧪 Development Mode Notes
+
+-fakeUser middleware is used for testing and development to simulate a logged-in user.
+-Real authentication using OTP will be integrated later — remove fakeUser before production.
 
 📜 API Overview
 Mood Endpoints
