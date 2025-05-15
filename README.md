@@ -35,6 +35,7 @@ Edit
 │   └── db.js              # MongoDB connection
 ├── socketHandler.js       # Socket.io logic
 └── server.js              # App entry point
+
 🧪 Development Mode Notes
 fakeUser middleware is used for testing and development to simulate a logged-in user.
 
