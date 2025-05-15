@@ -40,6 +40,8 @@ Frontend: Flutter, Dart
 🧪 Development Mode Notes
 
 -fakeUser middleware is used for testing and development to simulate a logged-in user.
+
+
 -Real authentication using OTP will be integrated later — remove fakeUser before production.
 
 📜 API Overview
