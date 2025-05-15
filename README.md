@@ -10,13 +10,12 @@ Log daily emotions, intensity, tags, and notes.
 📦 Tech Stack
 Backend: Node.js, Express.js, MongoDB, Mongoose
 
-Frontend: Flutter,Dart
+Frontend: Flutter, Dart
 
 
 📁 Folder Structure (Backend)
-bash
-Copy
-Edit
+
+
 ├── controllers/
 │   ├── mood.controllers.js
 │   ├── challenge.controller.js
